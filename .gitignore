@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+.DS_Store?
+._*
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Next.js build output (está dentro de app/)
+app/.next/
+app/out/
+
+# env files
+.env
+.env.local
+.env*.local

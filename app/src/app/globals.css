@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+/* ── Dark theme (default) ─────────────────────────────────────────────────── */
+:root {
+  --bg:            #0B0B0B;
+  --bg-raised:     #141414;
+  --bg-elevated:   #1C1C1C;
+  --bg-high:       #2C2C2C;
+  --border:        #1C1C1C;
+  --border-2:      #2C2C2C;
+  --fg:            #ffffff;
+  --fg-dim:        #A0A0A0;
+  --fg-muted:      #606060;
+  --fg-faint:      #404040;
+  --fg-ghost:      #303030;
+  --green-bg:      #1A3A1A;
+  --yellow-bg:     #2A2800;
+  --accent-green:  #4ADE80;
+  --accent-yellow: #EAB308;
+  --btc-orange:    #F7931A;
+  --live-green:    #22C55E;
+}
+
+/* ── Light theme ──────────────────────────────────────────────────────────── */
+html.light {
+  --bg:            #FFFFFF;
+  --bg-raised:     #F7F7F7;
+  --bg-elevated:   #F0F0F0;
+  --bg-high:       #E5E5E5;
+  --border:        #E5E5E5;
+  --border-2:      #D4D4D4;
+  --fg:            #0B0B0B;
+  --fg-dim:        #444444;
+  --fg-muted:      #666666;
+  --fg-faint:      #888888;
+  --fg-ghost:      #AAAAAA;
+  --green-bg:      #DCFCE7;
+  --yellow-bg:     #FEF9C3;
+  --accent-green:  #16A34A;
+  --accent-yellow: #92400E;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-orange: var(--btc-orange);
+  --font-sans: var(--font-inter);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+input[type="number"] { -moz-appearance: textfield; }
