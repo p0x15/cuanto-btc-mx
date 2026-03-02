@@ -2,7 +2,7 @@ import { Navbar } from "@/components/Navbar";
 import { HistoryMapClient } from "@/components/map/HistoryMapClient";
 
 export const metadata = {
-  title: "Historia del Dinero en México — Donde BTC MX",
+  title: "Historia del Dinero en México — CuantoBTC",
   description:
     "Mapa interactivo: 600 años de dinero en México desde el cacao mexica hasta Bitcoin. Bancarización y remesas por estado.",
 };

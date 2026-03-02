@@ -82,7 +82,7 @@ export function Navbar() {
           </div>
 
           <Link href="/" className="text-[16px] md:text-[17px] font-extrabold tracking-tight text-[var(--fg)]">
-            Donde BTC MX
+            CuantoBTC
           </Link>
         </div>
 

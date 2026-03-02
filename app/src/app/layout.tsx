@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "¿A cuánto está el Bitcoin en México? | cuantobtc.lat",
+  title: "CuantoBTC — ¿Cuánto Bitcoin recibes con tus pesos?",
   description:
     "Compara el precio del Bitcoin en pesos (MXN) en tiempo real: Bitso, Kraken, Buda, Binance, Aureo y más exchanges mexicanos.",
   metadataBase: new URL("https://www.cuantobtc.lat"),

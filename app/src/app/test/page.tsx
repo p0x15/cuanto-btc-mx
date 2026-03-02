@@ -2,7 +2,7 @@ import { Navbar } from "@/components/Navbar";
 import { TestWizard } from "@/components/TestWizard";
 
 export const metadata = {
-  title: "Test Personalizado — Donde BTC MX",
+  title: "Test Personalizado — CuantoBTC",
   description: "Encuentra el mejor exchange de Bitcoin para ti según tus prioridades: KYC, Lightning, SPEI y más.",
 };
 

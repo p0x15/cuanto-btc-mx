@@ -11,7 +11,7 @@ export default function Home() {
           <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[#F7931A] text-xs font-black text-[#0B0B0B]">
             ₿
           </span>
-          <span className="text-sm font-bold text-[var(--fg-faint)]">Donde BTC MX</span>
+          <span className="text-sm font-bold text-[var(--fg-faint)]">CuantoBTC</span>
           <div className="flex-1" />
           <span className="text-xs text-[var(--fg-ghost)]">
             Proyecto de código abierto · No somos un exchange · Solo comparamos precios
