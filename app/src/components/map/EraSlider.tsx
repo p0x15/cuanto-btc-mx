@@ -58,7 +58,7 @@ export function EraSlider({ eras, activeIndex, onChange }: Props) {
                 <div className="flex flex-col items-center text-center max-w-[72px]">
                   <span
                     className={[
-                      "text-[10px] font-bold leading-none transition-colors whitespace-nowrap",
+                      "text-[13px] font-bold leading-none transition-colors whitespace-nowrap",
                       isActive
                         ? "text-[#F7931A]"
                         : isPast
@@ -70,7 +70,7 @@ export function EraSlider({ eras, activeIndex, onChange }: Props) {
                   </span>
                   <span
                     className={[
-                      "hidden sm:block text-[8px] mt-0.5 leading-tight transition-colors text-center",
+                      "hidden sm:block text-[11px] mt-0.5 leading-tight transition-colors text-center",
                       isActive ? "text-[var(--fg-muted)]" : "text-[var(--fg-ghost)]",
                     ].join(" ")}
                   >
