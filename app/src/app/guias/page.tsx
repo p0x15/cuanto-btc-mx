@@ -1,69 +1,18 @@
+"use client";
+
+import { useState, useCallback } from "react";
 import { Navbar } from "@/components/Navbar";
+import { GuidePanel } from "@/components/GuidePanel";
+import { guides } from "@/data/guides";
 import Link from "next/link";
 
-export const metadata = {
-  title: "Guías — Donde BTC MX",
-  description: "Aprende sobre KYC, Lightning Network, custodia y cómo comprar Bitcoin en México.",
-};
-
-const guides = [
-  {
-    slug: "que-es-kyc",
-    icon: "🔒",
-    title: "¿Qué es KYC?",
-    description:
-      "Know Your Customer: la verificación de identidad que exigen la mayoría de los exchanges regulados. Te explicamos qué datos piden y por qué importa para tu privacidad.",
-    readTime: "3 min",
-    tags: ["Privacidad", "Regulación"],
-  },
-  {
-    slug: "lightning-network",
-    icon: "⚡",
-    title: "Lightning Network",
-    description:
-      "La capa 2 de Bitcoin que permite retiros instantáneos con comisiones mínimas. Cómo funciona y qué exchanges en México lo soportan.",
-    readTime: "4 min",
-    tags: ["Técnico", "Velocidad"],
-  },
-  {
-    slug: "custodial-vs-no-custodial",
-    icon: "🔑",
-    title: "Custodial vs No Custodial",
-    description:
-      '"Not your keys, not your coins." Qué significa que un exchange guarde tus BTC y por qué muchos bitcoiners prefieren controlar sus propias llaves.',
-    readTime: "5 min",
-    tags: ["Seguridad", "Soberanía"],
-  },
-  {
-    slug: "que-son-los-sats",
-    icon: "₿",
-    title: "¿Qué son los sats?",
-    description:
-      "Un satoshi es la unidad mínima de Bitcoin: 0.00000001 BTC. Por qué pensar en sats en lugar de BTC te ayuda a entender mejor lo que estás comprando.",
-    readTime: "2 min",
-    tags: ["Básico"],
-  },
-  {
-    slug: "como-usar-spei",
-    icon: "🏦",
-    title: "Cómo comprar BTC con SPEI",
-    description:
-      "Guía paso a paso para depositar pesos mexicanos vía SPEI en los exchanges que lo soportan. Límites, tiempos y qué esperar.",
-    readTime: "4 min",
-    tags: ["México", "Básico"],
-  },
-  {
-    slug: "comparar-exchanges",
-    icon: "📊",
-    title: "Cómo comparar exchanges",
-    description:
-      "Más allá del precio: comisiones ocultas, spread, liquidez, reputación y soporte. Todo lo que debes revisar antes de elegir dónde comprar.",
-    readTime: "6 min",
-    tags: ["Análisis"],
-  },
-];
-
 export default function GuiasPage() {
+  const [activeSlug, setActiveSlug] = useState<string | null>(null);
+
+  const activeGuide = guides.find((g) => g.slug === activeSlug) ?? null;
+
+  const handleClose = useCallback(() => setActiveSlug(null), []);
+
   return (
     <div className="min-h-screen bg-[var(--bg)] pb-16 md:pb-0">
       <Navbar />
@@ -86,9 +35,10 @@ export default function GuiasPage() {
         {/* Grid */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {guides.map((g) => (
-            <div
+            <button
               key={g.slug}
-              className="group flex flex-col gap-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-raised)] p-6 transition-colors hover:border-[var(--border-2)] hover:bg-[var(--bg-elevated)] cursor-pointer"
+              onClick={() => setActiveSlug(g.slug)}
+              className="group flex flex-col gap-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-raised)] p-6 text-left transition-colors hover:border-[var(--border-2)] hover:bg-[var(--bg-elevated)] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F7931A]"
             >
               <div className="flex items-start justify-between gap-3">
                 <span className="text-3xl">{g.icon}</span>
@@ -116,7 +66,7 @@ export default function GuiasPage() {
                   </span>
                 ))}
               </div>
-            </div>
+            </button>
           ))}
         </div>
 
@@ -130,7 +80,7 @@ export default function GuiasPage() {
             <p className="text-xs text-[var(--fg-muted)]">
               Este proyecto es de código abierto. Si quieres contribuir una guía,{" "}
               <a
-                href="https://github.com"
+                href="https://github.com/p0x15/donde-btc-mx"
                 className="text-[#F7931A] hover:underline"
               >
                 abre un PR en GitHub
@@ -147,6 +97,8 @@ export default function GuiasPage() {
           </Link>
         </div>
       </main>
+
+      <GuidePanel guide={activeGuide} onClose={handleClose} />
     </div>
   );
 }

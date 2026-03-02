@@ -1,0 +1,178 @@
+{
+  "meta": {
+    "titulo": "Ecosistema Bitcoin en México 2024-2025",
+    "fecha": "2026-03-01",
+    "fuentes": [
+      "Bitso Blog / Press Release H1 2024",
+      "Bloomberg Línea — remesas bajo presión",
+      "BeinCrypto — Strike México Lightning",
+      "Bitcoin Magazine — Aureo $1.1M pre-seed",
+      "Alto Nivel — Bitso 10% remesas 2024",
+      "FintechExpert.mx — Bitso +51% remesas 2024",
+      "Univision — impuesto remesas Trump 2026",
+      "Banco de México — Cuadro CA79 remesas 2024"
+    ]
+  },
+
+  "remesas": {
+    "contexto": {
+      "total_mexico_2024_mmd": 64.745,
+      "origen_usa_porcentaje": 96,
+      "descripcion": "México recibió $64,745 millones de dólares en remesas en 2024, 96% provenientes de EE.UU. Es la segunda fuente de divisas del país tras el petróleo."
+    },
+    "costos_comparados": {
+      "western_union": {
+        "comision_tipica_500usd": "3.23–18.80 USD (fee fijo)",
+        "markup_tipo_cambio": "2–4% sobre el tipo de cambio real",
+        "costo_total_estimado": "5–7% del monto enviado",
+        "nota": "Costo sube con el impuesto Trump (1% adicional desde enero 2026)"
+      },
+      "bancos_tradicionales": {
+        "costo_estimado": "12–15% del monto enviado",
+        "incluye": "comisión + mal tipo de cambio"
+      },
+      "bitso_shift": {
+        "comision": "1.2% (12 USD por cada 1,000 USD enviados)",
+        "recepcion": "Sin costo adicional",
+        "descripcion": "Usa stablecoins/cripto como riel, el receptor recibe pesos en cuenta bancaria"
+      },
+      "strike_lightning": {
+        "comision_maxima": "< 4.57%",
+        "tecnologia": "Bitcoin Lightning Network + Relampago (conversión a pesos)",
+        "lanzamiento_mexico": "Junio 2023",
+        "descripcion": "Transferencia cuasi-instantánea USA→México, receptor recibe MXN en cuenta bancaria"
+      },
+      "ahorro_cripto_vs_tradicional": "Un trabajador que envía $500/mes ahorra ~$300–$400 USD al año usando Lightning vs Western Union"
+    },
+    "impuesto_trump_2026": {
+      "porcentaje": 1,
+      "vigencia": "Enero 2026 (ya en vigor)",
+      "propuesta_inicial": "3.5% — reducida en negociación final",
+      "impacto_ejemplo": "Enviar $350 sube de $6 a ~$23.50 en costos totales según BBVA México",
+      "efecto_bitcoin": "Activa demanda de alternativas cripto para evadir el impuesto legalmente"
+    }
+  },
+
+  "plataformas_y_proyectos": {
+    "bitso": {
+      "tipo": "Exchange + rails de pago",
+      "usuarios_mexico_2024": 4400000,
+      "usuarios_latam_2024": 9000000,
+      "crecimiento_mexico_2024": "13% anual en usuarios",
+      "volumen_mexico_2024_vs_2023": "+80% en volumen transaccionado",
+      "remesas_2024": {
+        "participacion_corredor_usa_mx": "~10% del total",
+        "monto_procesado_mmd": 6.5,
+        "crecimiento_vs_2023": "51%"
+      },
+      "lightning": {
+        "proveedor": "Lightspark",
+        "lanzamiento": "Julio 2024",
+        "descripcion": "Habilitó transacciones Bitcoin vía Lightning para sus 8M clientes y 1,700 clientes corporativos"
+      },
+      "bitcoin_portfolio": "Bitcoin representa 55% de la wallet promedio de usuarios mexicanos en Bitso"
+    },
+    "strike": {
+      "tipo": "App de pagos Lightning",
+      "servicio": "Send Globally — remesas USA→México",
+      "lanzamiento_mexico": "Junio 2023",
+      "socio_local": "Relampago (conversión Lightning a pesos)",
+      "comision": "< 4.57%",
+      "descripcion": "El receptor no necesita saber de Bitcoin — recibe pesos en su cuenta bancaria"
+    },
+    "aureo": {
+      "tipo": "Custodia y compra/venta Bitcoin",
+      "nombre_anterior": "Swapido",
+      "lanzamiento": "Octubre 2024",
+      "fondeo": "1.1M USD pre-seed de Early Riders",
+      "mercado_objetivo": "High-net-worth individuals, family offices y empresas en México y LatAm",
+      "funcion_principal": "Convierte Bitcoin a pesos mexicanos instantáneamente, envía a cualquier cuenta bancaria, tarjeta o CLABE",
+      "volumen_primer_año": "> 5 BTC procesados para cientos de usuarios avanzados",
+      "descripcion": "Enfocado en custodia segura y largo plazo, no trading especulativo"
+    },
+    "casa_de_satoshi": {
+      "tipo": "Espacio comunitario / educación",
+      "ubicacion": "CDMX",
+      "actividades": [
+        "Talleres y seminarios de Bitcoin",
+        "BitDevs México (reuniones técnicas)",
+        "Eventos culturales Bitcoin",
+        "Networking y comunidad"
+      ],
+      "descripcion": "Espacio grassroots en CDMX inspirado en la visión de Satoshi Nakamoto. Pionero en construir comunidad Bitcoin local desde abajo."
+    },
+    "centro_satoshi_mx": {
+      "tipo": "Centro educativo blockchain",
+      "url": "centrosatoshi.mx",
+      "descripcion": "Centro de educación blockchain en México"
+    }
+  },
+
+  "adopcion_mexico_2024": {
+    "usuarios_cripto": {
+      "total_2024": 3100000,
+      "porcentaje_poblacion": 2.5,
+      "crecimiento_anual": "15%",
+      "proyeccion_2027": 3820000
+    },
+    "preferencias": {
+      "bitcoin": "30% de las compras de cripto a nivel nacional",
+      "stablecoins_usdc_usdt": "34% (primera posición)",
+      "nota": "Bitcoin es 55% de la cartera promedio Bitso México"
+    },
+    "posicion_latam": {
+      "remesas_cripto": "México concentra 47% de transacciones con stablecoins en LatAm",
+      "lider_regional": true,
+      "descripcion": "México es el mercado cripto más grande de América Latina"
+    }
+  },
+
+  "bitcoin_vs_inflacion": {
+    "inflacion_peso": {
+      "promedio_anual_2015_2024": "~4.95%",
+      "perdida_poder_adquisitivo_10_años": "~40%",
+      "fuente": "INEGI / inflacionmexico.com"
+    },
+    "bitcoin_rendimiento": {
+      "precio_enero_2015_usd": "~250",
+      "precio_enero_2025_usd": 104385,
+      "precio_enero_2025_mxn": 2149000,
+      "rendimiento_10_años_usd": "~417x",
+      "descripcion": "Mientras el peso perdió ~40% de su poder adquisitivo en 10 años, Bitcoin multiplicó su valor más de 400 veces"
+    },
+    "herramienta_referencia": "inflacionmexico.com — calculadora que compara pérdida del peso vs Bitcoin desde 1970"
+  },
+
+  "caso_uso_remesas_estados": {
+    "descripcion": "Datos para contextualizar el uso de Bitcoin como alternativa de remesas por estado",
+    "estados_alta_dependencia_remesas": {
+      "top_5_monto_2024_musd": {
+        "Michoacán": 5647,
+        "Guanajuato": 5645,
+        "Jalisco": 5503,
+        "CDMX": 4685,
+        "Estado de México": 4602
+      },
+      "mayor_porcentaje_pib_local": [
+        "Michoacán",
+        "Guerrero",
+        "Oaxaca",
+        "Zacatecas",
+        "Hidalgo"
+      ]
+    },
+    "ahorro_estimado_lightning": {
+      "supuesto": "Trabajador envía $500 USD/mes",
+      "costo_wu_anual_usd": 480,
+      "costo_lightning_anual_usd": 138,
+      "ahorro_anual_usd": 342,
+      "nota": "Basado en 8% WU vs 2.3% Lightning promedio"
+    }
+  },
+
+  "notas_para_mapa": {
+    "texto_bitcoin_paralelo_remesas": "Hasta el 10% de las remesas México-EE.UU. ya viajan por rieles cripto (Bitso). Con Bitcoin Lightning, el costo cae de ~8% (Western Union) a menos de 2.3%, ahorrando ~$340 USD al año a una familia que recibe $500/mes. Apps: Strike, Bitso, Aureo.",
+    "dato_impacto": "Michoacán recibe $5,647M en remesas al año — el ahorro total si todo fuera Lightning sería >$300M USD anuales solo en comisiones",
+    "contexto_trump": "El impuesto Trump (1% desde enero 2026) suma presión — las familias migrantes buscan activamente alternativas cripto"
+  }
+}

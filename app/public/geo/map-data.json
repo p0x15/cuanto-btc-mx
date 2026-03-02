@@ -1,0 +1,901 @@
+{
+  "eras": [
+    {
+      "id": "prehispanica",
+      "label": "Mesoamérica prehispánica",
+      "year": "~1400",
+      "geoFile": "prehispanica.json",
+      "description": "Antes de la conquista, el territorio que hoy es México estaba dividido en zonas culturales, no en estados. Cada civilización tenía su propio sistema de intercambio y valor.",
+      "moneda": "Cacao, mantas de algodón, cobre en forma de T, plumas de quetzal",
+      "color_scheme": "warm"
+    },
+    {
+      "id": "nueva_espana",
+      "label": "Nueva España",
+      "year": "1521–1821",
+      "geoFile": "nueva_espana.json",
+      "description": "El virreinato reorganizó el territorio en intendencias. México se convirtió en el mayor productor de plata del mundo: el Real de a Ocho fue la primera moneda verdaderamente global.",
+      "moneda": "Real de a Ocho (plata). Las Américas producían el 80% de la plata mundial — México aportaba el 60% por sí solo en el siglo XVIII.",
+      "color_scheme": "colonial"
+    },
+    {
+      "id": "independiente",
+      "label": "México independiente",
+      "year": "1821–1910",
+      "geoFile": "independiente.json",
+      "description": "La independencia trajo caos monetario. Sin banco central ni moneda unificada, se abrieron 14 casas de moneda en todo el país, cada una acuñando pesos con distinta pureza. Un comerciante en Guadalajara podía rechazar los pesos de Chihuahua — o aceptarlos con descuento. El Porfiriato intentó ordenar todo con la Reforma Monetaria de 1905: patrón oro, 2 pesos = 1 dólar. Funcionó 5 años. La Revolución lo destruyó todo.",
+      "moneda": "14 casas de moneda con distintas leyes de plata. Pesos de Zacatecas, Guanajuato, Chihuahua, Durango, Culiacán... todos diferentes.",
+      "color_scheme": "republic"
+    },
+    {
+      "id": "siglo_xx",
+      "label": "Siglo XX y las crisis",
+      "year": "1929–2000",
+      "geoFile": "estados.json",
+      "description": "El peso moderno y el banco central (1925) prometieron estabilidad. En cambio llegaron las crisis: 1976, 1982, 1994. El peso perdió más del 99% de su poder adquisitivo en 50 años.",
+      "moneda": "Peso mexicano. Devaluaciones de 1976 (1:1 a 22:1), 1982, y el 'Error de Diciembre' de 1994.",
+      "color_scheme": "crisis"
+    },
+    {
+      "id": "presente",
+      "label": "Presente y Bitcoin",
+      "year": "2024+",
+      "geoFile": "estados.json",
+      "description": "Hoy, 32 estados con distintos niveles de bancarización y remesas. Para millones de mexicanos, Bitcoin no es especulación: es la única forma de ahorrar sin que el banco central se los coma. Las remesas ya superan $64,745 millones de dólares al año — y el 10% ya viaja por rieles cripto.",
+      "moneda": "Peso + Bitcoin. Hasta el 10% de las remesas ya viajan por rieles cripto (Bitso). El impuesto Trump del 1% desde enero 2026 acelera la adopción de Lightning.",
+      "color_scheme": "bitcoin"
+    }
+  ],
+
+  "zones": {
+    "prehispanica": [
+      {
+        "id": "altiplano_central",
+        "name": "Altiplano Central (Mexicas)",
+        "capital": "Tenochtitlán",
+        "color": "#C0392B",
+        "dinero": {
+          "medio": "Granos de cacao, mantas de algodón (quachtli), canutos de pluma con polvo de oro, hachuelas de cobre y estaño",
+          "descripcion": "Los mexicas desarrollaron el sistema monetario más sofisticado de Mesoamérica. Los granos de cacao servían para transacciones cotidianas: un conejo costaba 10-20 granos, un esclavo entre 3,000 y 4,000 granos. Las mantas quachtli servían para transacciones mayores — incluso casas y tierras. No existía banco central: el valor del cacao fluctuaba según las cosechas, generando inflación y deflación naturales. El gran mercado de Tlatelolco tenía jueces comerciales que regulaban los precios.",
+          "dato_curioso": "Existían falsificadores de cacao en Tenochtitlan: vaciaban las cáscaras de granos consumidos y las rellenaban con pasta de amaranto, cera y semillas de aguacate para hacerlos pasar por reales. La falsificación monetaria existía siglos antes de que llegaran los españoles."
+        },
+        "bitcoin_paralelo": "El cacao compartía características con Bitcoin: escasez natural, difícil de falsificar, divisible. La diferencia: Bitcoin no se puede comer ni pudrir.",
+        "estados_actuales": ["MX-CMX", "MX-MEX", "MX-HID", "MX-MOR", "MX-TLA", "MX-PUE", "MX-GRO", "MX-QUE", "MX-VER"]
+      },
+      {
+        "id": "area_maya",
+        "name": "Área Maya",
+        "capital": "Mayapán / Chichén Itzá",
+        "color": "#27AE60",
+        "dinero": {
+          "medio": "Granos de cacao, plumas de quetzal, jade, conchas spondylus, sal",
+          "descripcion": "Los mayas cultivaban cacao en las tierras bajas tropicales (Tabasco, Chiapas, Guatemala), convirtiendo estas regiones en verdaderas 'casas de moneda' naturales del continente. Los cargadores en Yucatán recibían 20 granos por viaje. Las plumas de quetzal y el jade eran bienes de altísimo valor reservados para las élites. Las ciudades mayas controlaban rutas comerciales marítimas y terrestres que llegaban hasta Centroamérica.",
+          "dato_curioso": "Los mayas no mataban a los quetzales para obtener sus plumas: las recolectaban cuando el ave mudaba su plumaje. Cazar uno sin permiso se castigaba con pena de muerte. Los pochtecas transportaban estas plumas envueltas en tubos de caña para no dañarlas en viajes de cientos de kilómetros."
+        },
+        "bitcoin_paralelo": "Las plumas de quetzal funcionaban como reserva de valor de alta denominación — equivalente a guardar sats en cold storage vs usar sats pequeños en Lightning.",
+        "estados_actuales": ["MX-YUC", "MX-CAM", "MX-ROO", "MX-TAB", "MX-CHP"]
+      },
+      {
+        "id": "zapoteca",
+        "name": "Oaxaca (Zapotecas / Mixtecas)",
+        "capital": "Monte Albán",
+        "color": "#F39C12",
+        "dinero": {
+          "medio": "Polvo de oro en canutos de pluma, cacao, mantas de algodón, grana cochinilla como bien de intercambio",
+          "descripcion": "Los zapotecas y mixtecas participaban en redes comerciales complejas desde Monte Albán. Los mixtecos eran orfebres legendarios: trabajaban el oro con la técnica de 'cera perdida' y comerciaban polvo de oro almacenado en canutos de pluma. Pueblos como Coixtlahuaca y Nochixtlán eran centros comerciales donde confluían mantas finas, bolsas de grana cochinilla, jade y plumas de quetzal.",
+          "dato_curioso": "Coixtlahuaca, en la Mixteca Alta, era un mercado tan importante que los mexicas lo conquistaron no por territorio sino para controlar su red comercial. Desde ahí se distribuían productos que llegaban hasta Guatemala. Monte Albán fue una de las primeras ciudades del continente con más de 25,000 habitantes en su apogeo (500 d.C.)."
+        },
+        "bitcoin_paralelo": "Oaxaca hoy es uno de los estados con menor bancarización (35%) y mayor dependencia de remesas. Bitcoin y Lightning son herramientas concretas para comunidades rurales oaxaqueñas que reciben dinero del exterior.",
+        "estados_actuales": ["MX-OAX"]
+      },
+      {
+        "id": "purepecha",
+        "name": "Occidente (Purépechas)",
+        "capital": "Tzintzuntzan",
+        "color": "#8E44AD",
+        "dinero": {
+          "medio": "Hachuelas de cobre en forma de T, cascabeles de cobre, cacao en menor medida",
+          "descripcion": "Los purépechas de Michoacán fueron los maestros metalúrgicos de Mesoamérica. Desarrollaron hachuelas de cobre —pequeñas hachas planas estandarizadas— que funcionaban como moneda: mismo peso, misma forma, intercambiables. A diferencia del cacao que se pudre, el cobre era duradero, divisible y difícil de falsificar. Su imperio resistió militarmente a los mexicas en parte por su superioridad tecnológica en metales.",
+          "dato_curioso": "En Ecuador, la cultura Milagro-Quevedo también usaba hachuelas de cobre idénticas como moneda —posiblemente por contacto marítimo a lo largo del Pacífico, aunque la conexión directa es debatida por arqueólogos. El uso monetario del cobre en forma de hachuelas fue, en Mesoamérica, una innovación purépecha única."
+        },
+        "bitcoin_paralelo": "El cobre estandarizado de los purépechas fue el Bitcoin de su época: fungible, portable, con valor intrínseco. Michoacán hoy recibe $5,646 millones USD en remesas anuales — el estado #1 en México.",
+        "estados_actuales": ["MX-MIC", "MX-GUA", "MX-JAL", "MX-COL", "MX-NAY"]
+      },
+      {
+        "id": "norte_arido",
+        "name": "Norte árido (Culturas del desierto)",
+        "capital": "Paquimé / Casas Grandes",
+        "color": "#BDC3C7",
+        "dinero": {
+          "medio": "Trueque, turquesa, conchas marinas",
+          "descripcion": "El norte árido albergó culturas seminómadas como los chichimecas y la civilización de Paquimé. El intercambio era principalmente por trueque, con turquesa y conchas del Pacífico como objetos de alto valor.",
+          "dato_curioso": "Paquimé tenía instalaciones especializadas para criar guacamayas a más de 1,500 km de su hábitat natural. Los arqueólogos encontraron cascarones de huevo y huesos de aves adultas, evidencia de cría en cautiverio exitosa. Era la principal 'fábrica' de plumas de colores del norte de Mesoamérica. Paquimé es Patrimonio Mundial UNESCO desde 1998."
+        },
+        "bitcoin_paralelo": "Las economías de trueque son ineficientes (problema de la doble coincidencia de deseos). Bitcoin resuelve esto siendo un medio de intercambio universal sin necesitar contraparte que quiera exactamente lo que ofreces.",
+        "estados_actuales": ["MX-CHH", "MX-SON", "MX-SIN", "MX-DUR", "MX-ZAC", "MX-SLP", "MX-NLE", "MX-COA", "MX-TAM", "MX-BCN", "MX-BCS", "MX-AGU"]
+      }
+    ],
+
+    "nueva_espana": [
+      {
+        "id": "intendencia_mexico",
+        "name": "Intendencia de México",
+        "capital": "Ciudad de México",
+        "color": "#C0392B",
+        "dinero": {
+          "medio": "Real de a Ocho (plata pura, 27g)",
+          "descripcion": "La Casa de Moneda de México (fundada en 1535, la primera del continente) acuñó el Real de a Ocho que literalmente creó la primera globalización. El peso de plata mexicano circuló en China, Filipinas, India, Europa y las 13 colonias americanas. El Consulado de Comerciantes de México controlaba el monopolio del comercio trasatlántico junto con Cádiz.",
+          "dato_curioso": "El Real de a Ocho mexicano fue moneda de curso legal en Estados Unidos hasta 1857 — más de 80 años después de la independencia estadounidense. La Bolsa de Nueva York cotizó valores en octavos de dólar (herencia directa del 'piece of eight') hasta el año 2001. El símbolo $ probablemente deriva de la abreviatura 'ps' (pesos) donde la 's' se escribía sobre la 'p'."
+        },
+        "bitcoin_paralelo": "El Real de a Ocho fue la primera 'moneda de reserva global' — como el dólar hoy. Pero a diferencia de Bitcoin, un rey podía ordenar devaluar la ley de plata. Y lo hicieron.",
+        "estados_actuales": ["MX-CMX", "MX-MEX", "MX-HID", "MX-MOR", "MX-TLA", "MX-GRO", "MX-QUE"]
+      },
+      {
+        "id": "intendencia_guadalajara",
+        "name": "Intendencia de Guadalajara",
+        "capital": "Guadalajara",
+        "color": "#2980B9",
+        "dinero": {
+          "medio": "Real de a Ocho, reales de plata, moneda de cobre para transacciones menores",
+          "descripcion": "Guadalajara se convirtió en el segundo polo comercial de Nueva España, especialmente tras las Reformas Borbónicas del siglo XVIII que rompieron el monopolio de Veracruz-Cádiz. La región era fuerte en agricultura, ganadería y producción textil. Zacatecas y sus alrededores eran el corazón de la producción minera de plata que alimentaba al Imperio español.",
+          "dato_curioso": "La creación del Consulado de Comerciantes de Guadalajara en el siglo XVIII fue un acto revolucionario: rompió el monopolio de 200 años del Consulado de México y permitió que el occidente comerciara directamente con Centroamérica y el Pacífico. En el siglo XVII, Zacatecas producía más del 20% de toda la plata del mundo conocido."
+        },
+        "bitcoin_paralelo": "La minería de plata en el virreinato se parece sorprendentemente a la minería de Bitcoin: requiere inversión en infraestructura, compite globalmente, y el que más recursos tiene más produce — pero nadie puede cambiar el límite de oferta.",
+        "estados_actuales": ["MX-JAL", "MX-ZAC", "MX-NAY", "MX-COL", "MX-AGU", "MX-GUA", "MX-MIC"]
+      },
+      {
+        "id": "intendencia_veracruz",
+        "name": "Intendencia de Veracruz",
+        "capital": "Veracruz",
+        "color": "#27AE60",
+        "dinero": {
+          "medio": "Real de a Ocho + comercio de exportación",
+          "descripcion": "Veracruz era la única puerta de salida de la plata y de entrada de mercancías europeas. Toda la plata del virreinato pasaba por aquí antes de cruzar el Atlántico. El sistema de 'flotas' —convoyes navales protegidos— concentraba todo el comercio en Veracruz una o dos veces al año, creando ferias comerciales enormes cuando llegaban los barcos y largos períodos de escasez entre flotadas.",
+          "dato_curioso": "Cuando llegaba una flota a Veracruz, se organizaba una feria comercial que podía durar semanas y a la que viajaban comerciantes de todo el virreinato. Los precios de ropa, herramientas y vino europeos se inflaban varias veces sobre el precio en España — el monopolio era un impuesto silencioso a toda la colonia."
+        },
+        "bitcoin_paralelo": "Los puertos monopolizados del virreinato son el equivalente histórico de los bancos corresponsales actuales: intermediarios que cobran renta por dejar pasar el dinero. Bitcoin elimina esta capa por completo.",
+        "estados_actuales": ["MX-VER", "MX-TAB", "MX-CHP", "MX-CAM", "MX-ROO", "MX-YUC"]
+      },
+      {
+        "id": "intendencia_oaxaca",
+        "name": "Intendencia de Oaxaca",
+        "capital": "Oaxaca de Juárez",
+        "color": "#F39C12",
+        "dinero": {
+          "medio": "Real de a Ocho + cochinilla",
+          "descripcion": "Oaxaca producía cochinilla (grana cochinilla), un tinte rojo carmesí extraído de insectos que vivían en los nopales. Era el segundo producto de exportación más valioso de Nueva España después de la plata.",
+          "dato_curioso": "En 1774, Oaxaca produjo 1,558,125 libras de grana cochinilla. España guardó celosamente el secreto de su origen biológico durante dos siglos: los europeos creían que era una semilla o mineral, no un insecto. La cochinilla tiñó las casacas rojas del ejército británico, los ropajes cardenalicios del Vaticano, y los cuadros de Rubens y Goya."
+        },
+        "bitcoin_paralelo": "La cochinilla era una reserva de valor portable y escasa — los productores oaxaqueños la guardaban como ahorro. Hoy, muchas comunidades oaxaqueñas sin acceso bancario podrían guardar valor en sats con el mismo principio.",
+        "estados_actuales": ["MX-OAX", "MX-PUE"]
+      },
+      {
+        "id": "intendencia_norte",
+        "name": "Provincias del Norte",
+        "capital": "Chihuahua / Monterrey",
+        "color": "#BDC3C7",
+        "dinero": {
+          "medio": "Real de a Ocho + trueque fronterizo",
+          "descripcion": "Las minas novohispanas del norte produjeron el 60% de toda la plata mundial en el siglo XVIII. Entre 1500 y 1800, las Américas (principalmente México y Perú) produjeron ~150,000 toneladas de plata — el 80% de la producción mundial. Esta plata llegaba a China a cambio de seda, creando la primera economía verdaderamente globalizada. Las ciudades mineras del norte crecieron explosivamente: Zacatecas, Guanajuato y San Luis Potosí pasaron de ser desiertos a ciudades opulentas.",
+          "dato_curioso": "Los dueños de minas vivían como aristócratas europeos mientras los trabajadores indígenas laboraban en condiciones brutales. Los territorios del norte de Nueva España (hoy Texas, Nuevo México, California, Arizona) se perderían después de la guerra con EE.UU. de 1846-48."
+        },
+        "bitcoin_paralelo": "Las zonas fronterizas siempre han necesitado dinero neutral que funcione a ambos lados de la línea. Bitcoin es el primer dinero verdaderamente sin fronteras — perfecto para una región donde millones trabajan en EE.UU. y mandan dinero a México.",
+        "estados_actuales": ["MX-CHH", "MX-SON", "MX-SIN", "MX-DUR", "MX-NLE", "MX-COA", "MX-TAM", "MX-BCN", "MX-BCS", "MX-SLP"]
+      }
+    ],
+
+    "independiente": [
+      {
+        "id": "norte_minero",
+        "name": "Norte minero y fronterizo",
+        "color": "#A16207",
+        "dinero": {
+          "medio": "Pesos de cecas locales (Chihuahua, Hermosillo, Culiacán) + dólares fronterizos",
+          "descripcion": "El norte vivía una realidad monetaria dual: circulaban pesos de cecas locales junto con dólares americanos en la zona fronteriza. La economía se basaba en minería de plata y cobre, ganadería extensiva y, durante el Porfiriato, concesiones a empresas extranjeras. Grupos como la familia Terrazas-Creel en Chihuahua controlaban 2.6 millones de hectáreas.",
+          "dato_curioso": "En 1900, Porfirio Díaz inauguró la Fundidora de Hierro y Acero de Monterrey, símbolo de la industrialización norteña. Mientras el sur permanecía en economías semi-feudales con tiendas de raya, el norte se industrializaba con capital extranjero y ferrocarriles que llegaban directo a EE.UU."
+        },
+        "bitcoin_paralelo": "Las zonas fronterizas siempre han necesitado dinero neutral que funcione a ambos lados. Los norteños del siglo XIX ya operaban con dos monedas: peso para lo local, dólar para los negocios serios. Bitcoin es la evolución: una sola red sin fronteras.",
+        "estados_actuales": ["MX-CHH", "MX-SON", "MX-COA", "MX-TAM", "MX-NLE", "MX-DUR", "MX-SIN", "MX-BCN", "MX-BCS"]
+      },
+      {
+        "id": "bajio_occidente",
+        "name": "Bajío y Occidente",
+        "color": "#B45309",
+        "dinero": {
+          "medio": "Pesos de cecas de Guanajuato, Guadalajara y Zacatecas + billetes de bancos regionales (Porfiriato)",
+          "descripcion": "El Bajío era el corazón agroindustrial: trigo, maíz, ganado y minas de plata. Durante el Porfiriato, Guanajuato tuvo su propio banco emisor de billetes que circulaban regionalmente — pero un comerciante viajando a Oaxaca encontraba que sus billetes no valían nada fuera del estado, obligándolo a cargar monedas de plata para viajes largos.",
+          "dato_curioso": "Guanajuato fabricó sus propios billetes durante el Porfiriato. Estos billetes solo eran aceptados en la región — exactamente el problema opuesto al del peso actual: demasiada fragmentación en el siglo XIX, demasiado control centralizado en el XX. Bitcoin resuelve ambos extremos."
+        },
+        "bitcoin_paralelo": "Los bancos regionales del Porfiriato demostraron que el dinero regional crea fricciones enormes para el comercio. Bitcoin y Lightning son lo contrario: un solo rail de pago global, sin billetes regionales incompatibles.",
+        "estados_actuales": ["MX-GUA", "MX-JAL", "MX-AGU", "MX-QUE", "MX-COL", "MX-MIC", "MX-ZAC", "MX-NAY"]
+      },
+      {
+        "id": "sur_centro",
+        "name": "Sur, Centro y Sureste",
+        "color": "#78350F",
+        "dinero": {
+          "medio": "Pesos de plata + vales de tienda de raya + trueque en comunidades indígenas",
+          "descripcion": "El sur vivía en un mundo monetario completamente diferente al norte. Las haciendas pagaban a los trabajadores con vales canjeables solo en la tienda de raya del hacendado —a precios inflados— mientras en las comunidades indígenas la moneda metálica escaseaba y el trueque seguía siendo la realidad cotidiana. En Oaxaca, la ceca local cerró en el siglo XIX y los pesos de plata escaseaban en regiones alejadas.",
+          "dato_curioso": "Las tiendas de raya eran trampas económicas perfectas: el hacendado pagaba con vales, el peón solo podía gastarlos en la tienda del hacendado, cuando se endeudaba la deuda se heredaba a sus hijos. Era un sistema monetario cerrado diseñado para mantener la servidumbre — una de las causas directas de la Revolución Mexicana. No es casualidad que el levantamiento zapatista de 1994 ocurriera exactamente cuando entró el TLCAN."
+        },
+        "bitcoin_paralelo": "La tienda de raya es la versión extrema del dinero controlado: el emisor decide qué puedes comprar y a qué precio. Bitcoin es exactamente lo opuesto: nobody decides what you can buy with your sats.",
+        "estados_actuales": ["MX-OAX", "MX-CHP", "MX-GRO", "MX-VER", "MX-HID", "MX-PUE", "MX-TLA", "MX-MOR", "MX-CMX", "MX-MEX", "MX-SLP", "MX-CAM", "MX-YUC", "MX-ROO", "MX-TAB"]
+      }
+    ],
+
+    "siglo_xx": [
+      {
+        "id": "centro_cdmx",
+        "name": "Centro y Sureste",
+        "color": "#991B1B",
+        "estados_actuales": ["MX-CMX", "MX-MEX", "MX-PUE", "MX-MOR", "MX-TLA", "MX-QUE", "MX-ROO", "MX-YUC", "MX-BCS"],
+        "dinero": {
+          "medio": "Peso mexicano — Crisis de 1976, 1982, 1994",
+          "descripcion": "El 'milagro mexicano' (1940-1970) prometió prosperidad con tipo de cambio fijo. Cuando colapsó en 1976, el peso pasó de 12.50 a 22 pesos por dólar. En 1982, la deuda en dólares explotó y siguió la nacionalización bancaria. En 1987, la inflación anual llegó a 159.2% — la más alta en la historia del país. El sexenio 1982-88 acumuló 4,030% de inflación total. En 1994, el 'Error de Diciembre' devaluó el peso 50% en semanas y las tasas de interés llegaron al 100%, haciendo impagables hipotecas y créditos.",
+          "dato_curioso": "En 1993, México le quitó 3 ceros al peso: 1,000 pesos viejos se convirtieron en 1 nuevo peso. Era necesario porque los billetes tenían tantos ceros que eran impracticables. Un café que costaba 5 centavos en 1950 costaba 5,000 pesos en 1993. Si tenías $1,000 pesos en 1970, en 1994 equivalían a menos de $1 peso en términos reales."
+        },
+        "bitcoin_paralelo": "Las tres crisis del peso en 25 años demostraron que el dinero controlado por el Estado puede destruirse por decisión política. Bitcoin no tiene secretario de Hacienda.",
+        "crisis_afectadas": ["1976: devaluación 76%", "1982: nacionalización bancaria + inflación 99%", "1987: inflación anual 159%", "1994: 'Error de Diciembre'"]
+      },
+      {
+        "id": "norte_industrial",
+        "name": "Norte Industrial y Fronterizo",
+        "color": "#1E3A8A",
+        "estados_actuales": ["MX-NLE", "MX-CHH", "MX-COA", "MX-TAM", "MX-BCN", "MX-SON", "MX-SIN"],
+        "dinero": {
+          "medio": "Peso + deuda en dólares — economía industrial integrada con EE.UU.",
+          "descripcion": "Los grandes grupos industriales de Monterrey (Visa, Alfa, Vitro, Cemex) estaban endeudados en dólares en 1982. La devaluación multiplicó sus deudas de la noche a la mañana. Pero el norte también se benefició del TLCAN (1994): mientras el peso se devaluaba, las fábricas del norte que exportaban en dólares se volvían más competitivas. Para el norte, cada crisis era un dolor y una oportunidad simultáneamente.",
+          "dato_curioso": "La nacionalización bancaria de 1982 radicalizó al empresariado de Monterrey. Los grupos como Alfa y Vitro estuvieron al borde de la quiebra. Esta crisis fue el inicio de una ruptura política entre el norte industrial y el gobierno central que transformó la política mexicana — y lanzó al PAN como fuerza nacional."
+        },
+        "bitcoin_paralelo": "El norte siempre operó con mentalidad de dos monedas: peso para lo local, dólar para los negocios serios. Bitcoin es la evolución natural: dinero que funciona igual en Monterrey que en Houston, sin depender de política cambiaria.",
+        "crisis_afectadas": ["1982: deuda industrial en dólares triplicada en pesos", "1994: maquiladoras se volvieron más competitivas"]
+      },
+      {
+        "id": "estados_petroleros",
+        "name": "Estados Petroleros",
+        "color": "#92400E",
+        "estados_actuales": ["MX-VER", "MX-TAB", "MX-CAM"],
+        "dinero": {
+          "medio": "Peso — auge y caída del petróleo como espejo del peso",
+          "descripcion": "La expropiación petrolera de 1938 transformó Veracruz, Tabasco y Campeche: ciudades como Coatzacoalcos, Villahermosa y Ciudad del Carmen crecieron explosivamente. Pero cuando los precios del crudo colapsaron en 1981-82, estas regiones se hundieron con el peso. López Portillo dijo 'hay que aprender a administrar la abundancia' — dos años después, México no podía pagar su deuda.",
+          "dato_curioso": "Cuando Cárdenas anunció la expropiación petrolera en 1938, mexicanos de todo el país hicieron fila para donar joyas, gallinas y ahorros para pagar la indemnización a las compañías extranjeras. Mujeres indígenas de Juchitán, Oaxaca, donaron sus joyas de oro. Fue el único momento histórico en que los ciudadanos donaron voluntariamente dinero al gobierno mexicano."
+        },
+        "bitcoin_paralelo": "Las economías petroleras dependen de un recurso que se agota y de precios que no controlan. Tabasco sufrió inundaciones en 2007 y 2020 que destruyeron infraestructura bancaria. Bitcoin no se puede inundar ni depende del precio del crudo.",
+        "crisis_afectadas": ["1938: expropiación, transformación regional", "1981-82: colapso del precio del petróleo", "2020: inundaciones destruyeron infraestructura bancaria"]
+      },
+      {
+        "id": "sur_agrario",
+        "name": "Sur Agrario",
+        "color": "#14532D",
+        "estados_actuales": ["MX-OAX", "MX-CHP", "MX-GRO"],
+        "dinero": {
+          "medio": "Peso (escaso) + trueque + tiendas de raya — exclusión total del sistema financiero",
+          "descripcion": "Para el sur agrario, las crisis del peso eran casi abstractas: la mayoría ya vivía en pobreza extrema antes de cada devaluación. Las devaluaciones golpeaban indirectamente: encarecían herramientas, medicinas y ropa, mientras los precios del maíz y café no subían igual. La respuesta fue el repliegue a la economía de autosubsistencia. No es coincidencia que el levantamiento zapatista ocurriera el 1 de enero de 1994 — exactamente cuando entró en vigor el TLCAN.",
+          "dato_curioso": "El EZLN se levantó en Chiapas el mismo día que entró en vigor el TLCAN — y semanas antes del 'Error de Diciembre'. Para las comunidades indígenas chiapanecas, el sistema monetario mexicano era algo que pasaba en otro planeta. Vivían de autoconsumo, trueque, y las consecuencias de un sistema que los ignoraba completamente."
+        },
+        "bitcoin_paralelo": "Fedimint fue diseñado exactamente para comunidades como las del sur de México: custodia colectiva de Bitcoin administrada por miembros de confianza del pueblo, sin necesitar banco, sin KYC, sin sucursal a kilómetros.",
+        "crisis_afectadas": ["1994: TLCAN destruyó precio del maíz local", "Toda la era: exclusión estructural del sistema financiero"]
+      },
+      {
+        "id": "estados_migrantes",
+        "name": "Estados Migrantes",
+        "color": "#9A3412",
+        "estados_actuales": ["MX-MIC", "MX-ZAC", "MX-JAL", "MX-GUA", "MX-DUR", "MX-SLP", "MX-HID", "MX-AGU", "MX-NAY", "MX-COL"],
+        "dinero": {
+          "medio": "Peso + dólares vía remesas — el dólar como salvavidas ante las crisis",
+          "descripcion": "Michoacán, Zacatecas, Jalisco y Guanajuato intensificaron su migración a EE.UU. con cada crisis del peso. El Programa Bracero (1942-1964) arrancó con 4,200 trabajadores y llegó a 445,000 en 1956. Las crisis de 1982 y 1994 dispararon la migración no documentada masiva. Paradójicamente, las devaluaciones beneficiaban a las familias que recibían dólares: cada caída del peso hacía que las remesas valieran más pesos. Los estados migrantes desarrollaron una economía paralela en dólares décadas antes de que existiera Bitcoin.",
+          "dato_curioso": "En 2018, México recibió $33,000 millones USD en remesas — más que el ingreso por petróleo. La crisis de 2008 ilustró la paradoja: cuando el peso se depreció, los migrantes mandaron más dólares para aprovechar el tipo de cambio favorable. El peso débil era, irónicamente, buena noticia para quienes recibían dólares."
+        },
+        "bitcoin_paralelo": "Las familias de Michoacán y Zacatecas llevan décadas operando con una moneda diferente al peso: el dólar vía Western Union. Lightning Network es la siguiente etapa: mismo dólar, sin intermediario, sin fila, sin 6-8% de comisión.",
+        "crisis_afectadas": ["1982: migración masiva no documentada despega", "1994: segunda oleada migratoria", "2008: remesas amortiguaron la crisis mejor que cualquier programa gobierno"]
+      }
+    ],
+
+    "presente": [
+      {
+        "id": "MX-MIC",
+        "name": "Michoacán",
+        "bancarizacion": 38,
+        "remesas_usd_millones": 5647,
+        "remesas_rank": 1,
+        "dinero": {
+          "medio": "Peso + transferencias bancarias internacionales",
+          "descripcion": "Michoacán recibe más remesas que cualquier otro estado: $5,647 millones USD al año. Sin embargo, el 62% de su población adulta no tiene cuenta bancaria formal. Muchas familias reciben dinero de EE.UU. en efectivo, pagando entre 5-10% de comisión a intermediarios.",
+          "dato_curioso": "Las remesas representan el 15% del PIB de Michoacán — más que cualquier sector productivo del estado."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Lightning Network para remesas",
+          "descripcion": "Con Lightning, un michoacano en Chicago puede enviar $500 USD a su familia en Apatzingán en segundos, pagando menos del 4.57% (Strike) vs el 5-7% de Western Union más el nuevo impuesto Trump del 1% vigente desde enero 2026. El receptor puede recibir pesos directamente sin necesitar cuenta bancaria.",
+          "ahorro_comision": "Una familia que recibe $500/mes ahorraría ~$342 USD al año usando Lightning vs Western Union. El ahorro total si todo Michoacán usara Lightning: >$300 millones USD anuales solo en comisiones.",
+          "apps_recomendadas": ["Strike (envío desde EE.UU., <4.57%)", "Muun Wallet (recepción)", "Bitso (10% del corredor USA→MX, Lightning desde julio 2024)"]
+        }
+      },
+      {
+        "id": "MX-GUA",
+        "name": "Guanajuato",
+        "bancarizacion": 45,
+        "remesas_usd_millones": 5645,
+        "remesas_rank": 2,
+        "dinero": {
+          "medio": "Peso + remesas (2do estado receptor)",
+          "descripcion": "Guanajuato es el segundo estado receptor de remesas con $5,645 millones USD. León es la capital zapatera de México y Silao tiene plantas de BMW, Honda y Toyota — pero la emigración a EE.UU. sigue siendo la mayor fuente de ingresos para comunidades rurales.",
+          "dato_curioso": "El corredor industrial del Bajío (Guanajuato, Querétaro, San Luis Potosí) es el de mayor crecimiento económico de México, pero la desigualdad entre zonas urbanas y rurales es enorme."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Bitcoin como ahorro y remesas",
+          "descripcion": "Trabajadores migrantes guanajuatenses en EE.UU. pueden ahorrar en Bitcoin durante el año y enviar el monto acumulado en una sola transacción, eliminando múltiples comisiones de envío.",
+          "ahorro_comision": "Envío único anual de $6,000 USD vía Lightning: ~$0.10 vs ~$300-480 USD en comisiones Western Union.",
+          "apps_recomendadas": ["Strike", "Phoenix Wallet", "Bitso"]
+        }
+      },
+      {
+        "id": "MX-JAL",
+        "name": "Jalisco",
+        "bancarizacion": 60,
+        "remesas_usd_millones": 5503,
+        "remesas_rank": 3,
+        "dinero": {
+          "medio": "Peso — economía diversificada + remesas",
+          "descripcion": "Guadalajara es el 'Silicon Valley mexicano' con un ecosistema tecnológico fuerte. Paradójicamente, Jalisco también es uno de los tres mayores receptores de remesas. La brecha entre Guadalajara y los municipios rurales de Los Altos es enorme.",
+          "dato_curioso": "Jalisco tiene la mayor concentración de empresas fintech en México después de CDMX — varias ya integran Lightning para pagos."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Pagos Lightning en negocios + remesas rurales",
+          "descripcion": "En Guadalajara, algunos negocios ya aceptan Bitcoin vía Lightning. En Los Altos, Lightning puede conectar a familias rurales sin banco con sus familiares en EE.UU.",
+          "ahorro_comision": "Variable. Para remesas rurales: ahorro similar a Michoacán.",
+          "apps_recomendadas": ["Muun Wallet", "Blink Wallet", "Strike"]
+        }
+      },
+      {
+        "id": "MX-CMX",
+        "name": "Ciudad de México",
+        "bancarizacion": 72,
+        "remesas_usd_millones": 4685,
+        "remesas_rank": 4,
+        "dinero": {
+          "medio": "Peso — mayor adopción fintech de México",
+          "descripcion": "La CDMX tiene la mayor bancarización (72%) y el ecosistema fintech más desarrollado del país. Bitso, Klar, Konfío, y decenas de startups financieras tienen su sede aquí. La adopción de criptomonedas es mayor en CDMX que en cualquier otro estado.",
+          "dato_curioso": "La CDMX es la ciudad con más restaurantes per cápita del mundo — y cada vez más aceptan pagos con Bitcoin vía Lightning."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Bitcoin como inversión y reserva de valor",
+          "descripcion": "En la CDMX, con mayor acceso financiero, el caso de uso de Bitcoin más relevante es como reserva de valor contra la inflación y como activo de inversión. La inflación del peso erosiona el ahorro incluso de clase media con acceso bancario.",
+          "ahorro_comision": "Vs inflación anual del peso (~5-6%): Bitcoin históricamente ha preservado mejor el poder adquisitivo a largo plazo.",
+          "apps_recomendadas": ["Bitso", "Buda.com", "Muun Wallet", "Ledger/Trezor para montos grandes"]
+        }
+      },
+      {
+        "id": "MX-MEX",
+        "name": "Estado de México",
+        "bancarizacion": 48,
+        "remesas_usd_millones": 4602,
+        "remesas_rank": 5,
+        "dinero": {
+          "medio": "Peso + remesas — segundo receptor nacional",
+          "descripcion": "El Estado de México es la segunda fuente de remesas del país ($4,602M) y el estado más poblado con más de 17 millones de habitantes. La desigualdad es brutal: municipios como Huixquilucan tienen niveles de riqueza europeos, mientras que en Ecatepec o Chimalhuacán la mitad de la gente no tiene cuenta bancaria. Los municipios conurbados a CDMX concentran industria y servicios, pero el sur y oriente del estado dependen fuertemente de remesas.",
+          "dato_curioso": "Ecatepec de Morelos tiene más habitantes que 20 de los 32 estados de México — es un municipio más grande que muchos países centroamericanos."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Remesas Lightning + ahorro para clase trabajadora",
+          "descripcion": "Para millones de familias en municipios como Nezahualcóyotl, Ecatepec y Chalco, las remesas son ingreso esencial. Lightning permite recibir dinero de EE.UU. sin necesitar cuenta bancaria ni pagar comisiones de intermediario.",
+          "ahorro_comision": "Una familia que recibe $500/mes ahorraría ~$300-600 USD al año vs servicios tradicionales de remesas.",
+          "apps_recomendadas": ["Strike", "Muun Wallet", "Bitso"]
+        }
+      },
+      {
+        "id": "MX-CHP",
+        "name": "Chiapas",
+        "bancarizacion": 30,
+        "remesas_usd_millones": 4168,
+        "remesas_rank": 6,
+        "dinero": {
+          "medio": "Peso + remesas — mayor desbancarización de México",
+          "descripcion": "Chiapas tiene la menor bancarización del país (30%) pese a ser uno de los mayores receptores de remesas. Las comunidades indígenas tzotziles, tzeltales y ch'oles históricamente han operado con economías de reciprocidad. El acceso a servicios financieros formales es prácticamente inexistente en las cañadas.",
+          "dato_curioso": "Chiapas tiene el 13% de la biodiversidad del mundo en solo 0.2% de la superficie terrestre. Pero el 75% de sus municipios están en pobreza extrema."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Lightning + Fedimint para comunidades indígenas",
+          "descripcion": "Las cooperativas de café y cacao en Chiapas pueden usar Bitcoin para pagos internacionales directos con compradores en Europa o EE.UU., eliminando la cadena de intermediarios que les quita el 20-40% del precio final.",
+          "ahorro_comision": "Productores de café podrían recuperar 20-40% de margen perdido en intermediación financiera.",
+          "apps_recomendadas": ["Fedimint (cooperativas)", "BTCPay Server (comercio directo)", "Strike"]
+        }
+      },
+      {
+        "id": "MX-OAX",
+        "name": "Oaxaca",
+        "bancarizacion": 35,
+        "remesas_usd_millones": 3434,
+        "remesas_rank": 7,
+        "dinero": {
+          "medio": "Peso + remesas + economías comunitarias (tequio)",
+          "descripcion": "Oaxaca tiene una de las menores tasas de bancarización de México (35%), solo por encima de Chiapas. Tiene la mayor proporción de población indígena del país. Muchas comunidades operan con sistemas de reciprocidad ancestral (tequio, guelaguetza económica). Las remesas llegan principalmente a comunidades de la Mixteca y Sierra Sur.",
+          "dato_curioso": "438 de los 570 municipios de Oaxaca se gobiernan por sistemas de usos y costumbres — ningún partido político. El dinero comunitario precede al Estado."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Fedimint para comunidades sin banco",
+          "descripcion": "Fedimint permite que una comunidad (un pueblo, una cooperativa) administre colectivamente una billetera Bitcoin custodiada por miembros de confianza locales — sin necesitar banco ni internet permanente. Ideal para comunidades indígenas de Oaxaca.",
+          "ahorro_comision": "Hasta 100% de ahorro en comisiones para transacciones internas de la comunidad.",
+          "apps_recomendadas": ["Fedimint (comunidades)", "Blink Wallet", "Strike (envío desde EE.UU.)"]
+        }
+      },
+      {
+        "id": "MX-PUE",
+        "name": "Puebla",
+        "bancarizacion": 44,
+        "remesas_usd_millones": 3367,
+        "remesas_rank": 8,
+        "dinero": {
+          "medio": "Peso mexicano + remesas desde Nueva York",
+          "descripcion": "Puebla es la cuarta fuente de remesas de México. Los 'poblanyorks' — migrantes poblanos en Nueva York — han creado una de las redes transnacionales más fuertes del país. La Mixteca poblana, una de las regiones más empobrecidas de México, depende casi exclusivamente de las remesas. Al mismo tiempo, la planta de Volkswagen en Puebla es una de las más grandes de América Latina.",
+          "dato_curioso": "Se estima que más de 1 millón de poblanos viven en el área metropolitana de Nueva York. Hay más hablantes de mixteco en Nueva York que en muchos municipios de la Mixteca poblana."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Lightning para remesas NYC → Mixteca",
+          "descripcion": "Un poblanyork en Brooklyn puede enviar $300 a su mamá en Acatlán de Osorio en segundos vía Lightning, sin pagar los $15-25 que cobra Western Union por envío. Para las comunidades mixtecas sin banco, una wallet en el teléfono es su primera cuenta financiera.",
+          "ahorro_comision": "Una familia que recibe $500/mes ahorraría ~$300-480 al año usando Lightning vs servicios tradicionales.",
+          "apps_recomendadas": ["Strike (envío desde EE.UU.)", "Muun Wallet", "Fedimint (comunidades mixtecas)"]
+        }
+      },
+      {
+        "id": "MX-GRO",
+        "name": "Guerrero",
+        "bancarizacion": 33,
+        "remesas_usd_millones": 3286,
+        "remesas_rank": 9,
+        "dinero": {
+          "medio": "Peso (efectivo) + remesas — casi sin bancos en zonas rurales",
+          "descripcion": "Guerrero es uno de los estados más pobres y violentos de México. Acapulco concentra servicios financieros, pero comunidades de la Montaña y Costa Chica tienen acceso mínimo a bancos. La Montaña Guerrerense tiene 70%+ de población indígena sin cuenta bancaria.",
+          "dato_curioso": "Tras el huracán Otis (octubre 2023), Acapulco quedó sin infraestructura bancaria durante semanas. Quienes tenían Bitcoin no necesitaron un banco para acceder a su dinero."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Bitcoin como red resiliente en zonas de crisis",
+          "descripcion": "El huracán Otis demostró la fragilidad de la infraestructura bancaria física. Una wallet de Bitcoin funciona con cualquier conexión a internet — incluso satelital (Starlink). En zonas de conflicto o desastre, Bitcoin es el único dinero que no requiere sucursal.",
+          "ahorro_comision": "Crítico en emergencias: acceso inmediato a fondos sin depender de infraestructura física.",
+          "apps_recomendadas": ["Muun Wallet (on-chain + Lightning)", "Phoenix Wallet", "Green Wallet (Blockstream)"]
+        }
+      },
+      {
+        "id": "MX-VER",
+        "name": "Veracruz",
+        "bancarizacion": 40,
+        "remesas_usd_millones": 2603,
+        "remesas_rank": 10,
+        "dinero": {
+          "medio": "Peso mexicano — economía portuaria, petrolera y agrícola",
+          "descripcion": "Veracruz combina el puerto más importante del Golfo de México, la producción petrolera del sur (Coatzacoalcos, Minatitlán) y una economía agrícola diversa (caña, café, cítricos). Con solo 40% de bancarización adulta, amplias regiones rurales del norte y centro del estado operan en efectivo.",
+          "dato_curioso": "El puerto de Veracruz fue el primero fundado por los españoles en América continental (1519) y sigue siendo el más antiguo en operación continua del continente."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Remesas Lightning + pagos portuarios sin intermediarios",
+          "descripcion": "Para familias del norte veracruzano con parientes en Texas y Florida, Lightning elimina las comisiones de envío. Para las empresas de comercio internacional que operan en el puerto, Bitcoin puede acelerar pagos con contrapartes en Europa y Asia de días a minutos.",
+          "ahorro_comision": "Una familia que recibe $400/mes ahorraría ~$250 al año usando Lightning vs servicios tradicionales.",
+          "apps_recomendadas": ["Strike", "Muun Wallet", "BTCPay Server"]
+        }
+      },
+      {
+        "id": "MX-SLP",
+        "name": "San Luis Potosí",
+        "bancarizacion": 47,
+        "remesas_usd_millones": 2083,
+        "remesas_rank": 11,
+        "dinero": {
+          "medio": "Peso mexicano + remesas — entre la industria y la migración",
+          "descripcion": "San Luis Potosí vive una paradoja: la capital tiene plantas de BMW y General Motors que generan empleo industrial de alta calificación, mientras que la Huasteca Potosina y la Sierra Gorda tienen comunidades indígenas teenek y nahuas con mínimo acceso bancario. El estado recibe más de $2,000 millones en remesas anuales, principalmente de Texas y California.",
+          "dato_curioso": "Real de Catorce fue una de las ciudades mineras más ricas del mundo en el siglo XIX. Hoy es un pueblo fantasma turístico donde viven menos de 1,000 personas — pero sigue atrayendo peregrinos wixáritari a Wirikuta."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Remesas Lightning + inclusión en la Huasteca",
+          "descripcion": "Para las familias potosinas con migrantes en Texas, Lightning elimina la comisión de 5-8% de los servicios de envío. En la Huasteca, donde no hay sucursales bancarias en decenas de kilómetros, una wallet en el teléfono es más accesible que cualquier banco.",
+          "ahorro_comision": "Una familia que recibe $500/mes ahorraría ~$360 al año usando Lightning vs servicios tradicionales.",
+          "apps_recomendadas": ["Strike (envío desde EE.UU.)", "Muun Wallet", "Bitso"]
+        }
+      },
+      {
+        "id": "MX-ZAC",
+        "name": "Zacatecas",
+        "bancarizacion": 42,
+        "remesas_usd_millones": 1907,
+        "remesas_rank": 12,
+        "dinero": {
+          "medio": "Peso + remesas — ciudad minera convertida en dependiente del exterior",
+          "descripcion": "Zacatecas fue el centro de la riqueza minera del virreinato. Hoy es uno de los estados con mayor emigración relativa a EE.UU.: más zacatecanos viven fuera que dentro del estado. Las remesas representan más del 10% de su economía.",
+          "dato_curioso": "El centro histórico de Zacatecas está construido literalmente con plata — la misma plata que en el siglo XVII financió guerras europeas y viajes de exploración globales."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "De la plata histórica al Bitcoin digital",
+          "descripcion": "Zacatecas fue el mayor productor de plata del mundo durante 300 años — el dinero más valioso de su época. Hoy, sus emigrantes en EE.UU. pueden enviar el equivalente digital de esa riqueza de vuelta a sus familias por fracciones de centavo vía Lightning.",
+          "ahorro_comision": "Equivalente a Michoacán: $300-600 USD al año en ahorro de comisiones para familia promedio.",
+          "apps_recomendadas": ["Strike", "Muun Wallet", "Bitso"]
+        }
+      },
+      {
+        "id": "MX-HID",
+        "name": "Hidalgo",
+        "bancarizacion": 43,
+        "remesas_usd_millones": 1784,
+        "remesas_rank": 13,
+        "dinero": {
+          "medio": "Peso mexicano + remesas — comunidades otomíes con baja bancarización",
+          "descripcion": "El Valle del Mezquital en Hidalgo es una de las regiones con mayor emigración a EE.UU. de todo México. Las comunidades otomíes (hñähñú) han formado redes migratorias densas, principalmente hacia Florida y Las Vegas. Solo el 43% de los adultos tienen cuenta bancaria, y en zonas rurales la cifra es mucho menor.",
+          "dato_curioso": "El Valle del Mezquital riega sus campos con aguas negras de la CDMX desde hace más de 100 años — producen alimentos para millones de personas en la capital con agua que la capital desecha."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Fedimint para comunidades otomíes + remesas Lightning",
+          "descripcion": "Las comunidades otomíes del Mezquital tienen estructuras comunitarias fuertes que se adaptan perfectamente a Fedimint: custodia compartida de Bitcoin administrada por miembros de confianza del pueblo. Para los migrantes en Florida, Lightning reemplaza los giros postales.",
+          "ahorro_comision": "Una familia que recibe $450/mes ahorraría ~$300 al año usando Lightning vs servicios de remesas tradicionales.",
+          "apps_recomendadas": ["Fedimint (comunidades)", "Strike (envío desde EE.UU.)", "Blink Wallet"]
+        }
+      },
+      {
+        "id": "MX-CHH",
+        "name": "Chihuahua",
+        "bancarizacion": 54,
+        "remesas_usd_millones": 1478,
+        "remesas_rank": 14,
+        "dinero": {
+          "medio": "Peso mexicano + dólar (economía fronteriza)",
+          "descripcion": "Ciudad Juárez, frente a El Paso, Texas, es una de las ciudades maquiladoras más grandes del mundo. Chihuahua combina una frontera industrial intensiva con vastas regiones rurales donde comunidades rarámuris (tarahumaras) viven en la Sierra Madre con acceso mínimo a servicios financieros.",
+          "dato_curioso": "Ciudad Juárez tiene más de 300 maquiladoras que emplean a más de 300,000 personas — muchas ensamblan productos que cruzan la frontera varias veces antes de ser vendidos."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Pagos transfronterizos + inclusión rural rarámuri",
+          "descripcion": "Para las maquiladoras de Juárez que liquidan pagos con proveedores en EE.UU., Lightning elimina el lag de 2-3 días hábiles de transferencias bancarias. En la Sierra Tarahumara, Fedimint puede dar acceso financiero básico a comunidades rarámuris sin sucursal bancaria a kilómetros.",
+          "ahorro_comision": "Una maquiladora mediana con $500K en pagos transfronterizos anuales: ahorro de $2,500-10,000 en comisiones SWIFT.",
+          "apps_recomendadas": ["Strike", "BTCPay Server", "Fedimint (Sierra Tarahumara)"]
+        }
+      },
+      {
+        "id": "MX-BCN",
+        "name": "Baja California",
+        "bancarizacion": 58,
+        "remesas_usd_millones": 1447,
+        "remesas_rank": 15,
+        "dinero": {
+          "medio": "Peso mexicano + dólar (economía binacional)",
+          "descripcion": "Tijuana es la ciudad fronteriza más transitada del mundo: más de 50 millones de cruces al año en San Ysidro. Miles de residentes de Tijuana trabajan en San Diego y cobran en dólares, pero gastan en pesos. Las maquiladoras emplean a cientos de miles de personas con salarios en pesos vinculados a contratos en dólares.",
+          "dato_curioso": "El cruce fronterizo San Ysidro-Tijuana procesa más de 120,000 personas al día — muchos trabajan en un país y viven en otro, convirtiendo moneda constantemente."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Dinero sin fricción de tipo de cambio",
+          "descripcion": "Para los miles de trabajadores binacionales que cruzan diario entre Tijuana y San Diego, Bitcoin elimina la necesidad de convertir dólares a pesos pagando spread en casas de cambio. Lightning funciona igual en ambos lados de la frontera, sin comisión cambiaria.",
+          "ahorro_comision": "Un trabajador binacional que convierte $2,000 USD/mes pierde ~$40-80 en spread cambiario. Con Bitcoin: $0.",
+          "apps_recomendadas": ["Strike", "Blink Wallet", "Bitso"]
+        }
+      },
+      {
+        "id": "MX-NLE",
+        "name": "Nuevo León",
+        "bancarizacion": 65,
+        "remesas_usd_millones": 1355,
+        "remesas_rank": 17,
+        "dinero": {
+          "medio": "Peso mexicano — centro financiero e industrial del norte",
+          "descripcion": "Monterrey es la capital industrial de México. Aquí nacieron gigantes como CEMEX, FEMSA, Alfa y Banorte. Con la bancarización más alta del norte (65%), Nuevo León opera más como una economía del primer mundo — pero incluso aquí, las transferencias internacionales entre empresas regiomontanas y sus socios en Texas son lentas y caras.",
+          "dato_curioso": "Nuevo León genera el 9% del PIB nacional con solo el 4% de la población. El ingreso per cápita de Monterrey es comparable al de ciudades como Lisboa o Praga."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Pagos B2B transfronterizos México-EE.UU.",
+          "descripcion": "Las empresas regiomontanas que operan con proveedores y clientes en Texas pagan comisiones significativas en transferencias SWIFT y esperan 2-3 días hábiles para liquidar. Bitcoin y Lightning permiten liquidaciones instantáneas sin bancos corresponsales — especialmente relevante para la cadena de suministro automotriz y siderúrgica.",
+          "ahorro_comision": "SWIFT internacional: 0.5-2% + $25-50 fijo por transferencia. Lightning: <$0.01. Para una empresa con $1M en pagos anuales: ahorro de $5,000-20,000 USD.",
+          "apps_recomendadas": ["BTCPay Server", "Strike for Business", "Bitso Business"]
+        }
+      },
+      {
+        "id": "MX-QUE",
+        "name": "Querétaro",
+        "bancarizacion": 56,
+        "remesas_usd_millones": 1277,
+        "remesas_rank": 18,
+        "dinero": {
+          "medio": "Peso mexicano — hub industrial y tecnológico del Bajío",
+          "descripcion": "Querétaro es el estado con mayor crecimiento económico de la última década. El corredor aeroespacial (Bombardier, Safran, Airbus) y automotriz lo han convertido en un polo de inversión extranjera. Pero fuera de la zona metropolitana, los municipios de la Sierra Gorda tienen tasas de emigración y desbancarización similares a estados mucho más pobres.",
+          "dato_curioso": "Querétaro tiene más de 80 empresas aeroespaciales — es el hub de manufactura aeroespacial más importante de México y uno de los más grandes de América Latina."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Pagos B2B industriales + remesas en Sierra Gorda",
+          "descripcion": "Las empresas aeroespaciales y automotrices de Querétaro liquidan pagos internacionales con matrices en Francia, Canadá y EE.UU. Lightning puede acelerar estos pagos de días a segundos. En la Sierra Gorda, las familias con migrantes en EE.UU. pueden recibir remesas sin viajar horas a la ciudad.",
+          "ahorro_comision": "Para una empresa con pagos internacionales de $500K/año: ahorro de $2,500-10,000. Para familias con remesas: ~$300/año.",
+          "apps_recomendadas": ["BTCPay Server", "Strike", "Bitso"]
+        }
+      },
+      {
+        "id": "MX-DUR",
+        "name": "Durango",
+        "bancarizacion": 48,
+        "remesas_usd_millones": 1371,
+        "remesas_rank": 16,
+        "dinero": {
+          "medio": "Peso mexicano + remesas — economía tradicional con alta emigración",
+          "descripcion": "Durango tiene una de las diásporas más grandes en EE.UU. relativa a su población. Chicago es el principal destino de emigrantes duranguenses. La economía local depende de minería, silvicultura y ganadería, pero las remesas son un pilar fundamental — más de la mitad de los adultos no tienen acceso a banca formal.",
+          "dato_curioso": "Se estima que más duranguenses viven en Chicago que en la capital del estado. La comunidad duranguense en Illinois es una de las más organizadas de México en EE.UU."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Lightning para remesas desde Chicago",
+          "descripcion": "Un duranguense en Chicago puede enviar dinero a su familia en Santiago Papasquiaro en segundos vía Lightning, sin hacer fila en Western Union ni pagar 6-8% de comisión. La familia recibe pesos directamente o ahorra en sats.",
+          "ahorro_comision": "Una familia que recibe $500/mes ahorraría ~$360 al año usando Lightning vs Western Union (comisión promedio de 6%).",
+          "apps_recomendadas": ["Strike (envío desde EE.UU.)", "Muun Wallet", "Bitso"]
+        }
+      },
+      {
+        "id": "MX-MOR",
+        "name": "Morelos",
+        "bancarizacion": 47,
+        "remesas_usd_millones": 1144,
+        "remesas_rank": 19,
+        "dinero": {
+          "medio": "Peso mexicano + remesas — alta emigración relativa a su tamaño",
+          "descripcion": "Morelos es pequeño pero recibe $1,144 millones en remesas — una cantidad desproporcionada para un estado de menos de 2 millones de habitantes. Cuernavaca es destino de fin de semana para la CDMX, pero los municipios del oriente y sur del estado (Axochiapan, Tepalcingo) tienen tasas de emigración altísimas. La mitad de los adultos no tiene cuenta bancaria.",
+          "dato_curioso": "Morelos fue cuna de Emiliano Zapata y la Revolución agraria. Hoy, muchos de los pueblos zapatistas sobreviven gracias a las remesas que mandan sus hijos desde Minnesota y Nueva York."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Remesas Lightning para pueblos rurales",
+          "descripcion": "Para las familias morelenses que dependen de remesas desde EE.UU., Lightning elimina el viaje a la cabecera municipal para cobrar en Elektra o Western Union. Con un teléfono básico con datos, pueden recibir dinero en segundos en su propio pueblo.",
+          "ahorro_comision": "Una familia que recibe $400/mes ahorraría ~$250 al año usando Lightning vs giros tradicionales.",
+          "apps_recomendadas": ["Strike (envío desde EE.UU.)", "Muun Wallet", "Blink Wallet"]
+        }
+      },
+      {
+        "id": "MX-TAM",
+        "name": "Tamaulipas",
+        "bancarizacion": 56,
+        "remesas_usd_millones": 1017,
+        "remesas_rank": 20,
+        "dinero": {
+          "medio": "Peso mexicano + dólar (corredor fronterizo con Texas)",
+          "descripcion": "Tamaulipas tiene múltiples cruces fronterizos con Texas: Nuevo Laredo-Laredo (el cruce comercial terrestre más importante de América), Reynosa-McAllen, y Matamoros-Brownsville. Las maquiladoras y la industria petroquímica son pilares económicos. La economía está profundamente integrada con el sur de Texas.",
+          "dato_curioso": "El puente comercial Nuevo Laredo-Laredo mueve más del 40% de todo el comercio terrestre entre México y EE.UU. — es el puerto terrestre más transitado del hemisferio occidental."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Pagos transfronterizos instantáneos",
+          "descripcion": "Con el 40% del comercio terrestre México-EE.UU. pasando por Tamaulipas, las empresas del estado necesitan liquidar pagos transfronterizos constantemente. Lightning elimina los 2-3 días de espera y las comisiones SWIFT. Para los miles de trabajadores que cruzan diario a Texas, Bitcoin es dinero sin frontera.",
+          "ahorro_comision": "Una empresa logística en Nuevo Laredo con $1M en pagos transfronterizos: ahorro de $5,000-20,000 anuales en comisiones bancarias.",
+          "apps_recomendadas": ["Strike", "BTCPay Server", "Bitso Business"]
+        }
+      },
+      {
+        "id": "MX-AGU",
+        "name": "Aguascalientes",
+        "bancarizacion": 55,
+        "remesas_usd_millones": 958,
+        "remesas_rank": 21,
+        "dinero": {
+          "medio": "Peso mexicano — economía industrial y automotriz",
+          "descripcion": "Aguascalientes pasó de ser un estado agrícola a un polo automotriz gracias a la planta de Nissan (la más grande de Latinoamérica). Más de la mitad de los adultos tienen cuenta bancaria, pero las comunidades rurales y los trabajadores de la industria textil operan mayoritariamente en efectivo.",
+          "dato_curioso": "La planta Nissan de Aguascalientes produce más de 300,000 vehículos al año — más autos que los que se fabrican en países enteros como Argentina o Colombia."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Ahorro contra inflación + remesas",
+          "descripcion": "Para los trabajadores de la industria automotriz y textil, Bitcoin ofrece una forma de ahorro que no se devalúa con el peso. Para las familias con parientes en EE.UU., Lightning reduce las comisiones de remesas de 5-8% a prácticamente cero.",
+          "ahorro_comision": "Una familia que recibe $400/mes ahorraría ~$240 al año usando Lightning vs servicios tradicionales de envío.",
+          "apps_recomendadas": ["Strike", "Muun Wallet", "Bitso"]
+        }
+      },
+      {
+        "id": "MX-COA",
+        "name": "Coahuila",
+        "bancarizacion": 60,
+        "remesas_usd_millones": 951,
+        "remesas_rank": 22,
+        "dinero": {
+          "medio": "Peso mexicano — economía siderúrgica e industrial",
+          "descripcion": "Coahuila es el corazón siderúrgico de México: AHMSA en Monclova y TERNIUM en Monterrey-Ramos Arizpe producen la mayoría del acero nacional. General Motors tiene plantas importantes en Ramos Arizpe y Saltillo. Es uno de los estados más bancarizados del norte, pero las comunidades mineras del carbón en la región de Sabinas tienen realidades muy distintas.",
+          "dato_curioso": "La región carbonífera de Coahuila (Sabinas, Nueva Rosita, Múzquiz) ha sufrido más de 30 accidentes mineros graves desde los años 50 — el más reciente en Pasta de Conchos (2006) con 65 mineros atrapados."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Pagos B2B industriales transfronterizos",
+          "descripcion": "Las empresas siderúrgicas y automotrices de Coahuila operan con cadenas de suministro que cruzan la frontera constantemente. Bitcoin y Lightning permiten liquidar pagos entre plantas en México y proveedores en Texas sin esperar 3 días hábiles ni pagar comisiones SWIFT.",
+          "ahorro_comision": "Para una empresa con $2M en pagos transfronterizos anuales: ahorro estimado de $10,000-40,000 en comisiones bancarias.",
+          "apps_recomendadas": ["BTCPay Server", "Strike for Business", "Bitso Business"]
+        }
+      },
+      {
+        "id": "MX-SIN",
+        "name": "Sinaloa",
+        "bancarizacion": 49,
+        "remesas_usd_millones": 916,
+        "remesas_rank": 23,
+        "dinero": {
+          "medio": "Peso mexicano — agricultura de exportación y pesca",
+          "descripcion": "Sinaloa es el granero de México: produce la mayor parte del tomate, chile y maíz de exportación del país. Mazatlán se ha convertido en un destino turístico creciente. La economía tiene capas formales e informales que coexisten — aproximadamente la mitad de los adultos no tienen acceso a banca formal.",
+          "dato_curioso": "Sinaloa produce más del 40% del tomate que se consume en EE.UU. durante el invierno — cada ensalada de enero en California probablemente tiene jitomate sinaloense."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Pagos de exportación agrícola + turismo",
+          "descripcion": "Los agricultores sinaloenses que exportan a EE.UU. pueden recibir pagos vía Bitcoin sin esperar los 5-7 días que tarda una transferencia bancaria internacional. En Mazatlán, Lightning permite pagos turísticos sin comisión de cambio para visitantes internacionales.",
+          "ahorro_comision": "Un exportador agrícola mediano con $200K en ventas anuales a EE.UU.: ahorro de $1,000-4,000 en comisiones bancarias.",
+          "apps_recomendadas": ["BTCPay Server", "Strike", "Blink Wallet"]
+        }
+      },
+      {
+        "id": "MX-NAY",
+        "name": "Nayarit",
+        "bancarizacion": 46,
+        "remesas_usd_millones": 858,
+        "remesas_rank": 24,
+        "dinero": {
+          "medio": "Peso mexicano + dólar turístico (Riviera Nayarit)",
+          "descripcion": "Nayarit tiene dos realidades económicas: la costa turística (Sayulita, Punta Mita, Nuevo Vallarta) con hoteles de lujo y turistas internacionales, y la Sierra Madre Occidental donde las comunidades wixáritari (huicholes) viven con economías de autosubsistencia y acceso mínimo a servicios financieros.",
+          "dato_curioso": "Las comunidades wixáritari de la Sierra de Nayarit realizan peregrinaciones anuales de más de 500 km a Wirikuta (San Luis Potosí) por peyote ceremonial — una tradición de más de 1,000 años que no requiere dinero."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Pagos turísticos Lightning + inclusión en la Sierra",
+          "descripcion": "En Sayulita, donde los turistas pagan en dólares con tarjeta (3-5% comisión), Lightning permite pagos instantáneos sin intermediario. En la Sierra, Fedimint podría dar acceso financiero básico a comunidades wixáritari que no tienen banco a menos de 4 horas de camino.",
+          "ahorro_comision": "Un negocio turístico en Sayulita que procesa $20,000 USD/mes en tarjetas extranjeras pagaría ~$600-1,000 en comisiones. Con Lightning: casi cero.",
+          "apps_recomendadas": ["Blink Wallet", "Breez", "Fedimint (comunidades wixáritari)"]
+        }
+      },
+      {
+        "id": "MX-SON",
+        "name": "Sonora",
+        "bancarizacion": 55,
+        "remesas_usd_millones": 845,
+        "remesas_rank": 25,
+        "dinero": {
+          "medio": "Peso mexicano + dólar (economía fronteriza con Arizona)",
+          "descripcion": "Sonora comparte más de 500 km de frontera con Arizona. Nogales-Nogales es uno de los puntos de cruce más importantes para comercio agrícola. La economía combina minería de cobre (Grupo México en Cananea), ganadería extensiva y agricultura de exportación (uva, espárrago, nuez). El dólar circula informalmente en las ciudades fronterizas.",
+          "dato_curioso": "La mina de Cananea (Sonora) fue escenario de la huelga de 1906 que se considera precursora de la Revolución Mexicana — y sigue siendo una de las minas de cobre más grandes del mundo."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Dinero neutral para la frontera Arizona-Sonora",
+          "descripcion": "Los rancheros y comerciantes sonorenses que operan en ambos lados de la frontera necesitan convertir entre pesos y dólares constantemente. Bitcoin funciona igual en Nogales, Sonora que en Nogales, Arizona — sin spread cambiario ni horario bancario.",
+          "ahorro_comision": "Un comerciante fronterizo que convierte $5,000 USD/mes pierde ~$100-200 en spread. Con Bitcoin: $0.",
+          "apps_recomendadas": ["Strike", "Blink Wallet", "Bitso"]
+        }
+      },
+      {
+        "id": "MX-COL",
+        "name": "Colima",
+        "bancarizacion": 50,
+        "remesas_usd_millones": 455,
+        "remesas_rank": 26,
+        "dinero": {
+          "medio": "Peso mexicano — economía portuaria y agrícola",
+          "descripcion": "El puerto de Manzanillo mueve más del 50% de toda la carga en contenedores de México y es el punto de entrada principal para comercio con Asia. Paradójicamente, Colima es uno de los estados más pequeños y menos poblados del país. Su economía se divide entre el comercio portuario internacional y la agricultura tradicional (limón, coco, plátano).",
+          "dato_curioso": "Manzanillo maneja más contenedores que cualquier otro puerto latinoamericano — por aquí entra la mayoría de la electrónica, ropa y productos asiáticos que se venden en todo México."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Pagos de comercio internacional sin intermediarios",
+          "descripcion": "Las empresas de logística y comercio exterior que operan en Manzanillo mueven millones de dólares en pagos internacionales con Asia. Bitcoin puede reducir tiempos de liquidación de días a minutos y eliminar la cadena de bancos corresponsales.",
+          "ahorro_comision": "En comercio exterior, las comisiones bancarias internacionales pueden sumar 1-3% del valor de la carga. Para un importador mediano: miles de dólares al año.",
+          "apps_recomendadas": ["BTCPay Server", "Strike for Business", "Bitso"]
+        }
+      },
+      {
+        "id": "MX-YUC",
+        "name": "Yucatán",
+        "bancarizacion": 50,
+        "remesas_usd_millones": 454,
+        "remesas_rank": 27,
+        "dinero": {
+          "medio": "Peso mexicano — turismo cultural y economía de servicios creciente",
+          "descripcion": "Mérida se ha convertido en uno de los destinos favoritos para expatriados y nómadas digitales, con precios accesibles y alta seguridad. La economía yucateca combina turismo cultural (Chichén Itzá, Uxmal), gastronomía y una creciente industria de servicios. Las comunidades mayas del interior mantienen economías agrícolas tradicionales con bajo acceso bancario.",
+          "dato_curioso": "Mérida es considerada una de las ciudades más seguras de México y de América Latina. En 2024 fue nombrada la mejor ciudad del mundo para expatriados por varios rankings internacionales."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Pagos para nómadas digitales + inclusión maya",
+          "descripcion": "Mérida atrae cada vez más a trabajadores remotos internacionales que cobran en dólares o euros. Lightning les permite pagar en negocios locales sin comisiones de cambio. En las comunidades mayas del interior, Fedimint puede funcionar con las estructuras comunitarias existentes para dar acceso financiero sin banco.",
+          "ahorro_comision": "Un nómada digital que gasta $2,000 USD/mes en Mérida ahorra ~$60-100 mensuales en comisiones de cambio usando Bitcoin vs tarjeta extranjera.",
+          "apps_recomendadas": ["Blink Wallet", "Breez", "Fedimint (comunidades mayas)"]
+        }
+      },
+      {
+        "id": "MX-TLA",
+        "name": "Tlaxcala",
+        "bancarizacion": 43,
+        "remesas_usd_millones": 412,
+        "remesas_rank": 28,
+        "dinero": {
+          "medio": "Peso mexicano + remesas — alta emigración en el estado más pequeño",
+          "descripcion": "Tlaxcala, el estado más pequeño de México, tiene una tasa de emigración a EE.UU. desproporcionada a su tamaño. La industria textil, que históricamente fue su motor económico, ha perdido competitividad frente a las importaciones asiáticas. Menos de la mitad de los adultos tienen cuenta bancaria, y muchas familias dependen de lo que mandan sus parientes desde Connecticut y Nueva York.",
+          "dato_curioso": "Tlaxcala es más pequeño que muchos municipios del norte de México. Cabe entero 117 veces dentro de Chihuahua — pero tiene casi la misma población que Baja California Sur."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Remesas Lightning para familias sin banco",
+          "descripcion": "Para una familia tlaxcalteca que recibe $300/mes desde Connecticut, la comisión de Western Union ($15-25 por envío) representa un porcentaje enorme. Lightning reduce eso a centavos. Con un teléfono básico, la familia puede recibir sin necesitar cuenta bancaria.",
+          "ahorro_comision": "Una familia que recibe $300/mes ahorraría ~$200-300 al año usando Lightning vs giros tradicionales.",
+          "apps_recomendadas": ["Strike (envío desde EE.UU.)", "Blink Wallet", "Muun Wallet"]
+        }
+      },
+      {
+        "id": "MX-ROO",
+        "name": "Quintana Roo",
+        "bancarizacion": 50,
+        "remesas_usd_millones": 396,
+        "remesas_rank": 29,
+        "dinero": {
+          "medio": "Peso mexicano + dólar (economía turística dolarizada)",
+          "descripcion": "Cancún, Playa del Carmen y Tulum reciben más de 20 millones de turistas internacionales al año. La economía está tan dolarizada informalmente que muchos negocios muestran precios en dólares antes que en pesos. La dependencia del turismo es casi total — cuando los vuelos se detienen (como en 2020), la economía colapsa.",
+          "dato_curioso": "Quintana Roo recibe más divisas por turismo que muchos países enteros de Centroamérica. Solo la Riviera Maya genera más ingresos turísticos que todo Costa Rica."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Pagos Lightning para turistas internacionales",
+          "descripcion": "En Tulum ya existen negocios que aceptan Bitcoin. Para los millones de turistas que pagan con tarjeta extranjera (3-5% comisión por conversión), Lightning ofrece pago instantáneo sin intermediarios. Para los negocios locales, elimina la dependencia de procesadores de tarjeta que tardan días en depositar.",
+          "ahorro_comision": "Un hotel boutique en Tulum que procesa $100,000 USD/mes en tarjetas extranjeras paga ~$3,000-5,000 en comisiones. Con Lightning: fracción mínima.",
+          "apps_recomendadas": ["Blink Wallet", "BTCPay Server", "Breez"]
+        }
+      },
+      {
+        "id": "MX-TAB",
+        "name": "Tabasco",
+        "bancarizacion": 42,
+        "remesas_usd_millones": 382,
+        "remesas_rank": 30,
+        "dinero": {
+          "medio": "Peso mexicano — economía petrolera en transición",
+          "descripcion": "Tabasco fue la cuna de PEMEX y del boom petrolero mexicano. Durante décadas, el petróleo distorsionó la economía local: salarios altos en el sector petrolero pero poca diversificación. Con el declive de la producción, la economía tabasqueña enfrenta una transición difícil. Menos de la mitad de los adultos tienen cuenta bancaria, y las inundaciones recurrentes destruyen infraestructura financiera.",
+          "dato_curioso": "En los años 70, Tabasco vivió un boom petrolero tan intenso que los billetes se secaban en tendederos — literalmente no había suficientes cajas fuertes para guardar el dinero que circulaba."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Ahorro resiliente ante desastres naturales",
+          "descripcion": "Tabasco sufre inundaciones masivas cada pocos años (2007, 2020) que destruyen cajeros, sucursales y documentos bancarios. Bitcoin, almacenado en una wallet digital o incluso memorizado como frase semilla, no se puede inundar. Es el único ahorro que sobrevive intacto a un desastre natural.",
+          "apps_recomendadas": ["Muun Wallet", "Phoenix Wallet", "Bitso"]
+        }
+      },
+      {
+        "id": "MX-CAM",
+        "name": "Campeche",
+        "bancarizacion": 44,
+        "remesas_usd_millones": 169,
+        "remesas_rank": 31,
+        "dinero": {
+          "medio": "Peso mexicano — economía petrolera y gubernamental",
+          "descripcion": "Campeche fue durante décadas uno de los estados más ricos per cápita de México gracias al petróleo de la Sonda de Campeche. Con el declive de la producción petrolera, la economía se ha vuelto altamente dependiente del gasto del gobierno federal. Más de la mitad de la población adulta no tiene cuenta bancaria.",
+          "dato_curioso": "La Sonda de Campeche llegó a producir más de 2 millones de barriles diarios de petróleo — más que muchos países de la OPEP. Hoy produce menos de 600,000."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Reserva de valor ante declive petrolero",
+          "descripcion": "Mientras la economía campechana depende de un recurso que se agota, Bitcoin ofrece una reserva de valor que no está ligada al petróleo ni a decisiones del gobierno federal. Para pescadores y pequeños comerciantes sin cuenta bancaria, una wallet Lightning es más accesible que una sucursal.",
+          "apps_recomendadas": ["Muun Wallet", "Blink Wallet", "Bitso"]
+        }
+      },
+      {
+        "id": "MX-BCS",
+        "name": "Baja California Sur",
+        "bancarizacion": 52,
+        "remesas_usd_millones": 150,
+        "remesas_rank": 32,
+        "dinero": {
+          "medio": "Peso mexicano + dólar turístico",
+          "descripcion": "Los Cabos es uno de los destinos turísticos más caros de México, con hoteles y restaurantes que frecuentemente cobran en dólares. La economía depende casi completamente del turismo internacional — lo que la hace vulnerable a crisis globales como la pandemia de 2020, que colapsó la economía local.",
+          "dato_curioso": "Baja California Sur recibe más turistas internacionales per cápita que cualquier otro estado de México, pero tiene una de las menores poblaciones del país (~800,000 habitantes)."
+        },
+        "bitcoin_paralelo": {
+          "caso_uso": "Pagos Lightning para turismo internacional",
+          "descripcion": "Los turistas estadounidenses y canadienses en Los Cabos pagan comisiones de 3-5% en cada transacción con tarjeta por conversión de moneda. Con Lightning, un restaurante puede aceptar pago instantáneo sin comisión cambiaria ni procesador de tarjeta.",
+          "ahorro_comision": "Un restaurante que procesa $50,000 USD/mes en tarjetas extranjeras paga ~$1,500-2,500 en comisiones. Con Lightning: fracción de eso.",
+          "apps_recomendadas": ["Blink Wallet", "BTCPay Server", "Breez"]
+        }
+      }
+    ]
+  },
+
+  "bancarizacion_nacional": {
+    "promedio": 49,
+    "fuente": "ENIF 2021 — INEGI / CNBV",
+    "estados": {
+      "MX-AGU": 55, "MX-BCN": 58, "MX-BCS": 52, "MX-CAM": 44,
+      "MX-CHP": 30, "MX-CHH": 54, "MX-CMX": 72, "MX-COA": 60,
+      "MX-COL": 50, "MX-DUR": 48, "MX-GUA": 45, "MX-GRO": 33,
+      "MX-HID": 43, "MX-JAL": 60, "MX-MEX": 48, "MX-MIC": 38,
+      "MX-MOR": 47, "MX-NAY": 46, "MX-NLE": 65, "MX-OAX": 35,
+      "MX-PUE": 44, "MX-QUE": 56, "MX-ROO": 50, "MX-SLP": 47,
+      "MX-SIN": 49, "MX-SON": 55, "MX-TAB": 42, "MX-TAM": 56,
+      "MX-TLA": 43, "MX-VER": 40, "MX-YUC": 50, "MX-ZAC": 42
+    }
+  },
+
+  "remesas_2024": {
+    "total_usd_millones": 64746,
+    "fuente": "Banco de México — Cuadro CA79 (2024)",
+    "estados": {
+      "MX-MIC": 5647, "MX-GUA": 5645, "MX-JAL": 5503, "MX-CMX": 4685,
+      "MX-MEX": 4602, "MX-CHP": 4168, "MX-OAX": 3434, "MX-PUE": 3367,
+      "MX-GRO": 3286, "MX-VER": 2603, "MX-SLP": 2083, "MX-ZAC": 1907,
+      "MX-HID": 1784, "MX-CHH": 1478, "MX-BCN": 1447, "MX-NLE": 1355,
+      "MX-QUE": 1277, "MX-DUR": 1371, "MX-MOR": 1144, "MX-TAM": 1017,
+      "MX-AGU": 958, "MX-COA": 951, "MX-SIN": 916, "MX-NAY": 858,
+      "MX-SON": 845, "MX-COL": 455, "MX-YUC": 454, "MX-TLA": 412,
+      "MX-ROO": 396, "MX-TAB": 382, "MX-CAM": 169, "MX-BCS": 150
+    }
+  }
+}
