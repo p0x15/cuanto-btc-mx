@@ -10,9 +10,25 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Donde BTC MX — Compara dónde comprar Bitcoin en México",
+  title: "¿A cuánto está el Bitcoin en México? | cuantobtc.lat",
   description:
-    "Compara precios, comisiones y características de todos los exchanges de Bitcoin en México. Encuentra el mejor precio en pesos (MXN) en tiempo real.",
+    "Compara el precio del Bitcoin en pesos (MXN) en tiempo real: Bitso, Kraken, Buda, Binance, Aureo y más exchanges mexicanos.",
+  metadataBase: new URL("https://www.cuantobtc.lat"),
+  openGraph: {
+    title: "¿A cuánto está el Bitcoin en México?",
+    description:
+      "Compara precios en tiempo real en todos los exchanges: Bitso, Kraken, Buda, Binance, Aureo y más.",
+    url: "https://www.cuantobtc.lat",
+    siteName: "cuantobtc.lat",
+    locale: "es_MX",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "¿A cuánto está el Bitcoin en México?",
+    description:
+      "Compara precios en tiempo real en todos los exchanges mexicanos.",
+  },
 };
 
 export default function RootLayout({
