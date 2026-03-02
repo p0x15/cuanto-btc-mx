@@ -58,7 +58,7 @@ export default async function Image() {
             lineHeight: 1.2,
           }}
         >
-          ¿A cuánto está el Bitcoin
+          ¿Cuánto Bitcoin recibes
         </div>
         <div
           style={{
@@ -69,7 +69,7 @@ export default async function Image() {
             lineHeight: 1.2,
           }}
         >
-          en México?
+          con tus pesos?
         </div>
 
         {/* Subtitle */}
@@ -81,7 +81,7 @@ export default async function Image() {
             textAlign: "center",
           }}
         >
-          Compara en tiempo real: Bitso · Kraken · Buda · Binance · Aureo
+          Compara en tiempo real entre exchanges y más
         </div>
 
         {/* Domain badge */}
