@@ -2,23 +2,30 @@
 
 /* ── Dark theme (default) ─────────────────────────────────────────────────── */
 :root {
-  --bg:            #0B0B0B;
-  --bg-raised:     #141414;
-  --bg-elevated:   #1C1C1C;
-  --bg-high:       #2C2C2C;
-  --border:        #1C1C1C;
-  --border-2:      #2C2C2C;
-  --fg:            #ffffff;
-  --fg-dim:        #A0A0A0;
-  --fg-muted:      #606060;
-  --fg-faint:      #404040;
-  --fg-ghost:      #303030;
-  --green-bg:      #1A3A1A;
-  --yellow-bg:     #2A2800;
-  --accent-green:  #4ADE80;
-  --accent-yellow: #EAB308;
+  --bg:            #07080A;
+  --bg-raised:     #0D1018;
+  --bg-elevated:   #131820;
+  --bg-high:       #1E2530;
+  --bg-ticker:     #0A0C10;
+  --bg-footer:     #0E0E0E;
+  --bg-winner:     #0D0900;
+  --bg-winner-card:#100C02;
+  --border:        #161A22;
+  --border-2:      #1E2530;
+  --border-winner: #1A1200;
+  --border-winner-card: #2A1F00;
+  --border-winner-divider: #1E1400;
+  --fg:            #E8ECF0;
+  --fg-dim:        #C8D0DC;
+  --fg-muted:      #4A5263;
+  --fg-faint:      #2A3040;
+  --fg-ghost:      #222630;
+  --green-bg:      #0A1F10;
+  --yellow-bg:     #150F00;
+  --accent-green:  #3FB950;
+  --accent-yellow: #D29922;
   --btc-orange:    #F7931A;
-  --live-green:    #22C55E;
+  --live-green:    #3FB950;
 }
 
 /* ── Light theme ──────────────────────────────────────────────────────────── */
@@ -27,8 +34,15 @@ html.light {
   --bg-raised:     #F7F7F7;
   --bg-elevated:   #F0F0F0;
   --bg-high:       #E5E5E5;
+  --bg-ticker:     #F5F5F5;
+  --bg-footer:     #F0F0F0;
+  --bg-winner:     #FFF8ED;
+  --bg-winner-card:#FFF6E0;
   --border:        #E5E5E5;
   --border-2:      #D4D4D4;
+  --border-winner: #F7931A30;
+  --border-winner-card: #F7931A40;
+  --border-winner-divider: #F7931A25;
   --fg:            #0B0B0B;
   --fg-dim:        #444444;
   --fg-muted:      #666666;
@@ -44,7 +58,8 @@ html.light {
   --color-background: var(--bg);
   --color-foreground: var(--fg);
   --color-orange: var(--btc-orange);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 * { box-sizing: border-box; }
@@ -55,6 +70,10 @@ body {
   background-color: var(--bg);
   color: var(--fg);
   -webkit-font-smoothing: antialiased;
+}
+
+.font-ui-mono {
+  font-family: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 input[type="number"]::-webkit-inner-spin-button,

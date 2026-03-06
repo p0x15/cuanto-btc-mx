@@ -1,36 +1,47 @@
 export type KycLevel = "none" | "basic" | "full";
 
+export type ApiSource =
+  | "bitso"
+  | "buda"
+  | "binance-p2p"
+  | "hodl-hodl"
+  | "robosats"
+  | "kraken"
+  | "coingecko-scaled";
+
 export interface Exchange {
   id: string;
   name: string;
   slug: string;
   type: string;
-  /** Precio BTC en MXN (antes de comisión) */
-  btcPriceMxn: number;
+  /** Where we get the live price from */
+  apiSource: ApiSource;
   /** Comisión en % que cobra al comprar */
   feePct: number;
+  /**
+   * For exchanges without a public API ("coingecko-scaled"),
+   * this is the estimated spread % above CoinGecko spot.
+   * e.g. 0.03 = ~3% above spot.
+   */
+  spreadEstimate: number;
   spei: boolean;
   lightning: boolean;
   nonCustodial: boolean;
   kyc: KycLevel;
   url: string;
-  color: string; // accent color para el logo placeholder
-  logo: string;  // ruta relativa a /public
+  color: string;
+  logo: string;
 }
 
-/**
- * Mock data — precios aproximados al momento del diseño.
- * btcPriceMxn es el precio efectivo que el exchange cobra (ya incluye spread).
- * Los sats se calculan: floor((mxn / btcPriceMxn) * (1 - feePct/100) * 1e8)
- */
 export const exchanges: Exchange[] = [
   {
     id: "bitso",
     name: "Bitso",
     slug: "bitso",
     type: "Exchange MX",
-    btcPriceMxn: 541_000,
+    apiSource: "bitso",
     feePct: 1.4,
+    spreadEstimate: 0,
     spei: true,
     lightning: false,
     nonCustodial: false,
@@ -41,27 +52,29 @@ export const exchanges: Exchange[] = [
   },
 
   {
-    id: "volabit",
-    name: "Volabit",
-    slug: "volabit",
-    type: "Exchange MX",
-    btcPriceMxn: 559_000,
-    feePct: 2.0,
-    spei: true,
+    id: "kraken",
+    name: "Kraken",
+    slug: "kraken",
+    type: "Exchange Global",
+    apiSource: "kraken",
+    feePct: 0.4,
+    spreadEstimate: 0,
+    spei: false,
     lightning: false,
     nonCustodial: false,
-    kyc: "basic",
-    url: "https://volabit.com",
-    color: "#7C3AED",
-    logo: "/logos/volabit.jpg",
+    kyc: "full",
+    url: "https://kraken.com",
+    color: "#5741D9",
+    logo: "/logos/kraken.png",  // add kraken.png to /public/logos/ for the full logo
   },
   {
     id: "buda",
     name: "Buda.com",
     slug: "buda",
     type: "Exchange LATAM",
-    btcPriceMxn: 568_800,
+    apiSource: "buda",
     feePct: 2.5,
+    spreadEstimate: 0,
     spei: true,
     lightning: false,
     nonCustodial: false,
@@ -75,8 +88,9 @@ export const exchanges: Exchange[] = [
     name: "Hodl Hodl",
     slug: "hodl-hodl",
     type: "P2P · No custodial",
-    btcPriceMxn: 590_000,
+    apiSource: "hodl-hodl",
     feePct: 0.6,
+    spreadEstimate: 0,
     spei: false,
     lightning: false,
     nonCustodial: true,
@@ -90,8 +104,9 @@ export const exchanges: Exchange[] = [
     name: "Aureo",
     slug: "aureo",
     type: "Exchange MX",
-    btcPriceMxn: 545_000,
-    feePct: 1.5,
+    apiSource: "coingecko-scaled",
+    feePct: 0.99,
+    spreadEstimate: -0.012,     // ~1.2% below spot (verified manually)
     spei: true,
     lightning: false,
     nonCustodial: false,
@@ -105,8 +120,9 @@ export const exchanges: Exchange[] = [
     name: "Binance P2P",
     slug: "binance",
     type: "Exchange Global · P2P",
-    btcPriceMxn: 538_000,
+    apiSource: "binance-p2p",
     feePct: 0.5,
+    spreadEstimate: 0,
     spei: true,
     lightning: false,
     nonCustodial: false,
@@ -120,8 +136,9 @@ export const exchanges: Exchange[] = [
     name: "Kapitalex",
     slug: "kapitalex",
     type: "Exchange MX",
-    btcPriceMxn: 548_000,
+    apiSource: "coingecko-scaled",
     feePct: 1.2,
+    spreadEstimate: 0.02,       // ~2% above spot
     spei: true,
     lightning: false,
     nonCustodial: false,
@@ -135,8 +152,9 @@ export const exchanges: Exchange[] = [
     name: "Mostro",
     slug: "mostro",
     type: "P2P Nostr · No custodial",
-    btcPriceMxn: 555_000,
+    apiSource: "coingecko-scaled",
     feePct: 0.6,
+    spreadEstimate: 0.03,       // ~3% above spot (P2P premium)
     spei: false,
     lightning: true,
     nonCustodial: true,
@@ -150,8 +168,9 @@ export const exchanges: Exchange[] = [
     name: "RoboSats",
     slug: "robosats",
     type: "P2P · No custodial",
-    btcPriceMxn: 558_000,
+    apiSource: "robosats",
     feePct: 0.3,
+    spreadEstimate: 0.03,       // fallback if API unreachable
     spei: false,
     lightning: true,
     nonCustodial: true,
@@ -165,8 +184,9 @@ export const exchanges: Exchange[] = [
     name: "lnp2pBot",
     slug: "lnp2pbot",
     type: "P2P Telegram · ⚡ Lightning",
-    btcPriceMxn: 552_000,
+    apiSource: "coingecko-scaled",
     feePct: 0.6,
+    spreadEstimate: 0.025,      // ~2.5% above spot
     spei: true,
     lightning: true,
     nonCustodial: true,
@@ -177,18 +197,12 @@ export const exchanges: Exchange[] = [
   },
 ];
 
-/** BTC spot de referencia en MXN (fuente de mercado) */
-export const BTC_SPOT_MXN = 534_000;
-
-/** Cuándo se actualizaron los datos */
-export const LAST_UPDATED = "hace 2 min";
-
 /**
  * Calcula cuántos satoshis recibes al gastar `mxn` pesos en un exchange.
- * Fórmula: floor( mxn / precioEfectivo * (1 - fee/100) * 1e8 )
+ * `askPrice` is the price the exchange charges per BTC (including spread).
+ * Fórmula: floor( mxn / askPrice * (1 - fee/100) * 1e8 )
  */
-export function calcSats(mxn: number, exchange: Exchange): number {
-  const effectivePrice = exchange.btcPriceMxn;
-  const btcAmount = (mxn / effectivePrice) * (1 - exchange.feePct / 100);
+export function calcSats(mxn: number, askPrice: number, feePct: number): number {
+  const btcAmount = (mxn / askPrice) * (1 - feePct / 100);
   return Math.floor(btcAmount * 1e8);
 }

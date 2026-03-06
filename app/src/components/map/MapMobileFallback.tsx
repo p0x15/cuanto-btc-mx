@@ -84,42 +84,26 @@ export function MapMobileFallback() {
   const current = FUN_FACTS[factIndex];
 
   return (
-    <div className="lg:hidden flex-1 flex flex-col items-center justify-start px-5 pt-6 pb-24 gap-6 overflow-y-auto">
+    <div className="lg:hidden flex-1 flex flex-col items-center justify-start pb-24 gap-0 overflow-y-auto">
 
-      {/* Main message card */}
-      <div className="w-full max-w-sm rounded-2xl border border-[var(--border)] bg-[var(--bg-raised)] p-6 flex flex-col items-center text-center gap-4">
-        <div className="text-5xl">🖥️</div>
-        <div>
-          <p className="text-lg font-black text-[var(--fg)] leading-tight">
-            Este mapa se ve mejor en tu computadora
-          </p>
-          <p className="mt-2 text-sm text-[var(--fg-muted)] leading-relaxed">
-            El mapa interactivo de 600 años de historia monetaria en México está diseñado para pantallas grandes. Ábrelo en tu compu para la experiencia completa.
+      {/* Desktop-only banner strip */}
+      <div className="w-full border-b border-[#F7931A30] bg-[#F7931A08] px-5 py-3 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2.5 min-w-0">
+          <span className="shrink-0 text-base">🖥️</span>
+          <p className="font-ui-mono text-[11px] text-[var(--fg-muted)] leading-snug">
+            <span className="font-bold text-[var(--fg)]">Mejor en escritorio.</span>{" "}
+            Este mapa interactivo está diseñado para pantallas grandes.
           </p>
         </div>
-
-        {/* Copy link button */}
         <button
           onClick={handleCopy}
-          className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#F7931A] text-black font-bold text-sm py-3 px-4 active:scale-95 transition-transform"
+          className="shrink-0 flex items-center gap-1.5 rounded-md border border-[#F7931A40] bg-[#F7931A15] px-2.5 py-1.5 font-ui-mono text-[10px] font-bold text-[#F7931A] active:scale-95 transition-transform"
         >
-          {copied ? (
-            <>
-              <span>✓</span>
-              <span>¡Link copiado!</span>
-            </>
-          ) : (
-            <>
-              <span>🔗</span>
-              <span>Copiar link del mapa</span>
-            </>
-          )}
+          {copied ? "✓ Copiado" : "Copiar link"}
         </button>
-
-        <p className="text-[11px] text-[var(--fg-muted)]">
-          cuantobtc.lat/mapa
-        </p>
       </div>
+
+      <div className="w-full px-5 pt-5 flex flex-col items-center gap-6">
 
       {/* Fun facts section */}
       <div className="w-full max-w-sm">
@@ -180,6 +164,7 @@ export function MapMobileFallback() {
         <p className="text-[11px] text-[var(--fg-muted)] text-center mt-3">
           {factIndex + 1} / {FUN_FACTS.length} datos históricos
         </p>
+      </div>
       </div>
     </div>
   );

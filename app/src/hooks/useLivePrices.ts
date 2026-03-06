@@ -1,43 +1,61 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { BTC_SPOT_MXN } from "@/data/exchanges";
+
+/* ─── Types ────────────────────────────────────────────────────── */
+
+export interface ExchangePrice {
+  ask: number;
+  source: "live" | "estimated";
+}
 
 export interface LivePrices {
-  spot: number;        // último precio BTC/MXN de Bitso
-  ask: number;         // precio ask de Bitso (lo que pagas)
+  spot: number;
+  prices: Record<string, ExchangePrice>;
   updatedAt: Date | null;
   loading: boolean;
   error: boolean;
 }
 
-const REFRESH_MS = 60_000; // refresca cada 60 segundos
+const REFRESH_MS = 60_000;
+
+/* ─── Time formatting ──────────────────────────────────────────── */
 
 function timeAgo(date: Date): string {
   const secs = Math.floor((Date.now() - date.getTime()) / 1000);
-  if (secs < 10)  return "ahora mismo";
-  if (secs < 60)  return `hace ${secs}s`;
+  if (secs < 10) return "ahora mismo";
+  if (secs < 60) return `hace ${secs}s`;
   const mins = Math.floor(secs / 60);
   return `hace ${mins} min`;
 }
 
+/* ─── Hook ─────────────────────────────────────────────────────── */
+
 export function useLivePrices(): LivePrices & { timeAgoStr: string } {
-  const [data, setData] = useState<Omit<LivePrices, "loading" | "error">>({
-    spot: BTC_SPOT_MXN,
-    ask:  BTC_SPOT_MXN,
+  const [data, setData] = useState<{
+    spot: number;
+    prices: Record<string, ExchangePrice>;
+    updatedAt: Date | null;
+  }>({
+    spot: 1_250_000, // fallback until API responds
+    prices: {},
     updatedAt: null,
   });
   const [loading, setLoading] = useState(true);
-  const [error, setError]     = useState(false);
-  const [tick, setTick]       = useState(0); // para forzar re-render del timeAgo
+  const [error, setError] = useState(false);
+  const [tick, setTick] = useState(0);
 
   const fetchPrices = useCallback(async () => {
     try {
       const res = await fetch("/api/prices");
       if (!res.ok) throw new Error("API error");
       const json = await res.json();
-      if (json.spot) {
-        setData({ spot: json.spot, ask: json.ask, updatedAt: new Date(json.updatedAt) });
+      if (json.spot && json.prices) {
+        setData({
+          spot: json.spot,
+          prices: json.prices,
+          updatedAt: new Date(json.updatedAt),
+        });
         setError(false);
       }
     } catch {
@@ -50,15 +68,13 @@ export function useLivePrices(): LivePrices & { timeAgoStr: string } {
   useEffect(() => {
     fetchPrices();
     const fetchInterval = setInterval(fetchPrices, REFRESH_MS);
-    // Tick cada 15s para actualizar "hace X min"
-    const tickInterval  = setInterval(() => setTick(t => t + 1), 15_000);
+    const tickInterval = setInterval(() => setTick(t => t + 1), 15_000);
     return () => {
       clearInterval(fetchInterval);
       clearInterval(tickInterval);
     };
   }, [fetchPrices]);
 
-  // Suppress unused variable warning for tick
   void tick;
 
   const timeAgoStr = data.updatedAt
@@ -69,13 +85,15 @@ export function useLivePrices(): LivePrices & { timeAgoStr: string } {
 }
 
 /**
- * Dado el precio spot en vivo, escala el precio mock de un exchange
- * proporcionalmente para mantener los spreads relativos correctos.
- *
- * Ejemplo: si Bitso estaba en $541k (mock) y ahora está en $600k,
- * Volabit (que estaba en $559k mock) escalaría a ~$619k.
+ * Get the ask price for a specific exchange.
+ * Returns the live/estimated price, or falls back to spot if not available.
  */
-export function scalePrice(mockPrice: number, liveSpot: number): number {
-  const ratio = liveSpot / BTC_SPOT_MXN;
-  return Math.round(mockPrice * ratio);
+export function getPriceForExchange(
+  prices: Record<string, ExchangePrice>,
+  exchangeId: string,
+  fallbackSpot: number
+): { ask: number; source: "live" | "estimated" } {
+  const p = prices[exchangeId];
+  if (p) return p;
+  return { ask: fallbackSpot, source: "estimated" };
 }
