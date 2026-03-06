@@ -39,7 +39,7 @@
     {
       "id": "presente",
       "label": "Presente y Bitcoin",
-      "year": "2024+",
+      "year": "2026",
       "geoFile": "estados.json",
       "description": "Hoy, 32 estados con distintos niveles de bancarización y remesas. Para millones de mexicanos, Bitcoin no es especulación: es la única forma de ahorrar sin que el banco central se los coma. Las remesas ya superan $64,745 millones de dólares al año — y el 10% ya viaja por rieles cripto.",
       "moneda": "Peso + Bitcoin. Hasta el 10% de las remesas ya viajan por rieles cripto (Bitso). El impuesto Trump del 1% desde enero 2026 acelera la adopción de Lightning.",
@@ -355,7 +355,7 @@
         "dinero": {
           "medio": "Peso — mayor adopción fintech de México",
           "descripcion": "La CDMX tiene la mayor bancarización (72%) y el ecosistema fintech más desarrollado del país. Bitso, Klar, Konfío, y decenas de startups financieras tienen su sede aquí. La adopción de criptomonedas es mayor en CDMX que en cualquier otro estado.",
-          "dato_curioso": "La CDMX es la ciudad con más restaurantes per cápita del mundo — y cada vez más aceptan pagos con Bitcoin vía Lightning."
+          "dato_curioso": "La CDMX es sede de Casa de Satoshi, el primer espacio físico dedicado a la educación y comunidad Bitcoin en México — y cada vez más negocios en la ciudad aceptan pagos con Bitcoin vía Lightning."
         },
         "bitcoin_paralelo": {
           "caso_uso": "Bitcoin como inversión y reserva de valor",
