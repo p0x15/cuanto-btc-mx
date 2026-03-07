@@ -8,7 +8,7 @@ import { getPriceForExchange, useLivePrices } from "@/hooks/useLivePrices";
 
 // ─── Question & answer types ──────────────────────────────────────────────────
 
-type QuestionId = "experience" | "main_priority" | "payment" | "wallet" | "amount";
+type QuestionId = "experience" | "main_priority" | "payment" | "wallet" | "privacy_depth" | "amount";
 type Answers = Partial<Record<QuestionId, string>>;
 
 interface AnswerOption {
@@ -99,22 +99,49 @@ const QUESTIONS: Question[] = [
   {
     id: "payment",
     eyebrow: "MÉTODO DE PAGO",
-    headline: "¿Cómo quieres\ndepositar el dinero?",
-    sub: "Esto determina qué exchanges están disponibles para ti.",
-    options: () => [
-      {
-        id: "spei",
-        emoji: "🏦",
-        label: "Transferencia desde mi banco",
-        sub: "SPEI — desde cualquier banco mexicano, fácil y rápido",
-      },
-      {
-        id: "any",
-        emoji: "🤷",
-        label: "No sé todavía / me da igual",
-        sub: "Muéstrame todas las opciones disponibles",
-      },
-    ],
+    // Dynamic headline/sub handled in options; we keep a sensible default here
+    headline: "¿Cómo quieres\npagar?",
+    sub: "Esto determina qué plataformas están disponibles para ti.",
+    options: (answers) => {
+      if (answers.experience === "beginner") {
+        // Jargon-free framing for beginners
+        return [
+          {
+            id: "spei",
+            emoji: "🏦",
+            label: "Sí, tengo cuenta de banco",
+            sub: "Puedo transferir desde Banamex, BBVA, HSBC u otro banco mexicano",
+          },
+          {
+            id: "any",
+            emoji: "💵",
+            label: "No tengo o prefiero efectivo",
+            sub: "Muéstrame opciones que no requieran cuenta bancaria",
+          },
+        ];
+      }
+      // Intermediate / advanced
+      return [
+        {
+          id: "spei",
+          emoji: "🏦",
+          label: "Transferencia SPEI",
+          sub: "Desde cualquier banco mexicano, rápido y sin costo extra",
+        },
+        {
+          id: "p2p",
+          emoji: "🤝",
+          label: "P2P / efectivo",
+          sub: "Prefiero operar persona a persona o en efectivo",
+        },
+        {
+          id: "any",
+          emoji: "🤷",
+          label: "Me da igual",
+          sub: "Muéstrame todas las opciones disponibles",
+        },
+      ];
+    },
   },
 
   {
@@ -122,24 +149,87 @@ const QUESTIONS: Question[] = [
     eyebrow: "TU WALLET",
     headline: "¿Ya tienes una\nwallet de Bitcoin?",
     sub: "Esto nos ayuda a saber cómo quieres recibir tus sats.",
+    options: (answers) => {
+      const isControl = answers.main_priority === "control";
+      const isBeginner = answers.experience === "beginner";
+
+      if (isBeginner) {
+        // Privacy path for beginners — simplified options, no jargon
+        return [
+          {
+            id: "none",
+            emoji: "📱",
+            label: "No, todavía no tengo una",
+            sub: "Está bien — el exchange guardará mis Bitcoin por ahora",
+          },
+          {
+            id: "lightning",
+            emoji: "⚡",
+            label: "Sí — tengo Muun o Phoenix",
+            sub: "Apps de Bitcoin que me permiten enviar y recibir rápido",
+          },
+        ];
+      }
+
+      if (isControl) {
+        // Control path — no "none" option, must have own wallet
+        return [
+          {
+            id: "lightning",
+            emoji: "⚡",
+            label: "Wallet Lightning",
+            sub: "Phoenix, Muun, Zeus u otra wallet Lightning",
+          },
+          {
+            id: "onchain",
+            emoji: "🔐",
+            label: "Wallet on-chain / hardware",
+            sub: "Ledger, Trezor, Sparrow u otra wallet de Bitcoin",
+          },
+        ];
+      }
+
+      // Intermediate / advanced privacy path — full options
+      return [
+        {
+          id: "none",
+          emoji: "📱",
+          label: "No, que el exchange lo guarde",
+          sub: "Por ahora prefiero que la plataforma custodie mis Bitcoin",
+        },
+        {
+          id: "lightning",
+          emoji: "⚡",
+          label: "Sí — wallet Lightning",
+          sub: "Tengo una app como Phoenix, Muun o Zeus",
+        },
+        {
+          id: "onchain",
+          emoji: "🔐",
+          label: "Sí — wallet on-chain / hardware",
+          sub: "Tengo una Ledger, Trezor u otra wallet de Bitcoin",
+        },
+      ];
+    },
+  },
+
+  {
+    id: "privacy_depth",
+    eyebrow: "NIVEL DE PRIVACIDAD",
+    headline: "¿Qué tan en serio\nvas con la privacidad?",
+    sub: "Ambas opciones son sin registro. Solo cuánto esfuerzo quieres poner.",
     options: () => [
       {
-        id: "none",
-        emoji: "📱",
-        label: "No, que el exchange lo guarde",
-        sub: "Por ahora prefiero que la plataforma custodie mis Bitcoin",
+        id: "clearnet",
+        emoji: "🕵️",
+        label: "Buena privacidad, sin complicarme",
+        sub: "Sin cuenta, sin foto de INE — desde el navegador normal",
       },
       {
-        id: "lightning",
-        emoji: "⚡",
-        label: "Sí — wallet Lightning",
-        sub: "Tengo una app como Muun, Phoenix o Wallet of Satoshi",
-      },
-      {
-        id: "onchain",
-        emoji: "🔐",
-        label: "Sí — wallet on-chain / hardware",
-        sub: "Tengo una Ledger, Trezor u otra wallet de Bitcoin",
+        id: "deep",
+        emoji: "🌐",
+        label: "Máxima privacidad — Tor / Nostr",
+        sub: "Uso Tor o Nostr y quiero la opción más anónima posible",
       },
     ],
   },
@@ -147,13 +237,67 @@ const QUESTIONS: Question[] = [
 
 // ─── Branching logic ──────────────────────────────────────────────────────────
 
-/** Returns the ordered list of question IDs the user will see, given answers so far */
+/**
+ * Returns the ordered list of question IDs the user will see, given answers so far.
+ * Must handle incomplete answers gracefully (called before all answers exist).
+ *
+ * Full decision tree:
+ *
+ * BEGINNER:
+ *   price   → payment → amount
+ *   simple  → amount                    ← shortest path (3 questions)
+ *   privacy → wallet → amount
+ *
+ * INTERMEDIATE:
+ *   price   → payment → amount
+ *   simple  → payment → amount
+ *   privacy → wallet  → amount
+ *   control → wallet  → amount
+ *
+ * ADVANCED:
+ *   price   → payment → amount
+ *   simple  → payment → amount
+ *   privacy → wallet  → privacy_depth → amount
+ *   control → wallet  → amount
+ */
 function getPath(answers: Answers): QuestionId[] {
-  const path: QuestionId[] = ["experience", "main_priority", "payment"];
-  // Skip wallet question for beginners — assume they want custodial
-  if (answers.experience !== "beginner") {
-    path.push("wallet");
+  const exp = answers.experience;
+  const pri = answers.main_priority;
+
+  // Always start with experience + main_priority
+  const path: QuestionId[] = ["experience", "main_priority"];
+
+  if (exp === "beginner") {
+    if (pri === "simple") {
+      // Shortest path — no extra questions for beginners who just want simple
+      // falls through to amount
+    } else if (pri === "privacy") {
+      path.push("wallet");
+    } else {
+      // price or unknown — ask about bank account
+      path.push("payment");
+    }
+  } else if (exp === "intermediate") {
+    if (pri === "privacy" || pri === "control") {
+      path.push("wallet");
+    } else {
+      // price, simple, or unknown
+      path.push("payment");
+    }
+  } else if (exp === "advanced") {
+    if (pri === "privacy") {
+      path.push("wallet", "privacy_depth");
+    } else if (pri === "control") {
+      path.push("wallet");
+    } else {
+      // price, simple, or unknown
+      path.push("payment");
+    }
+  } else {
+    // experience not yet answered — show payment as default next question estimate
+    path.push("payment");
   }
+
   path.push("amount");
   return path;
 }
@@ -245,7 +389,16 @@ function deriveWeights(answers: Answers): ScoreWeights {
 
   // Payment preference
   if (answers.payment === "spei") {
-    weights.spei = 4.0; // non-SPEI exchanges get a heavy penalty below
+    // Beginner with bank → SPEI strongly preferred
+    // Intermediate/advanced explicit SPEI → also strongly preferred
+    weights.spei = answers.experience === "beginner" ? 3.5 : 4.0;
+  } else if (answers.payment === "any" && answers.experience === "beginner") {
+    // Beginner without bank → penalize SPEI-only exchanges
+    weights.spei = 0.2;
+  } else if (answers.payment === "p2p") {
+    // P2P preference → boost nokyc, deprioritize spei exchanges
+    weights.nokyc = Math.max(weights.nokyc, 2.5);
+    weights.spei = 0.3;
   }
 
   // Wallet type
@@ -253,6 +406,14 @@ function deriveWeights(answers: Answers): ScoreWeights {
     weights.lightning = Math.max(weights.lightning, 3.5);
   } else if (answers.wallet === "onchain") {
     weights.noncustodial = Math.max(weights.noncustodial, 3.5);
+  }
+
+  // Privacy depth (advanced + privacy path only)
+  if (answers.privacy_depth === "deep") {
+    // Max privacy: Tor/Nostr territory (RoboSats, Mostro, lnp2pbot)
+    // Also boost lightning since those platforms are Lightning-native
+    weights.nokyc = Math.max(weights.nokyc, 6.0);
+    weights.lightning = Math.max(weights.lightning, 3.0);
   }
 
   return weights;
@@ -286,6 +447,28 @@ function scoreExchange(
 
   return score;
 }
+
+// ─── Curated recommendation copy ─────────────────────────────────────────────
+
+const EXCHANGE_BLURB: Record<string, string> = {
+  bitso:      "El exchange más grande de México — precio competitivo, interfaz pulida y SPEI instantáneo.",
+  buda:       "Comisiones transparentes y buen precio para compras recurrentes con SPEI.",
+  kapitalex:  "Comisiones bajas y SPEI directo, ideal para empezar sin complicaciones.",
+  kraken:     "Exchange global de reputación sólida, precio competitivo y fácil de usar.",
+  aureo:      "Envía sats directo a tu wallet Lightning en segundos, sin intermediarios.",
+  binance:    "La plataforma más grande del mundo — variedad de métodos de pago y alta liquidez.",
+  "hodl-hodl":"P2P sin custodia y sin registro — tus sats van directo a tu wallet.",
+  robosats:   "Máxima privacidad: sin cuenta, sin datos, Tor-native y no-custodial.",
+  mostro:     "Descentralizado en Nostr — sin servidor central, sin cuenta, sin custodia.",
+  lnp2pbot:  "P2P en Telegram con Lightning — sin registro, rápido y privado.",
+};
+
+const PRIORITY_SUFFIX: Record<string, string> = {
+  price:   "De todos los exchanges disponibles, es el que más sats te da por tu dinero.",
+  simple:  "Es la opción más sencilla y confiable para alguien que está empezando.",
+  privacy: "Cumple tu prioridad: no necesitas registrarte ni verificar tu identidad.",
+  control: "Tus sats llegan directo a tu wallet — nunca pasan la noche en el exchange.",
+};
 
 const KYC_DISPLAY: Record<KycLevel, string> = {
   none: "Sin KYC",
@@ -684,7 +867,7 @@ function ResultsScreen({
                 {/* Exchange info */}
                 <div className="flex items-center gap-3">
                   <ExchangeLogo exchange={ex} size={40} onOrange={isWinner} />
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <div
                       className={`font-bold text-[15px] group-hover:underline ${
                         isWinner ? "text-[#0B0B0B]" : "text-[var(--fg)]"
@@ -697,7 +880,10 @@ function ResultsScreen({
                         isWinner ? "text-[#0B0B0B88]" : "text-[var(--fg-muted)]"
                       }`}
                     >
-                      {ex.type}
+                      {/* #2 and #3: one-liner blurb always visible */}
+                      {!isWinner && EXCHANGE_BLURB[ex.id]
+                        ? EXCHANGE_BLURB[ex.id]
+                        : ex.type}
                     </div>
                   </div>
                   <div className="flex-1" />
@@ -756,6 +942,21 @@ function ResultsScreen({
                     {KYC_DISPLAY[ex.kyc]}
                   </span>
                 </div>
+              {/* Winner blurb — full explanation for #1 only */}
+              {isWinner && (EXCHANGE_BLURB[ex.id] || PRIORITY_SUFFIX[answers.main_priority ?? ""]) && (
+                <div className="mt-1 flex flex-col gap-1 border-t border-[#0B0B0B15] pt-3">
+                  {EXCHANGE_BLURB[ex.id] && (
+                    <p className="text-[13px] leading-snug text-[#0B0B0B99]">
+                      {EXCHANGE_BLURB[ex.id]}
+                    </p>
+                  )}
+                  {PRIORITY_SUFFIX[answers.main_priority ?? ""] && (
+                    <p className="text-[13px] font-semibold leading-snug text-[#0B0B0BCC]">
+                      {PRIORITY_SUFFIX[answers.main_priority ?? ""]}
+                    </p>
+                  )}
+                </div>
+              )}
               </a>
 
               {/* Contextual complexity note */}
@@ -795,6 +996,144 @@ function ResultsScreen({
       >
         Ver todos los precios en tiempo real →
       </Link>
+    </div>
+  );
+}
+
+// ─── Orientation screen (beginner, no bank account) ──────────────────────────
+
+const WALLETS = [
+  {
+    name: "Wallet of Satoshi",
+    emoji: "⭐",
+    tagline: "La más fácil para empezar",
+    desc: "Descárgala, abre y listo. No necesitas configurar nada. Ideal para tu primera compra.",
+    url: "https://www.walletofsatoshi.com/",
+    pill: "Recomendada para principiantes",
+    pillBg: "#F7931A",
+    pillText: "#0B0B0B",
+  },
+  {
+    name: "Muun Wallet",
+    emoji: "🌙",
+    tagline: "Simple y con más control",
+    desc: "Un poco más técnica pero muy bien diseñada. Buena opción si en el futuro quieres más control.",
+    url: "https://muun.com/",
+    pill: null,
+    pillBg: "",
+    pillText: "",
+  },
+  {
+    name: "Phoenix Wallet",
+    emoji: "🔥",
+    tagline: "Para cuando quieras ir más allá",
+    desc: "Potente y rápida. Ideal cuando ya entiendas un poco más cómo funciona Bitcoin.",
+    url: "https://phoenix.acinq.co/",
+    pill: null,
+    pillBg: "",
+    pillText: "",
+  },
+];
+
+function OrientationScreen({
+  onBack,
+  onRestart,
+}: {
+  onBack: () => void;
+  onRestart: () => void;
+}) {
+  return (
+    <div className="flex flex-col gap-6">
+      {/* Header */}
+      <div>
+        <span className="font-ui-mono text-xs font-bold tracking-widest text-[#F7931A]">
+          PRIMER PASO
+        </span>
+        <h2 className="mt-2 text-4xl font-black tracking-tight text-[var(--fg)] leading-[1.05]">
+          Necesitas una
+          <br />
+          wallet primero
+        </h2>
+        <p className="mt-3 text-[15px] text-[var(--fg-muted)] leading-relaxed">
+          Sin cuenta de banco, la forma más accesible de comprar Bitcoin en México es en un{" "}
+          <span className="font-semibold text-[var(--fg)]">cajero Bitcoin</span>. Pero para
+          recibirlo, necesitas una wallet — una app donde guardar tus sats.
+        </p>
+        <p className="mt-2 text-[15px] text-[var(--fg-muted)] leading-relaxed">
+          Es gratis, se descarga en tu cel y te lleva menos de 2 minutos.
+        </p>
+      </div>
+
+      {/* Wallet cards */}
+      <div className="flex flex-col gap-3">
+        {WALLETS.map((w) => (
+          <a
+            key={w.name}
+            href={w.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col gap-2 rounded-2xl bg-[var(--bg-elevated)] hover:bg-[var(--bg-high)] p-5 transition-colors"
+          >
+            <div className="flex items-center gap-3">
+              <span className="text-2xl leading-none">{w.emoji}</span>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-bold text-[15px] text-[var(--fg)] group-hover:underline">
+                    {w.name}
+                  </span>
+                  {w.pill && (
+                    <span
+                      className="rounded-full px-2.5 py-0.5 text-[10px] font-black tracking-wide"
+                      style={{ background: w.pillBg, color: w.pillText }}
+                    >
+                      {w.pill}
+                    </span>
+                  )}
+                </div>
+                <div className="text-[12px] font-semibold text-[var(--fg-dim)]">{w.tagline}</div>
+              </div>
+              <span className="shrink-0 text-[var(--fg-faint)] group-hover:text-[var(--fg-muted)] transition-colors text-sm">
+                →
+              </span>
+            </div>
+            <p className="text-[13px] text-[var(--fg-muted)] leading-relaxed pl-9">{w.desc}</p>
+          </a>
+        ))}
+      </div>
+
+      {/* Coming soon — cajeros */}
+      <div className="flex items-center gap-4 rounded-2xl border border-dashed border-[var(--border-2)] px-5 py-4">
+        <span className="text-2xl leading-none">📍</span>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2">
+            <span className="font-bold text-[14px] text-[var(--fg)]">
+              Cajeros Bitcoin cerca de ti
+            </span>
+            <span className="rounded-full bg-[var(--bg-high)] px-2.5 py-0.5 text-[10px] font-black text-[var(--fg-faint)] tracking-wide">
+              PRÓXIMAMENTE
+            </span>
+          </div>
+          <p className="mt-0.5 text-[12px] text-[var(--fg-muted)]">
+            Estamos mapeando los cajeros en México. Ya casi.
+          </p>
+        </div>
+      </div>
+
+      {/* Actions */}
+      <div className="flex gap-3">
+        <button
+          onClick={onBack}
+          className="flex-1 rounded-2xl bg-[var(--bg-elevated)] py-4 text-[14px] font-semibold text-[var(--fg-dim)] hover:text-[var(--fg)] transition-colors cursor-pointer"
+        >
+          ← Volver
+        </button>
+        <button
+          onClick={onRestart}
+          className="flex-1 rounded-2xl bg-[var(--bg-elevated)] py-4 text-[14px] font-semibold text-[var(--fg-dim)] hover:text-[var(--fg)] transition-colors cursor-pointer"
+        >
+          ↺ Reiniciar
+        </button>
+      </div>
     </div>
   );
 }
@@ -855,6 +1194,12 @@ export function TestWizard() {
     setRawDigits("1000");
   }
 
+  // Detect the dead-end path: beginner with no bank account → orientation screen
+  const showOrientation =
+    !showResults &&
+    answers.experience === "beginner" &&
+    answers.payment === "any";
+
   const currentQuestionDef = QUESTIONS.find((q) => q.id === currentQuestion);
 
   return (
@@ -865,7 +1210,9 @@ export function TestWizard() {
         onResults={showResults}
       />
 
-      {showResults ? (
+      {showOrientation ? (
+        <OrientationScreen onBack={handleBack} onRestart={handleRestart} />
+      ) : showResults ? (
         <ResultsScreen
           rankedExchanges={rankedExchanges}
           amount={mxn > 0 ? mxn : 1_000}

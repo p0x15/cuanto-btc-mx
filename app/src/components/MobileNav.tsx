@@ -28,17 +28,6 @@ const tabs = [
     ),
   },
   {
-    href: "/guias",
-    label: "Guías",
-    icon: (active: boolean) => (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        strokeWidth={active ? 2.5 : 2} strokeLinecap="round" strokeLinejoin="round">
-        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-      </svg>
-    ),
-  },
-  {
     href: "/mapa",
     label: "Mapa",
     icon: (active: boolean) => (
@@ -47,6 +36,17 @@ const tabs = [
         <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
         <line x1="9" y1="3" x2="9" y2="18" />
         <line x1="15" y1="6" x2="15" y2="21" />
+      </svg>
+    ),
+  },
+  {
+    href: "/guias",
+    label: "Guías",
+    icon: (active: boolean) => (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        strokeWidth={active ? 2.5 : 2} strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
       </svg>
     ),
   },

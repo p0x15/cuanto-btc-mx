@@ -219,8 +219,8 @@ export function MapRenderer({
             <span className="text-[11px] font-semibold text-[var(--fg-muted)]">72%</span>
           </div>
           <div className="flex justify-between mt-1">
-            <span className="text-[10px] text-[#F7931A] font-semibold">+ Bitcoin</span>
-            <span className="text-[10px] text-[#15803d] font-semibold">+ Banco</span>
+            <span className="text-[10px] text-[var(--fg-muted)] font-semibold">Menor acceso</span>
+            <span className="text-[10px] text-[var(--fg-muted)] font-semibold">Mayor acceso</span>
           </div>
         </div>
       )}

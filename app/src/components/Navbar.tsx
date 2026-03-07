@@ -90,8 +90,8 @@ export function Navbar() {
         <div className="hidden md:flex items-center gap-7">
           {navLink("/", "Comparar")}
           {navLink("/test", "Test personalizado")}
-          {navLink("/guias", "Guías")}
           {navLink("/mapa", "Mapa histórico")}
+          {navLink("/guias", "Guías")}
         </div>
 
         <div className="flex-1" />

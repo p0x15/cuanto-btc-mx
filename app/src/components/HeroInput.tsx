@@ -1,6 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+
+function Skel({ w, h }: { w: string; h: string }) {
+  return <div className={`animate-pulse rounded-md bg-[var(--bg-elevated)] ${w} ${h}`} />;
+}
 import { calcSats, exchanges } from "@/data/exchanges";
 import { getPriceForExchange, useLivePrices } from "@/hooks/useLivePrices";
 
@@ -130,8 +134,6 @@ export function HeroInput({ mxn, onChange }: HeroInputProps) {
     };
   }, []);
 
-  // Suppress unused vars
-  void loading;
   void error;
 
   return (
@@ -215,7 +217,10 @@ export function HeroInput({ mxn, onChange }: HeroInputProps) {
                           <span>
                             Mejor: <span className="font-bold text-[#F7931A]">{best.name}</span>
                           </span>
-                          <span className="font-bold text-[var(--fg)]">{bestSats.toLocaleString("es-MX")} sats</span>
+                          {loading
+                            ? <Skel w="w-16" h="h-3.5" />
+                            : <span className="font-bold text-[var(--fg)]">{bestSats.toLocaleString("es-MX")} sats</span>
+                          }
                         </div>
                       )}
                     </div>
@@ -278,9 +283,12 @@ export function HeroInput({ mxn, onChange }: HeroInputProps) {
                         </div>
                         <div className="mt-2.5 flex items-end justify-between gap-2">
                           <div>
-                            <p className="font-ui-mono text-[32px] font-bold leading-none tracking-[-0.03em] text-[#F7931A]">
-                              {bestSats.toLocaleString("es-MX")}
-                            </p>
+                            {loading
+                              ? <div className="mb-1"><Skel w="w-28" h="h-8" /></div>
+                              : <p className="font-ui-mono text-[32px] font-bold leading-none tracking-[-0.03em] text-[#F7931A]">
+                                  {bestSats.toLocaleString("es-MX")}
+                                </p>
+                            }
                             <p className="mt-1 font-ui-mono text-[11px] text-[var(--fg-muted)]">
                               satoshis por ${amount.toLocaleString("es-MX")} MXN
                             </p>
@@ -313,9 +321,12 @@ export function HeroInput({ mxn, onChange }: HeroInputProps) {
                 </div>
 
                 <p className="mt-3 text-[20px] font-bold text-[#F7931A]">{best.name}</p>
-                <p className="mt-1.5 font-ui-mono text-[50px] font-bold leading-none tracking-[-0.03em] text-[var(--fg)]">
-                  {bestSats.toLocaleString("es-MX")}
-                </p>
+                {loading
+                  ? <div className="mt-1.5"><Skel w="w-36" h="h-12" /></div>
+                  : <p className="mt-1.5 font-ui-mono text-[50px] font-bold leading-none tracking-[-0.03em] text-[var(--fg)]">
+                      {bestSats.toLocaleString("es-MX")}
+                    </p>
+                }
                 <p className="mt-1 font-ui-mono text-xs text-[var(--fg-muted)]">
                   satoshis por ${amount.toLocaleString("es-MX")} MXN
                 </p>

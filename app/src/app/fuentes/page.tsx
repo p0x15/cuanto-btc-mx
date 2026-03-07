@@ -236,8 +236,6 @@ export default function FuentesPage() {
           <div className="mt-6 flex flex-wrap items-center gap-4 font-ui-mono text-[11px] text-[var(--fg-faint)]">
             <span><span className="font-bold text-[var(--fg-dim)]">{totalSources}</span> fuentes consultadas</span>
             <span className="h-3 w-px bg-[var(--border-2)]" />
-            <span>Fecha de consulta: <span className="font-bold text-[var(--fg-dim)]">28 de febrero de 2026</span></span>
-            <span className="h-3 w-px bg-[var(--border-2)]" />
             <span>Prioridad: UNAM · INAH · Banxico · SciELO México</span>
           </div>
         </div>
@@ -311,7 +309,6 @@ export default function FuentesPage() {
           </h3>
           <ul className="flex flex-col gap-2.5">
             {[
-              "Todas las URLs fueron consultadas el 28 de febrero de 2026.",
               "Los datos con confianza alta fueron verificados en al menos dos fuentes independientes.",
               "Los datos con confianza media tienen respaldo académico pero con matices o debates abiertos.",
               "Se priorizaron fuentes institucionales mexicanas (UNAM, INAH, Banxico, SciELO México, Arqueología Mexicana, SEP) sobre fuentes secundarias.",

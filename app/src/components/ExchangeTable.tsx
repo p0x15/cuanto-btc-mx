@@ -18,6 +18,10 @@ const KYC_LABEL: Record<KycLevel, string> = {
   full: "KYC completo",
 };
 
+function Skel({ w, h }: { w: string; h: string }) {
+  return <div className={`animate-pulse rounded-md bg-[var(--bg-elevated)] ${w} ${h}`} />;
+}
+
 function RectTag({
   children,
   color,
@@ -187,18 +191,24 @@ export function ExchangeTable({ mxn }: ExchangeTableProps) {
               </div>
 
               <div className="flex flex-col gap-0.5">
-                <p className={`font-ui-mono text-[26px] font-bold leading-none tracking-[-0.03em] ${winner ? "text-[#F7931A]" : "text-[var(--fg-dim)]"}`}>
-                  {sats.toLocaleString("es-MX")}
-                </p>
+                {loading
+                  ? <Skel w="w-28" h="h-7" />
+                  : <p className={`font-ui-mono text-[26px] font-bold leading-none tracking-[-0.03em] ${winner ? "text-[#F7931A]" : "text-[var(--fg-dim)]"}`}>
+                      {sats.toLocaleString("es-MX")}
+                    </p>
+                }
                 <p className="font-ui-mono text-[11px] text-[var(--fg-faint)]">
-                  {winner ? "satoshis" : `▼ ${Math.abs(satsDiff).toLocaleString("es-MX")} menos que #1`}
+                  {loading ? "" : winner ? "satoshis" : `▼ ${Math.abs(satsDiff).toLocaleString("es-MX")} menos que #1`}
                 </p>
               </div>
 
               <div className="flex flex-col gap-0.5">
-                <p className="font-ui-mono text-[15px] font-semibold text-[var(--fg-dim)]">
-                  ${ex.askPrice.toLocaleString("es-MX")}
-                </p>
+                {loading
+                  ? <Skel w="w-24" h="h-4" />
+                  : <p className="font-ui-mono text-[15px] font-semibold text-[var(--fg-dim)]">
+                      ${ex.askPrice.toLocaleString("es-MX")}
+                    </p>
+                }
                 <p className="font-ui-mono text-[11px] text-[var(--fg-faint)]">MXN</p>
               </div>
 
@@ -299,20 +309,26 @@ export function ExchangeTable({ mxn }: ExchangeTableProps) {
                 {/* Sats row */}
                 <div className="flex items-end justify-between gap-2">
                   <div>
-                    <p className={`font-ui-mono text-[24px] font-bold leading-none tracking-[-0.03em] ${winner ? "text-[#F7931A]" : "text-[var(--fg-dim)]"}`}>
-                      {sats.toLocaleString("es-MX")}
-                    </p>
+                    {loading
+                      ? <Skel w="w-24" h="h-6" />
+                      : <p className={`font-ui-mono text-[24px] font-bold leading-none tracking-[-0.03em] ${winner ? "text-[#F7931A]" : "text-[var(--fg-dim)]"}`}>
+                          {sats.toLocaleString("es-MX")}
+                        </p>
+                    }
                     <p className="font-ui-mono text-[10px] text-[var(--fg-faint)] mt-0.5">
-                      {winner ? "satoshis" : `▼ ${Math.abs(satsDiff).toLocaleString("es-MX")} menos que #1`}
+                      {loading ? "" : winner ? "satoshis" : `▼ ${Math.abs(satsDiff).toLocaleString("es-MX")} menos que #1`}
                     </p>
                   </div>
                   <div className="flex flex-col items-end gap-1">
                     <p className={`font-ui-mono text-[13px] font-bold ${ex.feePct <= 1 ? "text-[var(--accent-green)]" : "text-[var(--fg-dim)]"}`}>
                       {ex.feePct % 1 === 0 ? ex.feePct.toFixed(0) : String(ex.feePct)}% fee
                     </p>
-                    <p className="font-ui-mono text-[11px] text-[var(--fg-faint)]">
-                      ${ex.askPrice.toLocaleString("es-MX")} MXN
-                    </p>
+                    {loading
+                      ? <Skel w="w-20" h="h-3" />
+                      : <p className="font-ui-mono text-[11px] text-[var(--fg-faint)]">
+                          ${ex.askPrice.toLocaleString("es-MX")} MXN
+                        </p>
+                    }
                   </div>
                 </div>
 
