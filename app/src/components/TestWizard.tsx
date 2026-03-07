@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { calcSats, exchanges, Exchange, KycLevel } from "@/data/exchanges";
+import { satsToBtc } from "@/lib/formatBtc";
 import { ExchangeLogo } from "@/components/ExchangeLogo";
 import { getPriceForExchange, useLivePrices } from "@/hooks/useLivePrices";
 
@@ -691,10 +692,15 @@ function AmountScreen({
       {mxn > 0 && (
         <div className="flex items-center gap-3 rounded-xl bg-[#F7931A11] border border-[#F7931A22] px-4 py-3">
           <span className="text-xl">₿</span>
-          <span className="text-[14px] font-semibold text-[#F7931A]">
-            ≈ {previewSats.toLocaleString("es-MX")} sats
-          </span>
-          <span className="text-[13px] text-[var(--fg-muted)]">
+          <div className="flex flex-col gap-0.5">
+            <span className="text-[14px] font-semibold text-[#F7931A]">
+              ≈ {previewSats.toLocaleString("es-MX")} sats
+            </span>
+            <span className="font-ui-mono text-[11px] text-[var(--fg-muted)]">
+              {satsToBtc(previewSats)} BTC
+            </span>
+          </div>
+          <span className="text-[13px] text-[var(--fg-muted)] ml-1">
             al mejor precio ({previewExchangeName})
           </span>
         </div>
@@ -856,11 +862,13 @@ function ResultsScreen({
                         sats
                       </span>
                     </div>
-                    {!isWinner && (
-                      <div className="font-ui-mono text-[11px] text-[var(--fg-faint)] tabular-nums">
-                        ▼ {(bestSats - sats).toLocaleString("es-MX")} menos
-                      </div>
-                    )}
+                    <div
+                      className={`font-ui-mono text-[11px] tabular-nums ${
+                        isWinner ? "text-[#0B0B0B88]" : "text-[var(--fg-muted)]"
+                      }`}
+                    >
+                      {satsToBtc(sats)} BTC
+                    </div>
                   </div>
                 </div>
 

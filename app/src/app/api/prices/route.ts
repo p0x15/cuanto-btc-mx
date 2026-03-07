@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { exchanges } from "@/data/exchanges";
 
-export const revalidate = 0;
+export const dynamic = "force-dynamic";
 
 /* ─── Types ────────────────────────────────────────────────────── */
 
@@ -18,10 +18,22 @@ interface PricesResponse {
 
 /* ─── Helper: safe JSON fetch with timeout ─────────────────────── */
 
+// ─── Server-side in-memory cache ───────────────────────────────────────────
+
+interface CacheEntry {
+  data: PricesResponse;
+  ts: number;
+}
+
+let serverCache: CacheEntry | null = null;
+const CACHE_TTL_MS = 45_000; // 45 seconds
+
+// ─── Helper: safe JSON fetch with timeout ─────────────────────── */
+
 async function safeFetch(
   url: string,
   opts?: RequestInit,
-  timeoutMs = 8000
+  timeoutMs = 4000
 ): Promise<Response | null> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
@@ -61,23 +73,25 @@ async function fetchBitsoAsk(): Promise<number | null> {
   return isNaN(ask) ? null : Math.round(ask);
 }
 
-/** Buda.com — min_ask from public ticker */
+/** Buda.com — min_ask from public ticker (both URLs tried in parallel) */
 async function fetchBudaAsk(): Promise<number | null> {
-  // Try both URL formats (with and without .json)
-  for (const url of [
+  const urls = [
     "https://www.buda.com/api/v2/markets/btc-mxn/ticker.json",
     "https://www.buda.com/api/v2/markets/btc-mxn/ticker",
-  ]) {
-    const res = await safeFetch(url, { headers: { Accept: "application/json" } });
+  ];
+
+  const results = await Promise.all(
+    urls.map((url) => safeFetch(url, { headers: { Accept: "application/json" } }))
+  );
+
+  for (const res of results) {
     if (!res) continue;
     const data = await res.json();
-    // Buda returns min_ask as [amount, currency]
     const minAsk = data.ticker?.min_ask;
     if (Array.isArray(minAsk)) {
       const val = parseFloat(minAsk[0]);
       if (!isNaN(val)) return Math.round(val);
     }
-    // Also try last_price as fallback
     const lastPrice = data.ticker?.last_price;
     if (Array.isArray(lastPrice)) {
       const val = parseFloat(lastPrice[0]);
@@ -107,7 +121,8 @@ async function fetchBinanceP2PAsk(): Promise<number | null> {
         Accept: "application/json",
       },
       body: JSON.stringify(body),
-    }
+    },
+    4000
   );
   if (!res) return null;
   const data = await res.json();
@@ -169,7 +184,7 @@ async function fetchRoboSatsAsk(): Promise<number | null> {
   const res = await safeFetch(
     "https://unsafe.robosats.com/api/book/?currency=28&type=1",
     { headers: { Accept: "application/json" } },
-    5000 // shorter timeout since clearnet is unreliable
+    3000 // clearnet mirror de Tor — si no responde en 3s, no vale esperar
   );
   if (!res) return null;
   const orders = await res.json();
@@ -188,6 +203,13 @@ async function fetchRoboSatsAsk(): Promise<number | null> {
 /* ─── Main handler ────────────────────────────────────────────── */
 
 export async function GET() {
+  // Serve from cache if fresh
+  if (serverCache && Date.now() - serverCache.ts < CACHE_TTL_MS) {
+    return NextResponse.json(serverCache.data, {
+      headers: { "Cache-Control": "public, s-maxage=45, stale-while-revalidate=10" },
+    });
+  }
+
   try {
     // Fire all requests in parallel
     const [spot, bitsoAsk, budaAsk, binanceAsk, hodlAsk, roboAsk, krakenAsk] =
@@ -244,9 +266,12 @@ export async function GET() {
       updatedAt: new Date().toISOString(),
     };
 
+    // Store in server-side cache
+    serverCache = { data: response, ts: Date.now() };
+
     return NextResponse.json(response, {
       headers: {
-        "Cache-Control": "public, s-maxage=55, stale-while-revalidate=10",
+        "Cache-Control": "public, s-maxage=45, stale-while-revalidate=10",
       },
     });
   } catch (err) {

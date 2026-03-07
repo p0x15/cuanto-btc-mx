@@ -7,6 +7,7 @@ function Skel({ w, h }: { w: string; h: string }) {
 }
 import { calcSats, exchanges } from "@/data/exchanges";
 import { getPriceForExchange, useLivePrices } from "@/hooks/useLivePrices";
+import { satsToBtc } from "@/lib/formatBtc";
 
 interface HeroInputProps {
   mxn: number;
@@ -289,6 +290,12 @@ export function HeroInput({ mxn, onChange }: HeroInputProps) {
                                   {bestSats.toLocaleString("es-MX")}
                                 </p>
                             }
+                            {loading
+                              ? <Skel w="w-20" h="h-3" />
+                              : <p className="font-ui-mono text-[10px] text-[var(--fg-muted)]">
+                                  {satsToBtc(bestSats)} BTC
+                                </p>
+                            }
                             <p className="mt-1 font-ui-mono text-[11px] text-[var(--fg-muted)]">
                               satoshis por ${amount.toLocaleString("es-MX")} MXN
                             </p>
@@ -327,7 +334,13 @@ export function HeroInput({ mxn, onChange }: HeroInputProps) {
                       {bestSats.toLocaleString("es-MX")}
                     </p>
                 }
-                <p className="mt-1 font-ui-mono text-xs text-[var(--fg-muted)]">
+                {loading
+                  ? <div className="mt-1"><Skel w="w-24" h="h-3" /></div>
+                  : <p className="mt-1 font-ui-mono text-[11px] text-[var(--fg-muted)]">
+                      {satsToBtc(bestSats)} BTC
+                    </p>
+                }
+                <p className="mt-0.5 font-ui-mono text-xs text-[var(--fg-muted)]">
                   satoshis por ${amount.toLocaleString("es-MX")} MXN
                 </p>
 

@@ -111,7 +111,7 @@ export const exchanges: Exchange[] = [
     lightning: false,
     nonCustodial: false,
     kyc: "basic",
-    url: "https://aureo.mx",
+    url: "https://www.aureobitcoin.com/es",
     color: "#EAB308",
     logo: "/logos/aureo.jpg",
   },

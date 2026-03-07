@@ -5,6 +5,7 @@ import { calcSats, exchanges as allExchanges, KycLevel } from "@/data/exchanges"
 import { ExchangeLogo } from "@/components/ExchangeLogo";
 import { SuggestExchangeModal } from "@/components/SuggestExchangeModal";
 import { getPriceForExchange, useLivePrices } from "@/hooks/useLivePrices";
+import { satsToBtc } from "@/lib/formatBtc";
 
 type SortKey = "sats" | "fee" | "price";
 
@@ -135,13 +136,13 @@ export function ExchangeTable({ mxn }: ExchangeTableProps) {
       {/* Desktop table */}
       <div className="hidden md:block bg-[var(--bg)]">
         <div className="grid h-10 grid-cols-[48px_260px_220px_200px_80px_160px_minmax(170px,1fr)] items-center border-b border-[var(--border)] font-ui-mono text-[11px] tracking-[0.08em]">
-          <span className="text-[var(--fg-faint)]">#</span>
-          <span className="text-[var(--fg-faint)]">EXCHANGE</span>
+          <span className="text-[var(--fg-muted)]">#</span>
+          <span className="text-[var(--fg-muted)]">EXCHANGE</span>
           <span className="font-semibold text-[#F7931A]">SATS QUE RECIBES ↓</span>
-          <span className="text-[var(--fg-faint)]">PRECIO BTC (MXN)</span>
-          <span className="text-[var(--fg-faint)]">FEE</span>
-          <span className="text-[var(--fg-faint)]">MÉTODOS</span>
-          <span className="text-[var(--fg-faint)]">CARACTERÍSTICAS</span>
+          <span className="text-[var(--fg-muted)]">PRECIO BTC (MXN)</span>
+          <span className="text-[var(--fg-muted)]">FEE</span>
+          <span className="text-[var(--fg-muted)]">MÉTODOS</span>
+          <span className="text-[var(--fg-muted)]">CARACTERÍSTICAS</span>
         </div>
 
         {displayed.map((ex, i) => {
@@ -197,9 +198,12 @@ export function ExchangeTable({ mxn }: ExchangeTableProps) {
                       {sats.toLocaleString("es-MX")}
                     </p>
                 }
-                <p className="font-ui-mono text-[11px] text-[var(--fg-faint)]">
-                  {loading ? "" : winner ? "satoshis" : `▼ ${Math.abs(satsDiff).toLocaleString("es-MX")} menos que #1`}
-                </p>
+                {loading
+                  ? <Skel w="w-20" h="h-3" />
+                  : <p className="font-ui-mono text-[11px] text-[var(--fg-muted)]">
+                      {winner ? `${satsToBtc(sats)} BTC` : `▼ ${Math.abs(satsDiff).toLocaleString("es-MX")} menos que #1`}
+                    </p>
+                }
               </div>
 
               <div className="flex flex-col gap-0.5">
@@ -315,9 +319,12 @@ export function ExchangeTable({ mxn }: ExchangeTableProps) {
                           {sats.toLocaleString("es-MX")}
                         </p>
                     }
-                    <p className="font-ui-mono text-[10px] text-[var(--fg-faint)] mt-0.5">
-                      {loading ? "" : winner ? "satoshis" : `▼ ${Math.abs(satsDiff).toLocaleString("es-MX")} menos que #1`}
-                    </p>
+                    {loading
+                      ? <Skel w="w-16" h="h-3" />
+                      : <p className="font-ui-mono text-[10px] text-[var(--fg-muted)] mt-0.5">
+                          {winner ? `${satsToBtc(sats)} BTC` : `▼ ${Math.abs(satsDiff).toLocaleString("es-MX")} menos que #1`}
+                        </p>
+                    }
                   </div>
                   <div className="flex flex-col items-end gap-1">
                     <p className={`font-ui-mono text-[13px] font-bold ${ex.feePct <= 1 ? "text-[var(--accent-green)]" : "text-[var(--fg-dim)]"}`}>

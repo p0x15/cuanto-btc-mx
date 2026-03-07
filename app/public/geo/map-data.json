@@ -38,15 +38,14 @@
     },
     {
       "id": "presente",
-      "label": "Presente y Bitcoin",
-      "year": "2026",
+      "label": "Presente",
+      "year": "2026+",
       "geoFile": "estados.json",
       "description": "Hoy, 32 estados con distintos niveles de bancarización y remesas. Para millones de mexicanos, Bitcoin no es especulación: es la única forma de ahorrar sin que el banco central se los coma. Las remesas ya superan $64,745 millones de dólares al año — y el 10% ya viaja por rieles cripto.",
       "moneda": "Peso + Bitcoin. Hasta el 10% de las remesas ya viajan por rieles cripto (Bitso). El impuesto Trump del 1% desde enero 2026 acelera la adopción de Lightning.",
       "color_scheme": "bitcoin"
     }
   ],
-
   "zones": {
     "prehispanica": [
       {
@@ -60,7 +59,17 @@
           "dato_curioso": "Existían falsificadores de cacao en Tenochtitlan: vaciaban las cáscaras de granos consumidos y las rellenaban con pasta de amaranto, cera y semillas de aguacate para hacerlos pasar por reales. La falsificación monetaria existía siglos antes de que llegaran los españoles."
         },
         "bitcoin_paralelo": "El cacao compartía características con Bitcoin: escasez natural, difícil de falsificar, divisible. La diferencia: Bitcoin no se puede comer ni pudrir.",
-        "estados_actuales": ["MX-CMX", "MX-MEX", "MX-HID", "MX-MOR", "MX-TLA", "MX-PUE", "MX-GRO", "MX-QUE", "MX-VER"]
+        "estados_actuales": [
+          "MX-CMX",
+          "MX-MEX",
+          "MX-HID",
+          "MX-MOR",
+          "MX-TLA",
+          "MX-PUE",
+          "MX-GRO",
+          "MX-QUE",
+          "MX-VER"
+        ]
       },
       {
         "id": "area_maya",
@@ -73,7 +82,13 @@
           "dato_curioso": "Los mayas no mataban a los quetzales para obtener sus plumas: las recolectaban cuando el ave mudaba su plumaje. Cazar uno sin permiso se castigaba con pena de muerte. Los pochtecas transportaban estas plumas envueltas en tubos de caña para no dañarlas en viajes de cientos de kilómetros."
         },
         "bitcoin_paralelo": "Las plumas de quetzal funcionaban como reserva de valor de alta denominación — equivalente a guardar sats en cold storage vs usar sats pequeños en Lightning.",
-        "estados_actuales": ["MX-YUC", "MX-CAM", "MX-ROO", "MX-TAB", "MX-CHP"]
+        "estados_actuales": [
+          "MX-YUC",
+          "MX-CAM",
+          "MX-ROO",
+          "MX-TAB",
+          "MX-CHP"
+        ]
       },
       {
         "id": "zapoteca",
@@ -86,7 +101,9 @@
           "dato_curioso": "Coixtlahuaca, en la Mixteca Alta, era un mercado tan importante que los mexicas lo conquistaron no por territorio sino para controlar su red comercial. Desde ahí se distribuían productos que llegaban hasta Guatemala. Monte Albán fue una de las primeras ciudades del continente con más de 25,000 habitantes en su apogeo (500 d.C.)."
         },
         "bitcoin_paralelo": "Oaxaca hoy es uno de los estados con menor bancarización (35%) y mayor dependencia de remesas. Bitcoin y Lightning son herramientas concretas para comunidades rurales oaxaqueñas que reciben dinero del exterior.",
-        "estados_actuales": ["MX-OAX"]
+        "estados_actuales": [
+          "MX-OAX"
+        ]
       },
       {
         "id": "purepecha",
@@ -99,7 +116,13 @@
           "dato_curioso": "En Ecuador, la cultura Milagro-Quevedo también usaba hachuelas de cobre idénticas como moneda —posiblemente por contacto marítimo a lo largo del Pacífico, aunque la conexión directa es debatida por arqueólogos. El uso monetario del cobre en forma de hachuelas fue, en Mesoamérica, una innovación purépecha única."
         },
         "bitcoin_paralelo": "El cobre estandarizado de los purépechas fue el Bitcoin de su época: fungible, portable, con valor intrínseco. Michoacán hoy recibe $5,646 millones USD en remesas anuales — el estado #1 en México.",
-        "estados_actuales": ["MX-MIC", "MX-GUA", "MX-JAL", "MX-COL", "MX-NAY"]
+        "estados_actuales": [
+          "MX-MIC",
+          "MX-GUA",
+          "MX-JAL",
+          "MX-COL",
+          "MX-NAY"
+        ]
       },
       {
         "id": "norte_arido",
@@ -112,10 +135,22 @@
           "dato_curioso": "Paquimé tenía instalaciones especializadas para criar guacamayas a más de 1,500 km de su hábitat natural. Los arqueólogos encontraron cascarones de huevo y huesos de aves adultas, evidencia de cría en cautiverio exitosa. Era la principal 'fábrica' de plumas de colores del norte de Mesoamérica. Paquimé es Patrimonio Mundial UNESCO desde 1998."
         },
         "bitcoin_paralelo": "Las economías de trueque son ineficientes (problema de la doble coincidencia de deseos). Bitcoin resuelve esto siendo un medio de intercambio universal sin necesitar contraparte que quiera exactamente lo que ofreces.",
-        "estados_actuales": ["MX-CHH", "MX-SON", "MX-SIN", "MX-DUR", "MX-ZAC", "MX-SLP", "MX-NLE", "MX-COA", "MX-TAM", "MX-BCN", "MX-BCS", "MX-AGU"]
+        "estados_actuales": [
+          "MX-CHH",
+          "MX-SON",
+          "MX-SIN",
+          "MX-DUR",
+          "MX-ZAC",
+          "MX-SLP",
+          "MX-NLE",
+          "MX-COA",
+          "MX-TAM",
+          "MX-BCN",
+          "MX-BCS",
+          "MX-AGU"
+        ]
       }
     ],
-
     "nueva_espana": [
       {
         "id": "intendencia_mexico",
@@ -128,7 +163,15 @@
           "dato_curioso": "El Real de a Ocho mexicano fue moneda de curso legal en Estados Unidos hasta 1857 — más de 80 años después de la independencia estadounidense. La Bolsa de Nueva York cotizó valores en octavos de dólar (herencia directa del 'piece of eight') hasta el año 2001. El símbolo $ probablemente deriva de la abreviatura 'ps' (pesos) donde la 's' se escribía sobre la 'p'."
         },
         "bitcoin_paralelo": "El Real de a Ocho fue la primera 'moneda de reserva global' — como el dólar hoy. Pero a diferencia de Bitcoin, un rey podía ordenar devaluar la ley de plata. Y lo hicieron.",
-        "estados_actuales": ["MX-CMX", "MX-MEX", "MX-HID", "MX-MOR", "MX-TLA", "MX-GRO", "MX-QUE"]
+        "estados_actuales": [
+          "MX-CMX",
+          "MX-MEX",
+          "MX-HID",
+          "MX-MOR",
+          "MX-TLA",
+          "MX-GRO",
+          "MX-QUE"
+        ]
       },
       {
         "id": "intendencia_guadalajara",
@@ -141,7 +184,15 @@
           "dato_curioso": "La creación del Consulado de Comerciantes de Guadalajara en el siglo XVIII fue un acto revolucionario: rompió el monopolio de 200 años del Consulado de México y permitió que el occidente comerciara directamente con Centroamérica y el Pacífico. En el siglo XVII, Zacatecas producía más del 20% de toda la plata del mundo conocido."
         },
         "bitcoin_paralelo": "La minería de plata en el virreinato se parece sorprendentemente a la minería de Bitcoin: requiere inversión en infraestructura, compite globalmente, y el que más recursos tiene más produce — pero nadie puede cambiar el límite de oferta.",
-        "estados_actuales": ["MX-JAL", "MX-ZAC", "MX-NAY", "MX-COL", "MX-AGU", "MX-GUA", "MX-MIC"]
+        "estados_actuales": [
+          "MX-JAL",
+          "MX-ZAC",
+          "MX-NAY",
+          "MX-COL",
+          "MX-AGU",
+          "MX-GUA",
+          "MX-MIC"
+        ]
       },
       {
         "id": "intendencia_veracruz",
@@ -154,7 +205,14 @@
           "dato_curioso": "Cuando llegaba una flota a Veracruz, se organizaba una feria comercial que podía durar semanas y a la que viajaban comerciantes de todo el virreinato. Los precios de ropa, herramientas y vino europeos se inflaban varias veces sobre el precio en España — el monopolio era un impuesto silencioso a toda la colonia."
         },
         "bitcoin_paralelo": "Los puertos monopolizados del virreinato son el equivalente histórico de los bancos corresponsales actuales: intermediarios que cobran renta por dejar pasar el dinero. Bitcoin elimina esta capa por completo.",
-        "estados_actuales": ["MX-VER", "MX-TAB", "MX-CHP", "MX-CAM", "MX-ROO", "MX-YUC"]
+        "estados_actuales": [
+          "MX-VER",
+          "MX-TAB",
+          "MX-CHP",
+          "MX-CAM",
+          "MX-ROO",
+          "MX-YUC"
+        ]
       },
       {
         "id": "intendencia_oaxaca",
@@ -167,7 +225,10 @@
           "dato_curioso": "En 1774, Oaxaca produjo 1,558,125 libras de grana cochinilla. España guardó celosamente el secreto de su origen biológico durante dos siglos: los europeos creían que era una semilla o mineral, no un insecto. La cochinilla tiñó las casacas rojas del ejército británico, los ropajes cardenalicios del Vaticano, y los cuadros de Rubens y Goya."
         },
         "bitcoin_paralelo": "La cochinilla era una reserva de valor portable y escasa — los productores oaxaqueños la guardaban como ahorro. Hoy, muchas comunidades oaxaqueñas sin acceso bancario podrían guardar valor en sats con el mismo principio.",
-        "estados_actuales": ["MX-OAX", "MX-PUE"]
+        "estados_actuales": [
+          "MX-OAX",
+          "MX-PUE"
+        ]
       },
       {
         "id": "intendencia_norte",
@@ -180,10 +241,20 @@
           "dato_curioso": "Los dueños de minas vivían como aristócratas europeos mientras los trabajadores indígenas laboraban en condiciones brutales. Los territorios del norte de Nueva España (hoy Texas, Nuevo México, California, Arizona) se perderían después de la guerra con EE.UU. de 1846-48."
         },
         "bitcoin_paralelo": "Las zonas fronterizas siempre han necesitado dinero neutral que funcione a ambos lados de la línea. Bitcoin es el primer dinero verdaderamente sin fronteras — perfecto para una región donde millones trabajan en EE.UU. y mandan dinero a México.",
-        "estados_actuales": ["MX-CHH", "MX-SON", "MX-SIN", "MX-DUR", "MX-NLE", "MX-COA", "MX-TAM", "MX-BCN", "MX-BCS", "MX-SLP"]
+        "estados_actuales": [
+          "MX-CHH",
+          "MX-SON",
+          "MX-SIN",
+          "MX-DUR",
+          "MX-NLE",
+          "MX-COA",
+          "MX-TAM",
+          "MX-BCN",
+          "MX-BCS",
+          "MX-SLP"
+        ]
       }
     ],
-
     "independiente": [
       {
         "id": "norte_minero",
@@ -195,7 +266,17 @@
           "dato_curioso": "En 1900, Porfirio Díaz inauguró la Fundidora de Hierro y Acero de Monterrey, símbolo de la industrialización norteña. Mientras el sur permanecía en economías semi-feudales con tiendas de raya, el norte se industrializaba con capital extranjero y ferrocarriles que llegaban directo a EE.UU."
         },
         "bitcoin_paralelo": "Las zonas fronterizas siempre han necesitado dinero neutral que funcione a ambos lados. Los norteños del siglo XIX ya operaban con dos monedas: peso para lo local, dólar para los negocios serios. Bitcoin es la evolución: una sola red sin fronteras.",
-        "estados_actuales": ["MX-CHH", "MX-SON", "MX-COA", "MX-TAM", "MX-NLE", "MX-DUR", "MX-SIN", "MX-BCN", "MX-BCS"]
+        "estados_actuales": [
+          "MX-CHH",
+          "MX-SON",
+          "MX-COA",
+          "MX-TAM",
+          "MX-NLE",
+          "MX-DUR",
+          "MX-SIN",
+          "MX-BCN",
+          "MX-BCS"
+        ]
       },
       {
         "id": "bajio_occidente",
@@ -207,7 +288,16 @@
           "dato_curioso": "Guanajuato fabricó sus propios billetes durante el Porfiriato. Estos billetes solo eran aceptados en la región — exactamente el problema opuesto al del peso actual: demasiada fragmentación en el siglo XIX, demasiado control centralizado en el XX. Bitcoin resuelve ambos extremos."
         },
         "bitcoin_paralelo": "Los bancos regionales del Porfiriato demostraron que el dinero regional crea fricciones enormes para el comercio. Bitcoin y Lightning son lo contrario: un solo rail de pago global, sin billetes regionales incompatibles.",
-        "estados_actuales": ["MX-GUA", "MX-JAL", "MX-AGU", "MX-QUE", "MX-COL", "MX-MIC", "MX-ZAC", "MX-NAY"]
+        "estados_actuales": [
+          "MX-GUA",
+          "MX-JAL",
+          "MX-AGU",
+          "MX-QUE",
+          "MX-COL",
+          "MX-MIC",
+          "MX-ZAC",
+          "MX-NAY"
+        ]
       },
       {
         "id": "sur_centro",
@@ -219,78 +309,148 @@
           "dato_curioso": "Las tiendas de raya eran trampas económicas perfectas: el hacendado pagaba con vales, el peón solo podía gastarlos en la tienda del hacendado, cuando se endeudaba la deuda se heredaba a sus hijos. Era un sistema monetario cerrado diseñado para mantener la servidumbre — una de las causas directas de la Revolución Mexicana. No es casualidad que el levantamiento zapatista de 1994 ocurriera exactamente cuando entró el TLCAN."
         },
         "bitcoin_paralelo": "La tienda de raya es la versión extrema del dinero controlado: el emisor decide qué puedes comprar y a qué precio. Bitcoin es exactamente lo opuesto: nobody decides what you can buy with your sats.",
-        "estados_actuales": ["MX-OAX", "MX-CHP", "MX-GRO", "MX-VER", "MX-HID", "MX-PUE", "MX-TLA", "MX-MOR", "MX-CMX", "MX-MEX", "MX-SLP", "MX-CAM", "MX-YUC", "MX-ROO", "MX-TAB"]
+        "estados_actuales": [
+          "MX-OAX",
+          "MX-CHP",
+          "MX-GRO",
+          "MX-VER",
+          "MX-HID",
+          "MX-PUE",
+          "MX-TLA",
+          "MX-MOR",
+          "MX-CMX",
+          "MX-MEX",
+          "MX-SLP",
+          "MX-CAM",
+          "MX-YUC",
+          "MX-ROO",
+          "MX-TAB"
+        ]
       }
     ],
-
     "siglo_xx": [
       {
         "id": "centro_cdmx",
         "name": "Centro y Sureste",
         "color": "#991B1B",
-        "estados_actuales": ["MX-CMX", "MX-MEX", "MX-PUE", "MX-MOR", "MX-TLA", "MX-QUE", "MX-ROO", "MX-YUC", "MX-BCS"],
+        "estados_actuales": [
+          "MX-CMX",
+          "MX-MEX",
+          "MX-PUE",
+          "MX-MOR",
+          "MX-TLA",
+          "MX-QUE",
+          "MX-ROO",
+          "MX-YUC",
+          "MX-BCS"
+        ],
         "dinero": {
           "medio": "Peso mexicano — Crisis de 1976, 1982, 1994",
           "descripcion": "El 'milagro mexicano' (1940-1970) prometió prosperidad con tipo de cambio fijo. Cuando colapsó en 1976, el peso pasó de 12.50 a 22 pesos por dólar. En 1982, la deuda en dólares explotó y siguió la nacionalización bancaria. En 1987, la inflación anual llegó a 159.2% — la más alta en la historia del país. El sexenio 1982-88 acumuló 4,030% de inflación total. En 1994, el 'Error de Diciembre' devaluó el peso 50% en semanas y las tasas de interés llegaron al 100%, haciendo impagables hipotecas y créditos.",
           "dato_curioso": "En 1993, México le quitó 3 ceros al peso: 1,000 pesos viejos se convirtieron en 1 nuevo peso. Era necesario porque los billetes tenían tantos ceros que eran impracticables. Un café que costaba 5 centavos en 1950 costaba 5,000 pesos en 1993. Si tenías $1,000 pesos en 1970, en 1994 equivalían a menos de $1 peso en términos reales."
         },
         "bitcoin_paralelo": "Las tres crisis del peso en 25 años demostraron que el dinero controlado por el Estado puede destruirse por decisión política. Bitcoin no tiene secretario de Hacienda.",
-        "crisis_afectadas": ["1976: devaluación 76%", "1982: nacionalización bancaria + inflación 99%", "1987: inflación anual 159%", "1994: 'Error de Diciembre'"]
+        "crisis_afectadas": [
+          "1976: devaluación 76%",
+          "1982: nacionalización bancaria + inflación 99%",
+          "1987: inflación anual 159%",
+          "1994: 'Error de Diciembre'"
+        ]
       },
       {
         "id": "norte_industrial",
         "name": "Norte Industrial y Fronterizo",
         "color": "#1E3A8A",
-        "estados_actuales": ["MX-NLE", "MX-CHH", "MX-COA", "MX-TAM", "MX-BCN", "MX-SON", "MX-SIN"],
+        "estados_actuales": [
+          "MX-NLE",
+          "MX-CHH",
+          "MX-COA",
+          "MX-TAM",
+          "MX-BCN",
+          "MX-SON",
+          "MX-SIN"
+        ],
         "dinero": {
           "medio": "Peso + deuda en dólares — economía industrial integrada con EE.UU.",
           "descripcion": "Los grandes grupos industriales de Monterrey (Visa, Alfa, Vitro, Cemex) estaban endeudados en dólares en 1982. La devaluación multiplicó sus deudas de la noche a la mañana. Pero el norte también se benefició del TLCAN (1994): mientras el peso se devaluaba, las fábricas del norte que exportaban en dólares se volvían más competitivas. Para el norte, cada crisis era un dolor y una oportunidad simultáneamente.",
           "dato_curioso": "La nacionalización bancaria de 1982 radicalizó al empresariado de Monterrey. Los grupos como Alfa y Vitro estuvieron al borde de la quiebra. Esta crisis fue el inicio de una ruptura política entre el norte industrial y el gobierno central que transformó la política mexicana — y lanzó al PAN como fuerza nacional."
         },
         "bitcoin_paralelo": "El norte siempre operó con mentalidad de dos monedas: peso para lo local, dólar para los negocios serios. Bitcoin es la evolución natural: dinero que funciona igual en Monterrey que en Houston, sin depender de política cambiaria.",
-        "crisis_afectadas": ["1982: deuda industrial en dólares triplicada en pesos", "1994: maquiladoras se volvieron más competitivas"]
+        "crisis_afectadas": [
+          "1982: deuda industrial en dólares triplicada en pesos",
+          "1994: maquiladoras se volvieron más competitivas"
+        ]
       },
       {
         "id": "estados_petroleros",
         "name": "Estados Petroleros",
         "color": "#92400E",
-        "estados_actuales": ["MX-VER", "MX-TAB", "MX-CAM"],
+        "estados_actuales": [
+          "MX-VER",
+          "MX-TAB",
+          "MX-CAM"
+        ],
         "dinero": {
           "medio": "Peso — auge y caída del petróleo como espejo del peso",
           "descripcion": "La expropiación petrolera de 1938 transformó Veracruz, Tabasco y Campeche: ciudades como Coatzacoalcos, Villahermosa y Ciudad del Carmen crecieron explosivamente. Pero cuando los precios del crudo colapsaron en 1981-82, estas regiones se hundieron con el peso. López Portillo dijo 'hay que aprender a administrar la abundancia' — dos años después, México no podía pagar su deuda.",
           "dato_curioso": "Cuando Cárdenas anunció la expropiación petrolera en 1938, mexicanos de todo el país hicieron fila para donar joyas, gallinas y ahorros para pagar la indemnización a las compañías extranjeras. Mujeres indígenas de Juchitán, Oaxaca, donaron sus joyas de oro. Fue el único momento histórico en que los ciudadanos donaron voluntariamente dinero al gobierno mexicano."
         },
         "bitcoin_paralelo": "Las economías petroleras dependen de un recurso que se agota y de precios que no controlan. Tabasco sufrió inundaciones en 2007 y 2020 que destruyeron infraestructura bancaria. Bitcoin no se puede inundar ni depende del precio del crudo.",
-        "crisis_afectadas": ["1938: expropiación, transformación regional", "1981-82: colapso del precio del petróleo", "2020: inundaciones destruyeron infraestructura bancaria"]
+        "crisis_afectadas": [
+          "1938: expropiación, transformación regional",
+          "1981-82: colapso del precio del petróleo",
+          "2020: inundaciones destruyeron infraestructura bancaria"
+        ]
       },
       {
         "id": "sur_agrario",
         "name": "Sur Agrario",
         "color": "#14532D",
-        "estados_actuales": ["MX-OAX", "MX-CHP", "MX-GRO"],
+        "estados_actuales": [
+          "MX-OAX",
+          "MX-CHP",
+          "MX-GRO"
+        ],
         "dinero": {
           "medio": "Peso (escaso) + trueque + tiendas de raya — exclusión total del sistema financiero",
           "descripcion": "Para el sur agrario, las crisis del peso eran casi abstractas: la mayoría ya vivía en pobreza extrema antes de cada devaluación. Las devaluaciones golpeaban indirectamente: encarecían herramientas, medicinas y ropa, mientras los precios del maíz y café no subían igual. La respuesta fue el repliegue a la economía de autosubsistencia. No es coincidencia que el levantamiento zapatista ocurriera el 1 de enero de 1994 — exactamente cuando entró en vigor el TLCAN.",
           "dato_curioso": "El EZLN se levantó en Chiapas el mismo día que entró en vigor el TLCAN — y semanas antes del 'Error de Diciembre'. Para las comunidades indígenas chiapanecas, el sistema monetario mexicano era algo que pasaba en otro planeta. Vivían de autoconsumo, trueque, y las consecuencias de un sistema que los ignoraba completamente."
         },
         "bitcoin_paralelo": "Fedimint fue diseñado exactamente para comunidades como las del sur de México: custodia colectiva de Bitcoin administrada por miembros de confianza del pueblo, sin necesitar banco, sin KYC, sin sucursal a kilómetros.",
-        "crisis_afectadas": ["1994: TLCAN destruyó precio del maíz local", "Toda la era: exclusión estructural del sistema financiero"]
+        "crisis_afectadas": [
+          "1994: TLCAN destruyó precio del maíz local",
+          "Toda la era: exclusión estructural del sistema financiero"
+        ]
       },
       {
         "id": "estados_migrantes",
         "name": "Estados Migrantes",
         "color": "#9A3412",
-        "estados_actuales": ["MX-MIC", "MX-ZAC", "MX-JAL", "MX-GUA", "MX-DUR", "MX-SLP", "MX-HID", "MX-AGU", "MX-NAY", "MX-COL"],
+        "estados_actuales": [
+          "MX-MIC",
+          "MX-ZAC",
+          "MX-JAL",
+          "MX-GUA",
+          "MX-DUR",
+          "MX-SLP",
+          "MX-HID",
+          "MX-AGU",
+          "MX-NAY",
+          "MX-COL"
+        ],
         "dinero": {
           "medio": "Peso + dólares vía remesas — el dólar como salvavidas ante las crisis",
           "descripcion": "Michoacán, Zacatecas, Jalisco y Guanajuato intensificaron su migración a EE.UU. con cada crisis del peso. El Programa Bracero (1942-1964) arrancó con 4,200 trabajadores y llegó a 445,000 en 1956. Las crisis de 1982 y 1994 dispararon la migración no documentada masiva. Paradójicamente, las devaluaciones beneficiaban a las familias que recibían dólares: cada caída del peso hacía que las remesas valieran más pesos. Los estados migrantes desarrollaron una economía paralela en dólares décadas antes de que existiera Bitcoin.",
           "dato_curioso": "En 2018, México recibió $33,000 millones USD en remesas — más que el ingreso por petróleo. La crisis de 2008 ilustró la paradoja: cuando el peso se depreció, los migrantes mandaron más dólares para aprovechar el tipo de cambio favorable. El peso débil era, irónicamente, buena noticia para quienes recibían dólares."
         },
         "bitcoin_paralelo": "Las familias de Michoacán y Zacatecas llevan décadas operando con una moneda diferente al peso: el dólar vía Western Union. Lightning Network es la siguiente etapa: mismo dólar, sin intermediario, sin fila, sin 6-8% de comisión.",
-        "crisis_afectadas": ["1982: migración masiva no documentada despega", "1994: segunda oleada migratoria", "2008: remesas amortiguaron la crisis mejor que cualquier programa gobierno"]
+        "crisis_afectadas": [
+          "1982: migración masiva no documentada despega",
+          "1994: segunda oleada migratoria",
+          "2008: remesas amortiguaron la crisis mejor que cualquier programa gobierno"
+        ]
       }
     ],
-
     "presente": [
       {
         "id": "MX-MIC",
@@ -307,7 +467,11 @@
           "caso_uso": "Lightning Network para remesas",
           "descripcion": "Con Lightning, un michoacano en Chicago puede enviar $500 USD a su familia en Apatzingán en segundos, pagando menos del 4.57% (Strike) vs el 5-7% de Western Union más el nuevo impuesto Trump del 1% vigente desde enero 2026. El receptor puede recibir pesos directamente sin necesitar cuenta bancaria.",
           "ahorro_comision": "Una familia que recibe $500/mes ahorraría ~$342 USD al año usando Lightning vs Western Union. El ahorro total si todo Michoacán usara Lightning: >$300 millones USD anuales solo en comisiones.",
-          "apps_recomendadas": ["Strike (envío desde EE.UU., <4.57%)", "Muun Wallet (recepción)", "Bitso (10% del corredor USA→MX, Lightning desde julio 2024)"]
+          "apps_recomendadas": [
+            "Strike (envío desde EE.UU., <4.57%)",
+            "Muun Wallet (recepción)",
+            "Bitso (10% del corredor USA→MX, Lightning desde julio 2024)"
+          ]
         }
       },
       {
@@ -325,7 +489,11 @@
           "caso_uso": "Bitcoin como ahorro y remesas",
           "descripcion": "Trabajadores migrantes guanajuatenses en EE.UU. pueden ahorrar en Bitcoin durante el año y enviar el monto acumulado en una sola transacción, eliminando múltiples comisiones de envío.",
           "ahorro_comision": "Envío único anual de $6,000 USD vía Lightning: ~$0.10 vs ~$300-480 USD en comisiones Western Union.",
-          "apps_recomendadas": ["Strike", "Phoenix Wallet", "Bitso"]
+          "apps_recomendadas": [
+            "Strike",
+            "Phoenix Wallet",
+            "Bitso"
+          ]
         }
       },
       {
@@ -343,7 +511,11 @@
           "caso_uso": "Pagos Lightning en negocios + remesas rurales",
           "descripcion": "En Guadalajara, algunos negocios ya aceptan Bitcoin vía Lightning. En Los Altos, Lightning puede conectar a familias rurales sin banco con sus familiares en EE.UU.",
           "ahorro_comision": "Variable. Para remesas rurales: ahorro similar a Michoacán.",
-          "apps_recomendadas": ["Muun Wallet", "Blink Wallet", "Strike"]
+          "apps_recomendadas": [
+            "Muun Wallet",
+            "Blink Wallet",
+            "Strike"
+          ]
         }
       },
       {
@@ -361,7 +533,12 @@
           "caso_uso": "Bitcoin como inversión y reserva de valor",
           "descripcion": "En la CDMX, con mayor acceso financiero, el caso de uso de Bitcoin más relevante es como reserva de valor contra la inflación y como activo de inversión. La inflación del peso erosiona el ahorro incluso de clase media con acceso bancario.",
           "ahorro_comision": "Vs inflación anual del peso (~5-6%): Bitcoin históricamente ha preservado mejor el poder adquisitivo a largo plazo.",
-          "apps_recomendadas": ["Bitso", "Buda.com", "Muun Wallet", "Ledger/Trezor para montos grandes"]
+          "apps_recomendadas": [
+            "Bitso",
+            "Buda.com",
+            "Muun Wallet",
+            "Ledger/Trezor para montos grandes"
+          ]
         }
       },
       {
@@ -379,7 +556,11 @@
           "caso_uso": "Remesas Lightning + ahorro para clase trabajadora",
           "descripcion": "Para millones de familias en municipios como Nezahualcóyotl, Ecatepec y Chalco, las remesas son ingreso esencial. Lightning permite recibir dinero de EE.UU. sin necesitar cuenta bancaria ni pagar comisiones de intermediario.",
           "ahorro_comision": "Una familia que recibe $500/mes ahorraría ~$300-600 USD al año vs servicios tradicionales de remesas.",
-          "apps_recomendadas": ["Strike", "Muun Wallet", "Bitso"]
+          "apps_recomendadas": [
+            "Strike",
+            "Muun Wallet",
+            "Bitso"
+          ]
         }
       },
       {
@@ -397,7 +578,11 @@
           "caso_uso": "Lightning + Fedimint para comunidades indígenas",
           "descripcion": "Las cooperativas de café y cacao en Chiapas pueden usar Bitcoin para pagos internacionales directos con compradores en Europa o EE.UU., eliminando la cadena de intermediarios que les quita el 20-40% del precio final.",
           "ahorro_comision": "Productores de café podrían recuperar 20-40% de margen perdido en intermediación financiera.",
-          "apps_recomendadas": ["Fedimint (cooperativas)", "BTCPay Server (comercio directo)", "Strike"]
+          "apps_recomendadas": [
+            "Fedimint (cooperativas)",
+            "BTCPay Server (comercio directo)",
+            "Strike"
+          ]
         }
       },
       {
@@ -415,7 +600,11 @@
           "caso_uso": "Fedimint para comunidades sin banco",
           "descripcion": "Fedimint permite que una comunidad (un pueblo, una cooperativa) administre colectivamente una billetera Bitcoin custodiada por miembros de confianza locales — sin necesitar banco ni internet permanente. Ideal para comunidades indígenas de Oaxaca.",
           "ahorro_comision": "Hasta 100% de ahorro en comisiones para transacciones internas de la comunidad.",
-          "apps_recomendadas": ["Fedimint (comunidades)", "Blink Wallet", "Strike (envío desde EE.UU.)"]
+          "apps_recomendadas": [
+            "Fedimint (comunidades)",
+            "Blink Wallet",
+            "Strike (envío desde EE.UU.)"
+          ]
         }
       },
       {
@@ -433,7 +622,11 @@
           "caso_uso": "Lightning para remesas NYC → Mixteca",
           "descripcion": "Un poblanyork en Brooklyn puede enviar $300 a su mamá en Acatlán de Osorio en segundos vía Lightning, sin pagar los $15-25 que cobra Western Union por envío. Para las comunidades mixtecas sin banco, una wallet en el teléfono es su primera cuenta financiera.",
           "ahorro_comision": "Una familia que recibe $500/mes ahorraría ~$300-480 al año usando Lightning vs servicios tradicionales.",
-          "apps_recomendadas": ["Strike (envío desde EE.UU.)", "Muun Wallet", "Fedimint (comunidades mixtecas)"]
+          "apps_recomendadas": [
+            "Strike (envío desde EE.UU.)",
+            "Muun Wallet",
+            "Fedimint (comunidades mixtecas)"
+          ]
         }
       },
       {
@@ -451,7 +644,11 @@
           "caso_uso": "Bitcoin como red resiliente en zonas de crisis",
           "descripcion": "El huracán Otis demostró la fragilidad de la infraestructura bancaria física. Una wallet de Bitcoin funciona con cualquier conexión a internet — incluso satelital (Starlink). En zonas de conflicto o desastre, Bitcoin es el único dinero que no requiere sucursal.",
           "ahorro_comision": "Crítico en emergencias: acceso inmediato a fondos sin depender de infraestructura física.",
-          "apps_recomendadas": ["Muun Wallet (on-chain + Lightning)", "Phoenix Wallet", "Green Wallet (Blockstream)"]
+          "apps_recomendadas": [
+            "Muun Wallet (on-chain + Lightning)",
+            "Phoenix Wallet",
+            "Green Wallet (Blockstream)"
+          ]
         }
       },
       {
@@ -469,7 +666,11 @@
           "caso_uso": "Remesas Lightning + pagos portuarios sin intermediarios",
           "descripcion": "Para familias del norte veracruzano con parientes en Texas y Florida, Lightning elimina las comisiones de envío. Para las empresas de comercio internacional que operan en el puerto, Bitcoin puede acelerar pagos con contrapartes en Europa y Asia de días a minutos.",
           "ahorro_comision": "Una familia que recibe $400/mes ahorraría ~$250 al año usando Lightning vs servicios tradicionales.",
-          "apps_recomendadas": ["Strike", "Muun Wallet", "BTCPay Server"]
+          "apps_recomendadas": [
+            "Strike",
+            "Muun Wallet",
+            "BTCPay Server"
+          ]
         }
       },
       {
@@ -487,7 +688,11 @@
           "caso_uso": "Remesas Lightning + inclusión en la Huasteca",
           "descripcion": "Para las familias potosinas con migrantes en Texas, Lightning elimina la comisión de 5-8% de los servicios de envío. En la Huasteca, donde no hay sucursales bancarias en decenas de kilómetros, una wallet en el teléfono es más accesible que cualquier banco.",
           "ahorro_comision": "Una familia que recibe $500/mes ahorraría ~$360 al año usando Lightning vs servicios tradicionales.",
-          "apps_recomendadas": ["Strike (envío desde EE.UU.)", "Muun Wallet", "Bitso"]
+          "apps_recomendadas": [
+            "Strike (envío desde EE.UU.)",
+            "Muun Wallet",
+            "Bitso"
+          ]
         }
       },
       {
@@ -505,7 +710,11 @@
           "caso_uso": "De la plata histórica al Bitcoin digital",
           "descripcion": "Zacatecas fue el mayor productor de plata del mundo durante 300 años — el dinero más valioso de su época. Hoy, sus emigrantes en EE.UU. pueden enviar el equivalente digital de esa riqueza de vuelta a sus familias por fracciones de centavo vía Lightning.",
           "ahorro_comision": "Equivalente a Michoacán: $300-600 USD al año en ahorro de comisiones para familia promedio.",
-          "apps_recomendadas": ["Strike", "Muun Wallet", "Bitso"]
+          "apps_recomendadas": [
+            "Strike",
+            "Muun Wallet",
+            "Bitso"
+          ]
         }
       },
       {
@@ -523,7 +732,11 @@
           "caso_uso": "Fedimint para comunidades otomíes + remesas Lightning",
           "descripcion": "Las comunidades otomíes del Mezquital tienen estructuras comunitarias fuertes que se adaptan perfectamente a Fedimint: custodia compartida de Bitcoin administrada por miembros de confianza del pueblo. Para los migrantes en Florida, Lightning reemplaza los giros postales.",
           "ahorro_comision": "Una familia que recibe $450/mes ahorraría ~$300 al año usando Lightning vs servicios de remesas tradicionales.",
-          "apps_recomendadas": ["Fedimint (comunidades)", "Strike (envío desde EE.UU.)", "Blink Wallet"]
+          "apps_recomendadas": [
+            "Fedimint (comunidades)",
+            "Strike (envío desde EE.UU.)",
+            "Blink Wallet"
+          ]
         }
       },
       {
@@ -541,7 +754,11 @@
           "caso_uso": "Pagos transfronterizos + inclusión rural rarámuri",
           "descripcion": "Para las maquiladoras de Juárez que liquidan pagos con proveedores en EE.UU., Lightning elimina el lag de 2-3 días hábiles de transferencias bancarias. En la Sierra Tarahumara, Fedimint puede dar acceso financiero básico a comunidades rarámuris sin sucursal bancaria a kilómetros.",
           "ahorro_comision": "Una maquiladora mediana con $500K en pagos transfronterizos anuales: ahorro de $2,500-10,000 en comisiones SWIFT.",
-          "apps_recomendadas": ["Strike", "BTCPay Server", "Fedimint (Sierra Tarahumara)"]
+          "apps_recomendadas": [
+            "Strike",
+            "BTCPay Server",
+            "Fedimint (Sierra Tarahumara)"
+          ]
         }
       },
       {
@@ -559,7 +776,11 @@
           "caso_uso": "Dinero sin fricción de tipo de cambio",
           "descripcion": "Para los miles de trabajadores binacionales que cruzan diario entre Tijuana y San Diego, Bitcoin elimina la necesidad de convertir dólares a pesos pagando spread en casas de cambio. Lightning funciona igual en ambos lados de la frontera, sin comisión cambiaria.",
           "ahorro_comision": "Un trabajador binacional que convierte $2,000 USD/mes pierde ~$40-80 en spread cambiario. Con Bitcoin: $0.",
-          "apps_recomendadas": ["Strike", "Blink Wallet", "Bitso"]
+          "apps_recomendadas": [
+            "Strike",
+            "Blink Wallet",
+            "Bitso"
+          ]
         }
       },
       {
@@ -577,7 +798,11 @@
           "caso_uso": "Pagos B2B transfronterizos México-EE.UU.",
           "descripcion": "Las empresas regiomontanas que operan con proveedores y clientes en Texas pagan comisiones significativas en transferencias SWIFT y esperan 2-3 días hábiles para liquidar. Bitcoin y Lightning permiten liquidaciones instantáneas sin bancos corresponsales — especialmente relevante para la cadena de suministro automotriz y siderúrgica.",
           "ahorro_comision": "SWIFT internacional: 0.5-2% + $25-50 fijo por transferencia. Lightning: <$0.01. Para una empresa con $1M en pagos anuales: ahorro de $5,000-20,000 USD.",
-          "apps_recomendadas": ["BTCPay Server", "Strike for Business", "Bitso Business"]
+          "apps_recomendadas": [
+            "BTCPay Server",
+            "Strike for Business",
+            "Bitso Business"
+          ]
         }
       },
       {
@@ -595,7 +820,11 @@
           "caso_uso": "Pagos B2B industriales + remesas en Sierra Gorda",
           "descripcion": "Las empresas aeroespaciales y automotrices de Querétaro liquidan pagos internacionales con matrices en Francia, Canadá y EE.UU. Lightning puede acelerar estos pagos de días a segundos. En la Sierra Gorda, las familias con migrantes en EE.UU. pueden recibir remesas sin viajar horas a la ciudad.",
           "ahorro_comision": "Para una empresa con pagos internacionales de $500K/año: ahorro de $2,500-10,000. Para familias con remesas: ~$300/año.",
-          "apps_recomendadas": ["BTCPay Server", "Strike", "Bitso"]
+          "apps_recomendadas": [
+            "BTCPay Server",
+            "Strike",
+            "Bitso"
+          ]
         }
       },
       {
@@ -613,7 +842,11 @@
           "caso_uso": "Lightning para remesas desde Chicago",
           "descripcion": "Un duranguense en Chicago puede enviar dinero a su familia en Santiago Papasquiaro en segundos vía Lightning, sin hacer fila en Western Union ni pagar 6-8% de comisión. La familia recibe pesos directamente o ahorra en sats.",
           "ahorro_comision": "Una familia que recibe $500/mes ahorraría ~$360 al año usando Lightning vs Western Union (comisión promedio de 6%).",
-          "apps_recomendadas": ["Strike (envío desde EE.UU.)", "Muun Wallet", "Bitso"]
+          "apps_recomendadas": [
+            "Strike (envío desde EE.UU.)",
+            "Muun Wallet",
+            "Bitso"
+          ]
         }
       },
       {
@@ -631,7 +864,11 @@
           "caso_uso": "Remesas Lightning para pueblos rurales",
           "descripcion": "Para las familias morelenses que dependen de remesas desde EE.UU., Lightning elimina el viaje a la cabecera municipal para cobrar en Elektra o Western Union. Con un teléfono básico con datos, pueden recibir dinero en segundos en su propio pueblo.",
           "ahorro_comision": "Una familia que recibe $400/mes ahorraría ~$250 al año usando Lightning vs giros tradicionales.",
-          "apps_recomendadas": ["Strike (envío desde EE.UU.)", "Muun Wallet", "Blink Wallet"]
+          "apps_recomendadas": [
+            "Strike (envío desde EE.UU.)",
+            "Muun Wallet",
+            "Blink Wallet"
+          ]
         }
       },
       {
@@ -649,7 +886,11 @@
           "caso_uso": "Pagos transfronterizos instantáneos",
           "descripcion": "Con el 40% del comercio terrestre México-EE.UU. pasando por Tamaulipas, las empresas del estado necesitan liquidar pagos transfronterizos constantemente. Lightning elimina los 2-3 días de espera y las comisiones SWIFT. Para los miles de trabajadores que cruzan diario a Texas, Bitcoin es dinero sin frontera.",
           "ahorro_comision": "Una empresa logística en Nuevo Laredo con $1M en pagos transfronterizos: ahorro de $5,000-20,000 anuales en comisiones bancarias.",
-          "apps_recomendadas": ["Strike", "BTCPay Server", "Bitso Business"]
+          "apps_recomendadas": [
+            "Strike",
+            "BTCPay Server",
+            "Bitso Business"
+          ]
         }
       },
       {
@@ -667,7 +908,11 @@
           "caso_uso": "Ahorro contra inflación + remesas",
           "descripcion": "Para los trabajadores de la industria automotriz y textil, Bitcoin ofrece una forma de ahorro que no se devalúa con el peso. Para las familias con parientes en EE.UU., Lightning reduce las comisiones de remesas de 5-8% a prácticamente cero.",
           "ahorro_comision": "Una familia que recibe $400/mes ahorraría ~$240 al año usando Lightning vs servicios tradicionales de envío.",
-          "apps_recomendadas": ["Strike", "Muun Wallet", "Bitso"]
+          "apps_recomendadas": [
+            "Strike",
+            "Muun Wallet",
+            "Bitso"
+          ]
         }
       },
       {
@@ -685,7 +930,11 @@
           "caso_uso": "Pagos B2B industriales transfronterizos",
           "descripcion": "Las empresas siderúrgicas y automotrices de Coahuila operan con cadenas de suministro que cruzan la frontera constantemente. Bitcoin y Lightning permiten liquidar pagos entre plantas en México y proveedores en Texas sin esperar 3 días hábiles ni pagar comisiones SWIFT.",
           "ahorro_comision": "Para una empresa con $2M en pagos transfronterizos anuales: ahorro estimado de $10,000-40,000 en comisiones bancarias.",
-          "apps_recomendadas": ["BTCPay Server", "Strike for Business", "Bitso Business"]
+          "apps_recomendadas": [
+            "BTCPay Server",
+            "Strike for Business",
+            "Bitso Business"
+          ]
         }
       },
       {
@@ -703,7 +952,11 @@
           "caso_uso": "Pagos de exportación agrícola + turismo",
           "descripcion": "Los agricultores sinaloenses que exportan a EE.UU. pueden recibir pagos vía Bitcoin sin esperar los 5-7 días que tarda una transferencia bancaria internacional. En Mazatlán, Lightning permite pagos turísticos sin comisión de cambio para visitantes internacionales.",
           "ahorro_comision": "Un exportador agrícola mediano con $200K en ventas anuales a EE.UU.: ahorro de $1,000-4,000 en comisiones bancarias.",
-          "apps_recomendadas": ["BTCPay Server", "Strike", "Blink Wallet"]
+          "apps_recomendadas": [
+            "BTCPay Server",
+            "Strike",
+            "Blink Wallet"
+          ]
         }
       },
       {
@@ -721,7 +974,11 @@
           "caso_uso": "Pagos turísticos Lightning + inclusión en la Sierra",
           "descripcion": "En Sayulita, donde los turistas pagan en dólares con tarjeta (3-5% comisión), Lightning permite pagos instantáneos sin intermediario. En la Sierra, Fedimint podría dar acceso financiero básico a comunidades wixáritari que no tienen banco a menos de 4 horas de camino.",
           "ahorro_comision": "Un negocio turístico en Sayulita que procesa $20,000 USD/mes en tarjetas extranjeras pagaría ~$600-1,000 en comisiones. Con Lightning: casi cero.",
-          "apps_recomendadas": ["Blink Wallet", "Breez", "Fedimint (comunidades wixáritari)"]
+          "apps_recomendadas": [
+            "Blink Wallet",
+            "Breez",
+            "Fedimint (comunidades wixáritari)"
+          ]
         }
       },
       {
@@ -739,7 +996,11 @@
           "caso_uso": "Dinero neutral para la frontera Arizona-Sonora",
           "descripcion": "Los rancheros y comerciantes sonorenses que operan en ambos lados de la frontera necesitan convertir entre pesos y dólares constantemente. Bitcoin funciona igual en Nogales, Sonora que en Nogales, Arizona — sin spread cambiario ni horario bancario.",
           "ahorro_comision": "Un comerciante fronterizo que convierte $5,000 USD/mes pierde ~$100-200 en spread. Con Bitcoin: $0.",
-          "apps_recomendadas": ["Strike", "Blink Wallet", "Bitso"]
+          "apps_recomendadas": [
+            "Strike",
+            "Blink Wallet",
+            "Bitso"
+          ]
         }
       },
       {
@@ -757,7 +1018,11 @@
           "caso_uso": "Pagos de comercio internacional sin intermediarios",
           "descripcion": "Las empresas de logística y comercio exterior que operan en Manzanillo mueven millones de dólares en pagos internacionales con Asia. Bitcoin puede reducir tiempos de liquidación de días a minutos y eliminar la cadena de bancos corresponsales.",
           "ahorro_comision": "En comercio exterior, las comisiones bancarias internacionales pueden sumar 1-3% del valor de la carga. Para un importador mediano: miles de dólares al año.",
-          "apps_recomendadas": ["BTCPay Server", "Strike for Business", "Bitso"]
+          "apps_recomendadas": [
+            "BTCPay Server",
+            "Strike for Business",
+            "Bitso"
+          ]
         }
       },
       {
@@ -775,7 +1040,11 @@
           "caso_uso": "Pagos para nómadas digitales + inclusión maya",
           "descripcion": "Mérida atrae cada vez más a trabajadores remotos internacionales que cobran en dólares o euros. Lightning les permite pagar en negocios locales sin comisiones de cambio. En las comunidades mayas del interior, Fedimint puede funcionar con las estructuras comunitarias existentes para dar acceso financiero sin banco.",
           "ahorro_comision": "Un nómada digital que gasta $2,000 USD/mes en Mérida ahorra ~$60-100 mensuales en comisiones de cambio usando Bitcoin vs tarjeta extranjera.",
-          "apps_recomendadas": ["Blink Wallet", "Breez", "Fedimint (comunidades mayas)"]
+          "apps_recomendadas": [
+            "Blink Wallet",
+            "Breez",
+            "Fedimint (comunidades mayas)"
+          ]
         }
       },
       {
@@ -793,7 +1062,11 @@
           "caso_uso": "Remesas Lightning para familias sin banco",
           "descripcion": "Para una familia tlaxcalteca que recibe $300/mes desde Connecticut, la comisión de Western Union ($15-25 por envío) representa un porcentaje enorme. Lightning reduce eso a centavos. Con un teléfono básico, la familia puede recibir sin necesitar cuenta bancaria.",
           "ahorro_comision": "Una familia que recibe $300/mes ahorraría ~$200-300 al año usando Lightning vs giros tradicionales.",
-          "apps_recomendadas": ["Strike (envío desde EE.UU.)", "Blink Wallet", "Muun Wallet"]
+          "apps_recomendadas": [
+            "Strike (envío desde EE.UU.)",
+            "Blink Wallet",
+            "Muun Wallet"
+          ]
         }
       },
       {
@@ -811,7 +1084,11 @@
           "caso_uso": "Pagos Lightning para turistas internacionales",
           "descripcion": "En Tulum ya existen negocios que aceptan Bitcoin. Para los millones de turistas que pagan con tarjeta extranjera (3-5% comisión por conversión), Lightning ofrece pago instantáneo sin intermediarios. Para los negocios locales, elimina la dependencia de procesadores de tarjeta que tardan días en depositar.",
           "ahorro_comision": "Un hotel boutique en Tulum que procesa $100,000 USD/mes en tarjetas extranjeras paga ~$3,000-5,000 en comisiones. Con Lightning: fracción mínima.",
-          "apps_recomendadas": ["Blink Wallet", "BTCPay Server", "Breez"]
+          "apps_recomendadas": [
+            "Blink Wallet",
+            "BTCPay Server",
+            "Breez"
+          ]
         }
       },
       {
@@ -828,7 +1105,11 @@
         "bitcoin_paralelo": {
           "caso_uso": "Ahorro resiliente ante desastres naturales",
           "descripcion": "Tabasco sufre inundaciones masivas cada pocos años (2007, 2020) que destruyen cajeros, sucursales y documentos bancarios. Bitcoin, almacenado en una wallet digital o incluso memorizado como frase semilla, no se puede inundar. Es el único ahorro que sobrevive intacto a un desastre natural.",
-          "apps_recomendadas": ["Muun Wallet", "Phoenix Wallet", "Bitso"]
+          "apps_recomendadas": [
+            "Muun Wallet",
+            "Phoenix Wallet",
+            "Bitso"
+          ]
         }
       },
       {
@@ -845,7 +1126,11 @@
         "bitcoin_paralelo": {
           "caso_uso": "Reserva de valor ante declive petrolero",
           "descripcion": "Mientras la economía campechana depende de un recurso que se agota, Bitcoin ofrece una reserva de valor que no está ligada al petróleo ni a decisiones del gobierno federal. Para pescadores y pequeños comerciantes sin cuenta bancaria, una wallet Lightning es más accesible que una sucursal.",
-          "apps_recomendadas": ["Muun Wallet", "Blink Wallet", "Bitso"]
+          "apps_recomendadas": [
+            "Muun Wallet",
+            "Blink Wallet",
+            "Bitso"
+          ]
         }
       },
       {
@@ -863,39 +1148,89 @@
           "caso_uso": "Pagos Lightning para turismo internacional",
           "descripcion": "Los turistas estadounidenses y canadienses en Los Cabos pagan comisiones de 3-5% en cada transacción con tarjeta por conversión de moneda. Con Lightning, un restaurante puede aceptar pago instantáneo sin comisión cambiaria ni procesador de tarjeta.",
           "ahorro_comision": "Un restaurante que procesa $50,000 USD/mes en tarjetas extranjeras paga ~$1,500-2,500 en comisiones. Con Lightning: fracción de eso.",
-          "apps_recomendadas": ["Blink Wallet", "BTCPay Server", "Breez"]
+          "apps_recomendadas": [
+            "Blink Wallet",
+            "BTCPay Server",
+            "Breez"
+          ]
         }
       }
     ]
   },
-
   "bancarizacion_nacional": {
     "promedio": 49,
     "fuente": "ENIF 2021 — INEGI / CNBV",
     "estados": {
-      "MX-AGU": 55, "MX-BCN": 58, "MX-BCS": 52, "MX-CAM": 44,
-      "MX-CHP": 30, "MX-CHH": 54, "MX-CMX": 72, "MX-COA": 60,
-      "MX-COL": 50, "MX-DUR": 48, "MX-GUA": 45, "MX-GRO": 33,
-      "MX-HID": 43, "MX-JAL": 60, "MX-MEX": 48, "MX-MIC": 38,
-      "MX-MOR": 47, "MX-NAY": 46, "MX-NLE": 65, "MX-OAX": 35,
-      "MX-PUE": 44, "MX-QUE": 56, "MX-ROO": 50, "MX-SLP": 47,
-      "MX-SIN": 49, "MX-SON": 55, "MX-TAB": 42, "MX-TAM": 56,
-      "MX-TLA": 43, "MX-VER": 40, "MX-YUC": 50, "MX-ZAC": 42
+      "MX-AGU": 55,
+      "MX-BCN": 58,
+      "MX-BCS": 52,
+      "MX-CAM": 44,
+      "MX-CHP": 30,
+      "MX-CHH": 54,
+      "MX-CMX": 72,
+      "MX-COA": 60,
+      "MX-COL": 50,
+      "MX-DUR": 48,
+      "MX-GUA": 45,
+      "MX-GRO": 33,
+      "MX-HID": 43,
+      "MX-JAL": 60,
+      "MX-MEX": 48,
+      "MX-MIC": 38,
+      "MX-MOR": 47,
+      "MX-NAY": 46,
+      "MX-NLE": 65,
+      "MX-OAX": 35,
+      "MX-PUE": 44,
+      "MX-QUE": 56,
+      "MX-ROO": 50,
+      "MX-SLP": 47,
+      "MX-SIN": 49,
+      "MX-SON": 55,
+      "MX-TAB": 42,
+      "MX-TAM": 56,
+      "MX-TLA": 43,
+      "MX-VER": 40,
+      "MX-YUC": 50,
+      "MX-ZAC": 42
     }
   },
-
   "remesas_2024": {
     "total_usd_millones": 64746,
     "fuente": "Banco de México — Cuadro CA79 (2024)",
     "estados": {
-      "MX-MIC": 5647, "MX-GUA": 5645, "MX-JAL": 5503, "MX-CMX": 4685,
-      "MX-MEX": 4602, "MX-CHP": 4168, "MX-OAX": 3434, "MX-PUE": 3367,
-      "MX-GRO": 3286, "MX-VER": 2603, "MX-SLP": 2083, "MX-ZAC": 1907,
-      "MX-HID": 1784, "MX-CHH": 1478, "MX-BCN": 1447, "MX-NLE": 1355,
-      "MX-QUE": 1277, "MX-DUR": 1371, "MX-MOR": 1144, "MX-TAM": 1017,
-      "MX-AGU": 958, "MX-COA": 951, "MX-SIN": 916, "MX-NAY": 858,
-      "MX-SON": 845, "MX-COL": 455, "MX-YUC": 454, "MX-TLA": 412,
-      "MX-ROO": 396, "MX-TAB": 382, "MX-CAM": 169, "MX-BCS": 150
+      "MX-MIC": 5647,
+      "MX-GUA": 5645,
+      "MX-JAL": 5503,
+      "MX-CMX": 4685,
+      "MX-MEX": 4602,
+      "MX-CHP": 4168,
+      "MX-OAX": 3434,
+      "MX-PUE": 3367,
+      "MX-GRO": 3286,
+      "MX-VER": 2603,
+      "MX-SLP": 2083,
+      "MX-ZAC": 1907,
+      "MX-HID": 1784,
+      "MX-CHH": 1478,
+      "MX-BCN": 1447,
+      "MX-NLE": 1355,
+      "MX-QUE": 1277,
+      "MX-DUR": 1371,
+      "MX-MOR": 1144,
+      "MX-TAM": 1017,
+      "MX-AGU": 958,
+      "MX-COA": 951,
+      "MX-SIN": 916,
+      "MX-NAY": 858,
+      "MX-SON": 845,
+      "MX-COL": 455,
+      "MX-YUC": 454,
+      "MX-TLA": 412,
+      "MX-ROO": 396,
+      "MX-TAB": 382,
+      "MX-CAM": 169,
+      "MX-BCS": 150
     }
   }
 }
