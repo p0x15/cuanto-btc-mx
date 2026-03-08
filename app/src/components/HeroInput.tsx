@@ -8,6 +8,8 @@ function Skel({ w, h }: { w: string; h: string }) {
 import { calcSats, exchanges } from "@/data/exchanges";
 import { getPriceForExchange, useLivePrices } from "@/hooks/useLivePrices";
 import { satsToBtc } from "@/lib/formatBtc";
+import { ExchangeLogo } from "@/components/ExchangeLogo";
+import { SatSymbol } from "@/components/SatSymbol";
 
 interface HeroInputProps {
   mxn: number;
@@ -19,6 +21,7 @@ const QUICK_AMOUNTS = [500, 1_000, 5_000, 10_000, 50_000];
 export function HeroInput({ mxn, onChange }: HeroInputProps) {
   const [isFocused, setIsFocused] = useState(false);
   const [showCompact, setShowCompact] = useState(false);
+  const [flipped, setFlipped] = useState(false);
   const [rawDigits, setRawDigits] = useState("1000");
 
   const panelAnchorRef = useRef<HTMLDivElement>(null);
@@ -36,10 +39,15 @@ export function HeroInput({ mxn, onChange }: HeroInputProps) {
     const { ask } = getPriceForExchange(prices, ex.id, spot);
     return { ...ex, askPrice: ask };
   });
-  const best = [...enriched].sort(
+  const sorted = [...enriched].sort(
     (a, b) => calcSats(amount, b.askPrice, b.feePct) - calcSats(amount, a.askPrice, a.feePct)
-  )[0];
+  );
+  const best = sorted[0];
+  const worst = sorted[sorted.length - 1];
   const bestSats = best ? calcSats(amount, best.askPrice, best.feePct) : 0;
+  const worstSats = worst ? calcSats(amount, worst.askPrice, worst.feePct) : 0;
+  const satsLost = bestSats - worstSats;
+  const mxnLost = Math.round((satsLost / 100_000_000) * spot);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const digits = e.target.value.replace(/[^0-9]/g, "").slice(0, 8);
@@ -135,10 +143,15 @@ export function HeroInput({ mxn, onChange }: HeroInputProps) {
     };
   }, []);
 
+  useEffect(() => { setFlipped(false); }, [best?.id]);
+
   void error;
 
   return (
-    <section className="w-full border-b border-[var(--border)] bg-[var(--bg)]">
+    <section
+      className="w-full border-b border-[var(--border)] bg-[var(--bg)]"
+      style={{ background: "radial-gradient(ellipse at 18% 60%, rgba(247,147,26,0.055) 0%, var(--bg) 60%)" }}
+    >
       <div className="mx-auto max-w-[1400px] px-4 pb-7 pt-9 md:px-16 md:pb-8 md:pt-14">
         <div className="mb-6 flex items-center gap-2.5 font-ui-mono text-[10px] font-medium tracking-[0.2em] text-[var(--fg-muted)] md:mb-7">
           <span className="h-px w-6 bg-[#F7931A]" />
@@ -151,8 +164,8 @@ export function HeroInput({ mxn, onChange }: HeroInputProps) {
           Bitcoin en México?
         </h1>
 
-        <div className="mt-6 flex flex-col gap-5 lg:mt-6 lg:flex-row lg:gap-0">
-          <div className="flex-1">
+        <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-12">
+          <div className="flex-1 min-w-0">
             <p className="max-w-[470px] text-[16px] font-normal leading-relaxed tracking-[-0.01em] text-[var(--fg-muted)] md:text-[17px]">
               Compara precio, fee y características
               <br />
@@ -231,7 +244,12 @@ export function HeroInput({ mxn, onChange }: HeroInputProps) {
                   <div>
                     <div
                       onClick={() => inputRef.current?.focus()}
-                      className="w-full cursor-text rounded-[14px] border border-[#F7931A] bg-[var(--bg-raised)] px-4 py-3.5 font-ui-mono md:px-5 md:py-3.5"
+                      className="w-full cursor-text rounded-[14px] border border-[#F7931A] bg-[var(--bg-raised)] px-4 py-3.5 font-ui-mono md:px-5 md:py-3.5 transition-shadow duration-200"
+                      style={{
+                        boxShadow: isFocused
+                          ? "0 0 0 3px rgba(247,147,26,0.18), inset 0 1px 2px rgba(255,255,255,0.05)"
+                          : "inset 0 1px 2px rgba(255,255,255,0.05), 0 2px 4px rgba(0,0,0,0.35), 0 6px 16px rgba(0,0,0,0.2)"
+                      }}
                     >
                       <p className="font-ui-mono text-[10px] font-medium tracking-[0.2em] text-[var(--fg-muted)]">
                         INGRESA EL MONTO EN PESOS
@@ -272,43 +290,6 @@ export function HeroInput({ mxn, onChange }: HeroInputProps) {
                       })}
                     </div>
 
-                    {/* Mobile best exchange card — shown below quick amounts, hidden on lg+ (aside handles it there) */}
-                    {best && (
-                      <div className="lg:hidden mt-4 rounded-xl border border-[var(--border-winner-card)] bg-[var(--bg-winner-card)] px-4 py-3.5">
-                        <div className="flex items-center justify-between gap-3">
-                          <div className="flex items-center gap-2">
-                            <span className="rounded-md border border-[#F7931A30] bg-[#F7931A1A] px-1.5 py-0.5 font-ui-mono text-[9px] font-bold text-[#F7931A]">★</span>
-                            <span className="font-ui-mono text-[10px] font-semibold tracking-[0.12em] text-[var(--fg-muted)]">MEJOR OPCIÓN HOY</span>
-                          </div>
-                          <span className="font-ui-mono text-[10px] text-[var(--fg-faint)]">{best.name}</span>
-                        </div>
-                        <div className="mt-2.5 flex items-end justify-between gap-2">
-                          <div>
-                            {loading
-                              ? <div className="mb-1"><Skel w="w-28" h="h-8" /></div>
-                              : <p className="font-ui-mono text-[32px] font-bold leading-none tracking-[-0.03em] text-[#F7931A]">
-                                  {bestSats.toLocaleString("es-MX")}
-                                </p>
-                            }
-                            {loading
-                              ? <Skel w="w-20" h="h-3" />
-                              : <p className="font-ui-mono text-[10px] text-[var(--fg-muted)]">
-                                  {satsToBtc(bestSats)} BTC
-                                </p>
-                            }
-                            <p className="mt-1 font-ui-mono text-[11px] text-[var(--fg-muted)]">
-                              satoshis por ${amount.toLocaleString("es-MX")} MXN
-                            </p>
-                          </div>
-                          <div className="flex flex-col items-end gap-1 font-ui-mono">
-                            <p className="text-[10px] tracking-[0.15em] text-[var(--fg-muted)]">FEE</p>
-                            <p className="text-[16px] font-bold text-[var(--accent-green)]">
-                              {best.feePct % 1 === 0 ? best.feePct.toFixed(0) : String(best.feePct)}%
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    )}
                   </div>
                 )}
               </div>
@@ -316,48 +297,94 @@ export function HeroInput({ mxn, onChange }: HeroInputProps) {
           </div>
 
           {best && (
-            <aside className="hidden w-[300px] lg:-mt-10 lg:block">
-              <div className="rounded-xl border border-[var(--border-winner-card)] bg-[var(--bg-winner-card)] p-5">
-                <div className="flex items-center gap-2">
-                  <span className="rounded-md border border-[#F7931A30] bg-[#F7931A1A] px-1.5 py-0.5 font-ui-mono text-[10px] font-bold text-[#F7931A]">
-                    ★
-                  </span>
-                  <span className="font-ui-mono text-[10px] font-semibold tracking-[0.15em] text-[var(--fg-muted)]">
-                    MEJOR OPCIÓN HOY
-                  </span>
+            <aside className="hidden w-[300px] shrink-0 lg:block" style={{ perspective: "1000px" }}>
+              {/* Flip container */}
+              <div
+                onClick={() => setFlipped((f) => !f)}
+                className="relative cursor-pointer rounded-xl"
+                style={{
+                  height: "200px",
+                  transformStyle: "preserve-3d",
+                  transition: "transform 0.6s cubic-bezier(0.4,0,0.2,1)",
+                  transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
+                }}
+              >
+                {/* ── FRONT FACE ─────────────────────────────────── */}
+                <div
+                  className="absolute inset-0 rounded-xl border border-[var(--border-winner-card)] bg-[var(--bg-winner-card)] p-5 flex flex-col justify-between"
+                  style={{
+                    backfaceVisibility: "hidden",
+                    WebkitBackfaceVisibility: "hidden",
+                    boxShadow: "inset 0 1px 2px rgba(255,255,255,0.07), 0 2px 4px rgba(0,0,0,0.4), 0 6px 16px rgba(0,0,0,0.25)",
+                  }}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="rounded-md border border-[#F7931A30] bg-[#F7931A1A] px-1.5 py-0.5 font-ui-mono text-[10px] font-bold text-[#F7931A]">★</span>
+                    <span className="font-ui-mono text-[10px] font-semibold tracking-[0.15em] text-[var(--fg-muted)]">MEJOR OPCIÓN HOY</span>
+                  </div>
+
+                  <div className="flex items-center gap-3.5">
+                    <ExchangeLogo exchange={best} size={56} rounded="rounded-xl" />
+                    <div>
+                      <p className="text-[22px] font-bold leading-tight text-[var(--fg)]">{best.name}</p>
+                      {loading
+                        ? <Skel w="w-28" h="h-4" />
+                        : <p className="font-ui-mono text-[13px] font-semibold text-[#F7931A]">
+                            {bestSats.toLocaleString("es-MX")} sats
+                          </p>
+                      }
+                    </div>
+                  </div>
+
+                  <p className="font-ui-mono text-[10px] text-[var(--fg-faint)] tracking-[0.08em]">
+                    ↓ toca para ver el análisis
+                  </p>
                 </div>
 
-                <p className="mt-3 text-[20px] font-bold text-[#F7931A]">{best.name}</p>
-                {loading
-                  ? <div className="mt-1.5"><Skel w="w-36" h="h-12" /></div>
-                  : <p className="mt-1.5 font-ui-mono text-[50px] font-bold leading-none tracking-[-0.03em] text-[var(--fg)]">
-                      {bestSats.toLocaleString("es-MX")}
-                    </p>
-                }
-                {loading
-                  ? <div className="mt-1"><Skel w="w-24" h="h-3" /></div>
-                  : <p className="mt-1 font-ui-mono text-[11px] text-[var(--fg-muted)]">
-                      {satsToBtc(bestSats)} BTC
-                    </p>
-                }
-                <p className="mt-0.5 font-ui-mono text-xs text-[var(--fg-muted)]">
-                  satoshis por ${amount.toLocaleString("es-MX")} MXN
-                </p>
+                {/* ── BACK FACE ──────────────────────────────────── */}
+                <div
+                  className="absolute inset-0 rounded-xl border border-[var(--border-winner-card)] bg-[var(--bg-winner-card)] p-5 flex flex-col justify-between"
+                  style={{
+                    backfaceVisibility: "hidden",
+                    WebkitBackfaceVisibility: "hidden",
+                    transform: "rotateY(180deg)",
+                    boxShadow: "inset 0 1px 2px rgba(255,255,255,0.07), 0 2px 4px rgba(0,0,0,0.4), 0 6px 16px rgba(0,0,0,0.25)",
+                  }}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="rounded-md border border-[#F7931A30] bg-[#F7931A1A] px-1.5 py-0.5 font-ui-mono text-[10px] font-bold text-[#F7931A]">★</span>
+                    <span className="font-ui-mono text-[10px] font-semibold tracking-[0.15em] text-[var(--fg-muted)]">MEJOR OPCIÓN HOY</span>
+                  </div>
 
-                <div className="mt-4 grid grid-cols-3 gap-2.5 border-t border-[var(--border-winner-divider)] pt-3.5 font-ui-mono">
                   <div>
-                    <p className="text-[9px] tracking-[0.18em] text-[var(--fg-muted)]">FEE</p>
-                    <p className="mt-1 text-[14px] font-bold text-[var(--accent-green)]">{best.feePct % 1 === 0 ? best.feePct.toFixed(0) : String(best.feePct)}%</p>
+                    {loading
+                      ? <Skel w="w-36" h="h-9" />
+                      : <div className="flex items-center gap-2">
+                          <SatSymbol size={28} className="text-[var(--fg-dim)] opacity-60 shrink-0 self-center" />
+                          <p
+                            className="font-ui-mono text-[40px] font-bold leading-none tracking-[-0.03em]"
+                            style={{
+                              background: "linear-gradient(to bottom, var(--fg) 20%, var(--fg-dim) 100%)",
+                              WebkitBackgroundClip: "text",
+                              WebkitTextFillColor: "transparent",
+                              backgroundClip: "text",
+                            }}
+                          >
+                            {bestSats.toLocaleString("es-MX")}
+                          </p>
+                        </div>
+                    }
+                    <p className="font-ui-mono text-[11px] text-[var(--fg-muted)] mt-0.5">{satsToBtc(bestSats)} BTC</p>
                   </div>
-                  <div>
-                    <p className="text-[9px] tracking-[0.18em] text-[var(--fg-muted)]">PRECIO BTC</p>
-                    <p className="mt-1 text-[14px] font-bold text-[var(--fg-dim)]">
-                      ${best.askPrice.toLocaleString("es-MX")}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-[9px] tracking-[0.18em] text-[var(--fg-muted)]">MÉTODO</p>
-                    <p className="mt-1 text-[14px] font-bold text-[var(--fg-dim)]">{best.spei ? "SPEI" : "P2P"}</p>
+
+                  <div className="border-t border-[var(--border-winner-divider)] pt-2.5">
+                    <p className="font-ui-mono text-[10px] text-[var(--fg-faint)]">Si eligieras el peor exchange hoy</p>
+                    {loading
+                      ? <Skel w="w-40" h="h-4" />
+                      : <p className="font-ui-mono text-[13px] font-bold text-[var(--accent-red,#e05252)] mt-1">
+                          ▼ {satsLost.toLocaleString("es-MX")} sats menos (~${mxnLost.toLocaleString("es-MX")} MXN)
+                        </p>
+                    }
                   </div>
                 </div>
               </div>

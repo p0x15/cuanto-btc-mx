@@ -83,6 +83,26 @@ export function HistoryMap() {
             }
           `}</style>
 
+          {/* Wiggle CTA — bottom center of the map, fades when panel opens */}
+          {activeEra && (
+            <div
+              className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 pointer-events-none"
+              style={{
+                opacity: panelOpen ? 0 : 1,
+                transition: "opacity 0.3s ease",
+                animation: "float-hint 3s ease-in-out infinite",
+              }}
+            >
+              <div className="flex items-center gap-2 rounded-full border border-[#F7931A]/50 bg-[var(--bg-raised)]/95 backdrop-blur-md px-3.5 py-1.5 shadow-md">
+                <span className="text-sm">👆</span>
+                <span className="text-[11px] font-semibold text-[var(--fg)]">
+                  Toca una zona para aprender más
+                </span>
+                <div className="w-1.5 h-1.5 rounded-full bg-[#F7931A] animate-pulse shrink-0" />
+              </div>
+            </div>
+          )}
+
           {/* Era description card — floating top-right, fades when state selected */}
           {activeEra && (
             <div
@@ -102,21 +122,7 @@ export function HistoryMap() {
                 </p>
               </div>
 
-              {/* Wiggle CTA — below the title card */}
-              <div className="flex justify-end mt-2">
-                <div
-                  style={{
-                    animation: "float-hint 3s ease-in-out infinite",
-                  }}
-                  className="flex items-center gap-2 rounded-full border border-[#F7931A]/50 bg-[var(--bg-raised)]/95 backdrop-blur-md px-3.5 py-1.5 shadow-md"
-                >
-                  <span className="text-sm">👆</span>
-                  <span className="text-[11px] font-semibold text-[var(--fg)]">
-                    Toca una zona para aprender más
-                  </span>
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#F7931A] animate-pulse shrink-0" />
-                </div>
-              </div>
+
             </div>
           )}
         </div>

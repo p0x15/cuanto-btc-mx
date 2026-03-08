@@ -6,6 +6,7 @@ import { ExchangeLogo } from "@/components/ExchangeLogo";
 import { SuggestExchangeModal } from "@/components/SuggestExchangeModal";
 import { getPriceForExchange, useLivePrices } from "@/hooks/useLivePrices";
 import { satsToBtc } from "@/lib/formatBtc";
+import { SatSymbol } from "@/components/SatSymbol";
 
 type SortKey = "sats" | "fee" | "price";
 
@@ -157,10 +158,11 @@ export function ExchangeTable({ mxn }: ExchangeTableProps) {
               href={ex.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`grid h-[72px] grid-cols-[48px_260px_220px_200px_80px_160px_minmax(170px,1fr)] items-center border-b ${winner
+              className={`grid h-[72px] grid-cols-[48px_260px_220px_200px_80px_160px_minmax(170px,1fr)] items-center border-b transition-shadow duration-150 ${winner
                 ? "border-[var(--border-winner)] bg-[var(--bg-winner)]"
-                : "border-[var(--bg-raised)] bg-[var(--bg)] hover:bg-[var(--bg-raised)]"
+                : "border-[var(--bg-raised)] bg-[var(--bg)] hover:bg-[var(--bg-raised)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.25)]"
                 }`}
+              style={winner ? { boxShadow: "inset 0 1px 2px rgba(255,255,255,0.05), 0 2px 4px rgba(0,0,0,0.35), 0 6px 16px rgba(0,0,0,0.2)" } : {}}
             >
               <div className="flex h-full items-center gap-2">
                 <span className={`h-full w-[3px] ${winner ? "bg-[#F7931A]" : "bg-transparent"}`} />
@@ -194,9 +196,10 @@ export function ExchangeTable({ mxn }: ExchangeTableProps) {
               <div className="flex flex-col gap-0.5">
                 {loading
                   ? <Skel w="w-28" h="h-7" />
-                  : <p className={`font-ui-mono text-[26px] font-bold leading-none tracking-[-0.03em] ${winner ? "text-[#F7931A]" : "text-[var(--fg-dim)]"}`}>
-                      {sats.toLocaleString("es-MX")}
-                    </p>
+                  : <div className={`flex items-center gap-1.5 font-ui-mono text-[26px] font-bold leading-none tracking-[-0.03em] ${winner ? "text-[#F7931A]" : "text-[var(--fg-dim)]"}`}>
+                      <SatSymbol size={18} className="opacity-50 shrink-0 self-center" />
+                      <span>{sats.toLocaleString("es-MX")}</span>
+                    </div>
                 }
                 {loading
                   ? <Skel w="w-20" h="h-3" />
@@ -282,7 +285,8 @@ export function ExchangeTable({ mxn }: ExchangeTableProps) {
                 href={ex.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`block border px-4 py-3.5 ${winner ? "border-[var(--border-winner-card)] bg-[var(--bg-winner)]" : "border-[var(--border)] bg-[var(--bg)]"}`}
+                className={`block border px-4 py-3.5 transition-shadow duration-150 ${winner ? "border-[var(--border-winner-card)] bg-[var(--bg-winner)]" : "border-[var(--border)] bg-[var(--bg)]"}`}
+              style={winner ? { boxShadow: "inset 0 1px 2px rgba(255,255,255,0.07), 0 2px 4px rgba(0,0,0,0.4), 0 6px 16px rgba(0,0,0,0.25)" } : {}}
               >
                 {/* Top row: rank + logo + name + badges */}
                 <div className="flex items-center gap-3 mb-2.5">
@@ -315,9 +319,10 @@ export function ExchangeTable({ mxn }: ExchangeTableProps) {
                   <div>
                     {loading
                       ? <Skel w="w-24" h="h-6" />
-                      : <p className={`font-ui-mono text-[24px] font-bold leading-none tracking-[-0.03em] ${winner ? "text-[#F7931A]" : "text-[var(--fg-dim)]"}`}>
-                          {sats.toLocaleString("es-MX")}
-                        </p>
+                      : <div className={`flex items-center gap-1.5 font-ui-mono text-[24px] font-bold leading-none tracking-[-0.03em] ${winner ? "text-[#F7931A]" : "text-[var(--fg-dim)]"}`}>
+                          <SatSymbol size={16} className="opacity-50 shrink-0 self-center" />
+                          <span>{sats.toLocaleString("es-MX")}</span>
+                        </div>
                     }
                     {loading
                       ? <Skel w="w-16" h="h-3" />

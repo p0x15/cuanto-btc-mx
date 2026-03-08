@@ -5,6 +5,7 @@ import Link from "next/link";
 import { calcSats, exchanges, Exchange, KycLevel } from "@/data/exchanges";
 import { satsToBtc } from "@/lib/formatBtc";
 import { ExchangeLogo } from "@/components/ExchangeLogo";
+import { SatSymbol } from "@/components/SatSymbol";
 import { getPriceForExchange, useLivePrices } from "@/hooks/useLivePrices";
 
 // ─── Question & answer types ──────────────────────────────────────────────────
@@ -577,6 +578,11 @@ function QuestionScreen({
                   ? "bg-[#F7931A] scale-[1.01]"
                   : "bg-[var(--bg-elevated)] hover:bg-[var(--bg-high)] disabled:opacity-40"
               }`}
+              style={selected ? {
+                boxShadow: "inset 0 1px 2px rgba(255,255,255,0.15), 0 2px 6px rgba(247,147,26,0.25)"
+              } : {
+                boxShadow: "inset 0 1px 2px rgba(255,255,255,0.05), 0 2px 4px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.2)"
+              }}
             >
               <span className="text-3xl shrink-0 leading-none">{opt.emoji}</span>
               <div className="flex-1 min-w-0">
@@ -671,6 +677,11 @@ function AmountScreen({
         className={`flex items-center gap-3 rounded-2xl px-6 py-5 border-2 transition-all duration-150 cursor-text bg-[var(--bg-elevated)] ${
           focused ? "border-[#F7931A]" : "border-[var(--border-2)]"
         }`}
+        style={{
+          boxShadow: focused
+            ? "0 0 0 3px rgba(247,147,26,0.15), inset 0 1px 2px rgba(255,255,255,0.05)"
+            : "inset 0 1px 2px rgba(255,255,255,0.05), 0 2px 4px rgba(0,0,0,0.35), 0 6px 16px rgba(0,0,0,0.2)"
+        }}
         onClick={() => document.getElementById("amount-input")?.focus()}
       >
         <span className="text-5xl font-black text-[#F7931A] leading-none">$</span>
@@ -691,7 +702,7 @@ function AmountScreen({
       {/* Sats preview */}
       {mxn > 0 && (
         <div className="flex items-center gap-3 rounded-xl bg-[#F7931A11] border border-[#F7931A22] px-4 py-3">
-          <span className="text-xl">₿</span>
+          <SatSymbol size={22} className="text-[#F7931A] shrink-0" />
           <div className="flex flex-col gap-0.5">
             <span className="text-[14px] font-semibold text-[#F7931A]">
               ≈ {previewSats.toLocaleString("es-MX")} sats
@@ -828,6 +839,11 @@ function ResultsScreen({
                     ? "bg-[#F7931A] hover:opacity-95"
                     : "bg-[var(--bg-elevated)] hover:bg-[var(--bg-high)]"
                 }`}
+                style={isWinner ? {
+                  boxShadow: "inset 0 1px 2px rgba(255,255,255,0.2), 0 4px 8px rgba(247,147,26,0.2), 0 8px 24px rgba(0,0,0,0.35)"
+                } : {
+                  boxShadow: "inset 0 1px 2px rgba(255,255,255,0.05), 0 2px 4px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.2)"
+                }}
               >
                 {/* Rank + sats */}
                 <div className="flex items-center gap-3">
@@ -849,13 +865,14 @@ function ResultsScreen({
                   <div className="flex-1" />
                   <div className="text-right">
                     <div
-                      className={`text-2xl font-black tabular-nums leading-none ${
+                      className={`flex items-center justify-end gap-1.5 text-2xl font-black tabular-nums leading-none ${
                         isWinner ? "text-[#0B0B0B]" : "text-[var(--fg)]"
                       }`}
                     >
-                      {sats.toLocaleString("es-MX")}
+                      <SatSymbol size={16} className={`shrink-0 self-center ${isWinner ? "opacity-50" : "opacity-40"}`} />
+                      <span>{sats.toLocaleString("es-MX")}</span>
                       <span
-                        className={`ml-1 text-sm font-semibold ${
+                        className={`text-sm font-semibold ${
                           isWinner ? "text-[#0B0B0B88]" : "text-[var(--fg-muted)]"
                         }`}
                       >
@@ -1081,6 +1098,7 @@ function OrientationScreen({
             target="_blank"
             rel="noopener noreferrer"
             className="group flex flex-col gap-2 rounded-2xl bg-[var(--bg-elevated)] hover:bg-[var(--bg-high)] p-5 transition-colors"
+            style={{ boxShadow: "inset 0 1px 2px rgba(255,255,255,0.05), 0 2px 4px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.2)" }}
           >
             <div className="flex items-center gap-3">
               <span className="text-2xl leading-none">{w.emoji}</span>
